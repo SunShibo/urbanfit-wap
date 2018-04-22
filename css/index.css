@@ -1,11 +1,11 @@
 /**************** 首页 **********************/
 .swiper-container { width: 100%;}
 .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: flex;justify-content: center;
-align-items: center;}
+    align-items: center;}
 .swiper-slide a{width: 100%;display: block;}
 .swiper-slide a img{width: 100%;}
 .swiper-pagination-bullet-active{background: none !important;width: 12px;height: 12px;
-border:1px solid #8d8d8d;}
+    border:1px solid #8d8d8d;}
 
 .news{width: 100%;background: #f6d12b;}
 .news > img{width: 100%;}
@@ -18,10 +18,10 @@ border:1px solid #8d8d8d;}
 .newsbox .newsbox1 .newtext{margin-left: 10px;width: 60%;}
 .newsbox .newsbox1 .newtext p{color: #333;font-size: 15px;}
 .newsbox > a{color: #fff;font-size: 15px; height: 30px;background: #d0be3f;width:100px;line-height: 30px;
-display:block;border-radius: 30px;margin: 20px auto 0;text-align: center;}
+    display:block;border-radius: 30px;margin: 20px auto 0;text-align: center;}
 .news ul{width: 100%;}
 .news ul li a{color: #101215;font-size: 18px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
-margin-top: 10px;display: block;}
+    margin-top: 10px;display: block;}
 .match{width: 100%;}
 .match > img{width: 100%;}
 .store{width: 100%;}
@@ -38,7 +38,7 @@ margin-top: 10px;display: block;}
 .train .trainbox .trainul{width: 100%;margin-top: 20%;}
 .train .trainbox .trainul > img{width: 100%;margin-bottom: 5px;}
 .train .trainbox .trainul ul{display: flex;flex-wrap: wrap;justify-content: center;width: 100%;
-background: rgba(40,55,63,0.6);padding: 10px 0;}
+    background: rgba(40,55,63,0.6);padding: 10px 0;}
 .train .trainbox .trainul ul li{width: 35%;text-align: center;margin:0 20px 15px;}
 .train .trainbox .trainul ul li img{width: 100%;margin-bottom: 10px;}
 .train .trainbox .trainul ul li span{color: #fff;font-size: 18px;}
@@ -53,29 +53,32 @@ background: rgba(40,55,63,0.6);padding: 10px 0;}
 .infolist > ul li .listimg img{width: 100%;}
 .infolist > ul li .listtext{width: 66%;}
 .infolist > ul li .listtext h1{color: #101215; font-size: 16px;font-weight: 500;overflow : hidden;
-text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .infolist > ul li .listtext h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
 .infolist > ul li .listtext p{color: #101215; font-size: 14px;overflow : hidden;
-text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
-.infolist > ul li .listtext1{padding: 15px;background: #eaebeb;}
+    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.infolist > ul li .listtext1{padding: 15px;background: #eaebeb; width: 100%;
+    box-sizing: border-box;}
 .infolist > ul li .listtext1 h1{color: #101215; font-size: 16px;font-weight: 500;overflow : hidden;
-text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .infolist > ul li .listtext1 h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
 .infolist > ul li .listtext1 p{color: #101215; font-size: 14px;overflow : hidden;
-text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}}
+    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}}
 .infolist .page{width: 100%;}
 .infolist .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
-.infolist .page ul li{width: 30%;}
+.infolist .page ul li{width: 30%;position: relative;}
 .infolist .page ul li a{display: flex;background: #171f23;height:44px;border-radius: 4px;color: #fff;font-size: 18px;justify-content: center;align-items: center; }
 .infolist .page ul li a img{width: 12px;}
 .infolist .page ul li span{height: 33px;border: 1px solid #000;border-radius: 4px;display: block;width:70%;margin: 5px auto;text-align:center;line-height: 33px;color: #010101;font-size: 16px;}
+.infolist .page ul li i{position: absolute; width:100%;height: 100%; top:0;left: 0;display: none;}
 
 .infobox{width: 100%; background:url(../img/bgyellow.png) repeat-x; background-size: 100% 100%;padding-bottom: 30px;}
 .infobox h1{color: #fff;font-size: 18px;padding-top: 20px;text-align: center;}
 .infobox ul{margin: 20px 8px;display: flex;justify-content: space-between;flex-wrap: wrap;}
-.infobox ul li{width: 48%;padding-bottom: 8px;}
-.infobox ul li a{width: 100%;}
-.infobox ul li a img{width: 99%;box-shadow: 3px 4px 10px #8c8d8c;}
+.infobox ul li{width: 48%;padding-bottom: 8px; background: #fff;min-height: 100px;}
+.infobox ul li a{height: 100%;width: 99%;box-shadow: 3px 4px 10px #8c8d8c;
+    display: flex;justify-content: center;align-items: center;color: #000;font-size: 25px;}
+/* .infobox ul li a img{width: 99%;box-shadow: 3px 4px 10px #8c8d8c;} */
 
 
 /**************** 活动资讯详情 **********************/
@@ -117,15 +120,15 @@ text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-o
 /**************** 认证查询 **********************/
 .attestion{width: 100%;position: relative;}
 .attestion > img{width: 100%;}
-.attestion .form{position: absolute;width: 80%;top: 50px; background:url(../img/bgaa.png) no-repeat; 
-background-size: 100% 100%;left: 10%; }
+.attestion .form{position: absolute;width: 80%;top: 50px; background:url(../img/bgaa.png) no-repeat;
+    background-size: 100% 100%;left: 10%; }
 .attestion .form h1{color: #fff;font-size: 19px;text-align:center;margin-top: 28px;font-weight: 500;}
 .attestion .form ul{width: 90%; margin: 30px auto;}
 .attestion .form ul li{margin-top: 15px;width: 100%; background: #fff;height: 40px;border-radius: 5px;display: flex;align-items: center;}
 .attestion .form ul li input{border: none;width: 60%; height: 38px;border-radius: 5px;font-size: 15px;}
 .attestion .form ul li span{width:40%;color: #171f23;font-size: 15px;text-indent: 15px;}
 .attestion .form > a{display: block;width: 70%;height: 35px;text-align: center;line-height: 35px;background: #f4d040;
-color: #fff;font-size: 16px;border-radius: 5px;margin: 0 auto 30px;}
+    color: #fff;font-size: 16px;border-radius: 5px;margin: 0 auto 30px;}
 
 
 
@@ -133,34 +136,34 @@ color: #fff;font-size: 16px;border-radius: 5px;margin: 0 auto 30px;}
 #header{width: 100%;height: 55px;background: #f6d332;overflow: hidden;}
 #header .swiper-wrapper{width: auto;padding-left: 10px;padding-right: 20px;}
 #header .swiper-slide {margin: 0 15px;height:auto;background: none;width:auto;color: #101215;
-font-size: 1.8rem;}
+    font-size: 1.8rem;}
 #header .active {border-bottom: 3px solid #000;}
 
 .swiper-pagination-bullet {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius:5px;
-  background: #fff;
-  margin: 0 2px;
-  opacity: 0.8;
-  cursor: pointer;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius:5px;
+    background: #fff;
+    margin: 0 2px;
+    opacity: 0.8;
+    cursor: pointer;
 }
 .swiper-pagination-bullet-active {
-  background: #ff6600;
+    background: #ff6600;
 }
 
 .news-list{
-	padding:0 10px;
+    padding:0 10px;
 }
 .news-list li{
-	overflow: hidden;
-border-bottom: 1px solid #eceef0;
-box-shadow: 0 1px 1px #fff;
-font-weight: normal;
-height: 35px;
-line-height: 35px;
-font-size: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #eceef0;
+    box-shadow: 0 1px 1px #fff;
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    font-size: 100%;
 }
 
 
@@ -176,7 +179,7 @@ font-size: 100%;
 .store1 .select{ margin-top:30px;margin-bottom: 20px;}
 .store1 .select div{padding: 0 20px;display: flex;flex-wrap: wrap;}
 .store1 .select div select{display: block; background:#FFFFFF;min-width: 40%; height: 30px;border:1px solid #41484c;
-border-radius: 4px;margin-top: 10px;}
+    border-radius: 4px;margin-top: 10px;}
 .store1 .matchul li p{text-align: left;}
 .store1 .page{width: 100%;}
 .store1 .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
@@ -210,7 +213,7 @@ border-radius: 4px;margin-top: 10px;}
 .cooperative .cooperativebox{width: 100%;position: relative;}
 .cooperative .cooperativebox > img{width: 100%;margin-top: 40px;position: absolute;bottom: 0;right: 0;z-index: 8;}
 .cooperative .cooperativebox ul{padding: 0 15px;display: flex;justify-content: space-between;
-flex-wrap: wrap;position: relative;z-index: 9;padding-top: 30px;}
+    flex-wrap: wrap;position: relative;z-index: 9;padding-top: 30px;}
 .cooperative .cooperativebox ul li{width: 45%;margin-bottom: 10%;}
 .cooperative .cooperativebox ul li img{width: 100%;}
 
@@ -232,7 +235,7 @@ flex-wrap: wrap;position: relative;z-index: 9;padding-top: 30px;}
 .sell .sellbox li .select div{width: 100%;}
 .sell .sellbox li .select div select{display: block;border:1px solid #41484c;width: 100%;height: 40px;border-radius: 4px;margin-bottom: 15px;}
 .sell .sellbox li a{display: block;color: #101215;font-size: 16px;height: 42px;box-sizing:border-box;
-background: #f4d040;border-radius: 3px;text-align: center;line-height: 42px;margin-top: 27px;margin: 0 22px;}
+    background: #f4d040;border-radius: 3px;text-align: center;line-height: 42px;margin-top: 27px;margin: 0 22px;}
 
 
 /**************** 教练团队 **********************/
@@ -249,20 +252,20 @@ background: #f4d040;border-radius: 3px;text-align: center;line-height: 42px;marg
 .join{width: 100%;position: relative; padding: 30px 0;}
 .join > img{width: 100%; position: absolute;bottom: 0; height: 100%;}
 .join .login1{width: 90%;background:rgba(16,18,21,0.9);padding: 30px 0;position: relative;
-margin: 0 auto;}
+    margin: 0 auto;}
 .join .login1 > img{margin: 0 auto;}
 .join .login1 h1{text-align: center;color: #eaeaea;font-size: 22px;font-weight: 500;}
 .join .login1 ul{width: 320px;margin: 0 auto;}
 .join .login1 ul li{position: relative;margin-top: 30px;display: flex;flex-wrap: wrap;}
 .join .login1 ul li .input{width: 100%;box-sizing: border-box;border:1px solid #bebfc0;height: 45px;background: none;
-font-size: 16px;color: #fff;text-indent: 130px;border-radius:3px;}
+    font-size: 16px;color: #fff;text-indent: 130px;border-radius:3px;}
 .join .login1 ul li .input1{width: 70%;}
 .join .login1 ul li span{width:130px;position: absolute;display:flex;height: 45px;align-items: center;color: #fff;
-font-size: 18px;justify-content: center;}
+    font-size: 18px;justify-content: center;}
 .join .login1 ul li .yzm{width: 30%;text-align: center;color: #fff;font-size: 16px;line-height: 45px;}
 .join .login1 ul li span img{width: 20px;height: 20px;margin-right: 10px;}
 .join .login1 ul li .next{display: block;width: 100%;height:49px;border-radius:3px;background: #f3be12;color: #fff;
-text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
+    text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
 .join .login1 ul li .loginbtn{color: #f4d040;font-size: 16px;display: block;margin-top: 20px;}
 .join .login1 ul li p{font-size: 14px;color: #bbb;position: absolute;bottom: -20px;left: 10px;}
 .join .login1 ul li .forget{display: flex;justify-content: space-between;width: 100%;}
@@ -271,7 +274,7 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
 .join .login1 .success img{margin: 40px auto 0;}
 .join .login1 .success p{font-size: 24px;color: #aaa;text-align: center;margin-top: 30px;margin-bottom: 35px;}
 .join .login1 .success a{display: block;width: 100%;height:49px;border-radius:3px;background: #f3be12;color: #fff;
-text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
+    text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
 
 
 /**************** 填写订单信息 **********************/
@@ -296,7 +299,7 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
 }
 .order .order1 .orderinput1{
     flex-wrap: wrap;position: relative;
-} 
+}
 .order .order1 .orderinput1 .input{
     width: 50% !important;
 }
@@ -327,7 +330,7 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
     border:1px solid #ebebeb;
     height: 50px;box-sizing:border-box;
     border-radius: 3px;
-    width: 100%;padding: 0 10px; 
+    width: 100%;padding: 0 10px;
 }
 .order .order1 .order2{
     padding: 0 20px;
@@ -363,9 +366,9 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
     margin-top: 5px;
 }
 .order .order1 ul{
-   margin-top: 20px;padding-bottom: 22px;
-   border-bottom: 1px solid #f4d040;
-   margin-bottom: 0; 
+    margin-top: 20px;padding-bottom: 22px;
+    border-bottom: 1px solid #f4d040;
+    margin-bottom: 0;
 }
 .order .order1 ul li{
     margin-bottom: 17px;color: #333;
@@ -403,7 +406,7 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
     font-weight: 500;margin-top: 40px;
 }
 .pay .paybtn{
-    padding-top:100px; 
+    padding-top:100px;
     padding-bottom: 30px;
 }
 .pay .paybtn a{
@@ -600,7 +603,7 @@ text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
     height:44px;border-radius: 4px;
     color: #fff;font-size: 18px;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 .user2 .page ul li a img{width: 12px;}
 .user2 .page ul li span{
