@@ -100,7 +100,7 @@ function reladPage(){
                     //alert(v.content);
                     if (k%2 == 0) {
                         listbox += "<li>";
-                        listbox += '<a href="'+ v.messageId + '">';
+                        listbox += '<a href="info_detail.html?messageId='+ v.messageId + '">';
                         listbox += '<div class="listimg">';
                         listbox += '<img src="'+baseUel0+v.thumbnails+'">';
                         listbox += '</div>';
@@ -112,7 +112,7 @@ function reladPage(){
                         listbox += '</li>';
                     }else{
                         listbox += '<li>';
-                        listbox += '<a href="' + v.messageId + '">';
+                        listbox += '<a href="info_detail.html?messageId='+ v.messageId + '">';
                         listbox += '<div class="listtext1">';
                         listbox += '<h1>'+v.title+'<span>'+v.createTime+'</span></h1>';
                         listbox += '<p>'+v.content+'</p>';
