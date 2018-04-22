@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<div class="content">
+		<!-- nav -->
+        <div class="nav navlogo">
+            <a href="index.html"><img src="img/logo.png"></a>
+        </div>
+		<div class="join">
+            <img src="img/loginbg.jpg">
+            <div class="login1">
+                <img src="img/logo1.png">
+                <h1>会员登录</h1>
+                <ul>
+                    <li>
+                        <span><img src="img/user.png">手机号码</span>
+                        <input type="text" value="" placeholder="请输入您的手机号" class="input" id="phone">
+                        <p id="phonemsg"></p>
+                    </li>  
+                    <li>
+                        <span><img src="img/passwd.png">密&emsp;&emsp;码</span>
+                        <input type="password" value="" placeholder="请输入您的密码" class="input" id="pwd">
+                        <p id="pwdmsg"></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="next">保存</a>
+                        <a href="#" class="loginbtn">登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    	<!-- footer -->
+	    <footer class="footer">
+            <ul>
+                <li>
+                    <h1>联系我们</h1>
+                </li>
+                <!-- <li>
+                    <span>地址：北京市朝阳区东四环</span>
+                </li>
+                <li>
+                    <span>北路6号二区5号楼1层商业02号</span>
+                </li> -->
+                <li>
+                    <span>电话：4000-664-688</span>
+                </li>
+                <li>
+                    <span>邮箱：urbanfit@163.com</span>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h1>合作单位</h1>
+                </li>
+                <li>
+                    <span>北京博克森传媒科技股份有限公司</span>
+                </li>
+                <li>
+                    <span>中国赛法斗联合会</span>
+                </li>
+                <li>
+                    <span>国际赛法斗联合会</span>
+                </li>
+                <li>
+                    <span>法国赛法斗联合会</span>
+                </li>
+            </ul>
+            <div class="footerma">
+                <div>
+                    <img src="img/maa.jpg">
+                    <p>众力飞特官方微信公众号</p>
+                </div>
+                <div>
+                    <img src="img/maa1.jpg">
+                    <p>众力飞特官方微博账号</p>
+                </div>
+            </div>
+        </footer>
+	</div>	
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/index.js"></script>
+<script>
+$(function() {
+    $(".next").click(checkForm);
+    function checkForm(){
+        var mobile = $.trim($("#phone").val());
+        if(!isMobile(mobile)){
+            $('#phonemsg').text('请输入正确的手机号');
+            $("#phone").focus();
+            return;
+        }else{
+            $('#phonemsg').text('');
+        }
+        var pwd = $.trim($("#pwd").val());
+        if(pwd == ''){
+            $('#pwdmsg').text("请输入您的密码");
+            $("#pwd").focus();
+            return;
+        }else{
+            $('#pwdmsg').text('');
+        }
+    };
+    //粗略验证手机号
+    function isMobile(mobile){
+        var re = /^1[0-9]{10}$/;
+        var validCode=true;
+        if(re.test(mobile))
+            return true;
+        else
+            return false;
+    }
+});
+</script>
+</body>
+</html>

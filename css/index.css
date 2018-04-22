@@ -1,0 +1,771 @@
+/**************** 首页 **********************/
+.swiper-container { width: 100%;}
+.swiper-slide {text-align: center;font-size: 18px;background: #fff;display: flex;justify-content: center;
+align-items: center;}
+.swiper-slide a{width: 100%;display: block;}
+.swiper-slide a img{width: 100%;}
+.swiper-pagination-bullet-active{background: none !important;width: 12px;height: 12px;
+border:1px solid #8d8d8d;}
+
+.news{width: 100%;background: #f6d12b;}
+.news > img{width: 100%;}
+.newsbox{padding: 30px 15px;}
+.newsbox h1 a{color: #101215;font-size: 22px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: block;}
+.newsbox .newsbox1{margin-top: 15px;align-items: center;}
+.newsbox .newsbox1 a{display: flex;}
+.newsbox .newsbox1 .newimg{width: 40%;}
+.newsbox .newsbox1 .newimg img{width: 100%;height: auto;}
+.newsbox .newsbox1 .newtext{margin-left: 10px;width: 60%;}
+.newsbox .newsbox1 .newtext p{color: #333;font-size: 15px;}
+.newsbox > a{color: #fff;font-size: 15px; height: 30px;background: #d0be3f;width:100px;line-height: 30px;
+display:block;border-radius: 30px;margin: 20px auto 0;text-align: center;}
+.news ul{width: 100%;}
+.news ul li a{color: #101215;font-size: 18px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+margin-top: 10px;display: block;}
+.match{width: 100%;}
+.match > img{width: 100%;}
+.store{width: 100%;}
+.store > img{width: 145px;margin-top: 25px;margin-left: 60px;}
+.store .map{width: 100%;margin-top: -20px;}
+.store .map img{width: 100%;}
+.store .storeattr{margin-left: 20px;margin-bottom: 30px;margin-top: -30px;}
+.store .storeattr img{width: 110px;}
+.store .storeattr p{color: #101215;font-size: 12px;line-height: 20px;margin-top: 10px;}
+.train{width: 100%;position: relative;}
+.train > img{width: 100%;}
+.train .trainbox{margin: 0 14px;position: absolute;top: 0;}
+.train .trainbox > img{width: 145px;margin-top: 30px;margin-left: 20px;}
+.train .trainbox .trainul{width: 100%;margin-top: 20%;}
+.train .trainbox .trainul > img{width: 100%;margin-bottom: 5px;}
+.train .trainbox .trainul ul{display: flex;flex-wrap: wrap;justify-content: center;width: 100%;
+background: rgba(40,55,63,0.6);padding: 10px 0;}
+.train .trainbox .trainul ul li{width: 35%;text-align: center;margin:0 20px 15px;}
+.train .trainbox .trainul ul li img{width: 100%;margin-bottom: 10px;}
+.train .trainbox .trainul ul li span{color: #fff;font-size: 18px;}
+
+
+/**************** 活动资讯 **********************/
+.infolist{width: 100%;padding-bottom: 20px;}
+.infolist > ul{margin: 0 15px;}
+.infolist > ul li{width: 100%;padding-top: 20px;background: #fff;}
+.infolist > ul li a{display: flex;justify-content: space-between;}
+.infolist > ul li .listimg{width: 30%;}
+.infolist > ul li .listimg img{width: 100%;}
+.infolist > ul li .listtext{width: 66%;}
+.infolist > ul li .listtext h1{color: #101215; font-size: 16px;font-weight: 500;overflow : hidden;
+text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.infolist > ul li .listtext h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
+.infolist > ul li .listtext p{color: #101215; font-size: 14px;overflow : hidden;
+text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.infolist > ul li .listtext1{padding: 15px;background: #eaebeb;}
+.infolist > ul li .listtext1 h1{color: #101215; font-size: 16px;font-weight: 500;overflow : hidden;
+text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.infolist > ul li .listtext1 h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
+.infolist > ul li .listtext1 p{color: #101215; font-size: 14px;overflow : hidden;
+text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}}
+.infolist .page{width: 100%;}
+.infolist .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
+.infolist .page ul li{width: 30%;}
+.infolist .page ul li a{display: flex;background: #171f23;height:44px;border-radius: 4px;color: #fff;font-size: 18px;justify-content: center;align-items: center; }
+.infolist .page ul li a img{width: 12px;}
+.infolist .page ul li span{height: 33px;border: 1px solid #000;border-radius: 4px;display: block;width:70%;margin: 5px auto;text-align:center;line-height: 33px;color: #010101;font-size: 16px;}
+
+.infobox{width: 100%; background:url(../img/bgyellow.png) repeat-x; background-size: 100% 100%;padding-bottom: 30px;}
+.infobox h1{color: #fff;font-size: 18px;padding-top: 20px;text-align: center;}
+.infobox ul{margin: 20px 8px;display: flex;justify-content: space-between;flex-wrap: wrap;}
+.infobox ul li{width: 48%;padding-bottom: 8px;}
+.infobox ul li a{width: 100%;}
+.infobox ul li a img{width: 99%;box-shadow: 3px 4px 10px #8c8d8c;}
+
+
+/**************** 活动资讯详情 **********************/
+.infodetail{ margin: 25px 15px; }
+.infodetail h1{font-size: 24px;color: #000;font-weight: 500;}
+.infodetail > p{color: #888;font-size: 15px;margin-top: 15px;}
+.infodetail > p span{color: #576b95;padding-left: 20px;}
+.infodetail .infotext{padding:32px 0; }
+.infodetail .infotext p{color: #333;font-size: 17px;display: flex;margin-top: 10px;}
+.infodetail .infotext p span{width: 50%;text-align: center;}
+.infodetail .infotext > img{width: 100%;margin: 10px 0;}
+
+
+/**************** 赛法斗 **********************/
+.matchbox{width: 100%;padding-top:45px; position: relative;}
+.matchbox > img{width: 100%;}
+.matchbox .people{position: absolute;top: 0;width: 50%; right: 0;}
+.matchbox .match1{padding: 30px 15px;background: #feecad;}
+.match1 .match2{display: flex;padding-bottom: 20px;}
+.match1 .match2 h2{color: #101215;font-size: 24px;text-align: center;width: 50%;}
+.match1 .match3{padding-top: 15px;}
+.match1 .match3 p{color: #101215;font-size: 17px;}
+.matchul{padding:0 15px;}
+.matchul li{border-bottom: 1px solid #f4d040;padding-bottom: 25px;}
+.matchul li h3{color: #000;font-size: 20px;display: flex;align-items: center;margin: 25px 0;}
+.matchul li h3 img{width: 13px;height: 13px;margin-right: 5px;}
+.matchul li p{color: #333;font-size: 17px;}
+@media screen and (min-width: 320px) {
+    .match1 .match3{padding-top: 0;}
+}
+@media screen and (min-width: 375px) {
+    .match1 .match3{padding-top:20px;}
+}
+@media screen and (min-width: 414px) {
+    .match1 .match3{padding-top:30px;}
+}
+
+
+/**************** 认证查询 **********************/
+.attestion{width: 100%;position: relative;}
+.attestion > img{width: 100%;}
+.attestion .form{position: absolute;width: 80%;top: 50px; background:url(../img/bgaa.png) no-repeat; 
+background-size: 100% 100%;left: 10%; }
+.attestion .form h1{color: #fff;font-size: 19px;text-align:center;margin-top: 28px;font-weight: 500;}
+.attestion .form ul{width: 90%; margin: 30px auto;}
+.attestion .form ul li{margin-top: 15px;width: 100%; background: #fff;height: 40px;border-radius: 5px;display: flex;align-items: center;}
+.attestion .form ul li input{border: none;width: 60%; height: 38px;border-radius: 5px;font-size: 15px;}
+.attestion .form ul li span{width:40%;color: #171f23;font-size: 15px;text-indent: 15px;}
+.attestion .form > a{display: block;width: 70%;height: 35px;text-align: center;line-height: 35px;background: #f4d040;
+color: #fff;font-size: 16px;border-radius: 5px;margin: 0 auto 30px;}
+
+
+
+/**************** tabs **********************/
+#header{width: 100%;height: 55px;background: #f6d332;overflow: hidden;}
+#header .swiper-wrapper{width: auto;padding-left: 10px;padding-right: 20px;}
+#header .swiper-slide {margin: 0 15px;height:auto;background: none;width:auto;color: #101215;
+font-size: 1.8rem;}
+#header .active {border-bottom: 3px solid #000;}
+
+.swiper-pagination-bullet {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius:5px;
+  background: #fff;
+  margin: 0 2px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+  background: #ff6600;
+}
+
+.news-list{
+	padding:0 10px;
+}
+.news-list li{
+	overflow: hidden;
+border-bottom: 1px solid #eceef0;
+box-shadow: 0 1px 1px #fff;
+font-weight: normal;
+height: 35px;
+line-height: 35px;
+font-size: 100%;
+}
+
+
+/**************** 联系我们 **********************/
+.company{width: 100%;}
+.company > img{width: 100%;margin-top: 33px;}
+.company h1{color: #000;font-size: 24px; text-align: center;font-weight: 500;margin-top: 30px;}
+.company .companytext{padding: 30px 15px;}
+.company .companytext p{color: #333;font-size: 17px;text-align: left;}
+
+.store1{width: 100%;}
+.store1 > img{width: 100%;margin-top: 33px;}
+.store1 .select{ margin-top:30px;margin-bottom: 20px;}
+.store1 .select div{padding: 0 20px;display: flex;flex-wrap: wrap;}
+.store1 .select div select{display: block; background:#FFFFFF;min-width: 40%; height: 30px;border:1px solid #41484c;
+border-radius: 4px;margin-top: 10px;}
+.store1 .matchul li p{text-align: left;}
+.store1 .page{width: 100%;}
+.store1 .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
+.store1 .page ul li{width: 30%;}
+.store1 .page ul li a{display: flex;background: #171f23;height:44px;border-radius: 4px;color: #fff;font-size: 18px;justify-content: center;align-items: center; }
+.store1 .page ul li a img{width: 12px;}
+.store1 .page ul li span{height: 33px;border: 1px solid #000;border-radius: 4px;display: block;width:70%;margin: 5px auto;text-align:center;line-height: 33px;color: #010101;font-size: 16px;}
+
+.contact{ width: 100%; }
+.contact > img{width: 100%;margin-top: 33px;}
+.contact > ul{padding:0 15px;text-align: left;}
+.contact > ul li{margin-top: 30px;}
+.contact > ul li h2{color: #000;font-size: 20px;margin-bottom: 15px;}
+.contact > ul li p{color: #777774;font-size: 17px;margin-top: 10px;}
+.contact .map{margin: 35px 15px;}
+.contact .map img{width: 100%;}
+
+.management{width: 100%; padding-bottom: 40px;}
+.management > img{width: 100%;margin-top: 33px;}
+.management > ul{padding: 0 15px;}
+.management > ul li{width: 100%; margin-top: 40px;}
+.management > ul li div{display: flex;align-items: center;margin-bottom: 18px;}
+.management > ul li div > span{width: 30%;height: auto;display: block;}
+.management > ul li div > span img{width: 100%;}
+.management > ul li div h2{font-size: 20px;color: #101215;margin-left: 15px;text-align: left;}
+.management > ul li div h2 span{font-size: 18px;display: block;margin-top: 15px;}
+.management > ul li > p{text-align: left;color: #666;font-size: 15px;}
+
+.cooperative{width: 100%;}
+.cooperative > img{width: 100%;margin-top: 33px;}
+.cooperative .cooperativebox{width: 100%;position: relative;}
+.cooperative .cooperativebox > img{width: 100%;margin-top: 40px;position: absolute;bottom: 0;right: 0;z-index: 8;}
+.cooperative .cooperativebox ul{padding: 0 15px;display: flex;justify-content: space-between;
+flex-wrap: wrap;position: relative;z-index: 9;padding-top: 30px;}
+.cooperative .cooperativebox ul li{width: 45%;margin-bottom: 10%;}
+.cooperative .cooperativebox ul li img{width: 100%;}
+
+
+/**************** 课程介绍 **********************/
+.course{padding: 0 15px;padding-bottom: 30px;}
+.course .coursebox h1{color: #000;font-size: 24px;margin-top: 30px;text-align: left;}
+.course .coursebox p{color: #333;font-size: 17px;margin-top: 30px;text-align: left;}
+.course .coursebox i{color: #666;font-size: 17px;display: block;text-indent: 2em;font-style: normal;text-align: left;margin-top: 10px;}
+.course .attestion{margin-top: 30px;}
+.sell{width: 100%;padding-bottom: 10px;}
+.sell h2{color: #000;font-size: 24px;padding: 25px 0;}
+.sell .sellbox{padding: 0 15px;}
+.sell .sellbox li{display: flex;align-items:flex-start;margin-bottom: 20px;}
+.sell .sellbox li p{display: flex;color: #222;font-size: 16px;align-items: center;margin-bottom: 0;width: 33%;line-height:40px;}
+.sell .sellbox li span{font-size: 20px;color: #fe8005;line-height: 40px;}
+.sell .sellbox li p > img{margin-right: 10px;}
+.sell .sellbox li .select{margin:0;width: 60%;}
+.sell .sellbox li .select div{width: 100%;}
+.sell .sellbox li .select div select{display: block;border:1px solid #41484c;width: 100%;height: 40px;border-radius: 4px;margin-bottom: 15px;}
+.sell .sellbox li a{display: block;color: #101215;font-size: 16px;height: 42px;box-sizing:border-box;
+background: #f4d040;border-radius: 3px;text-align: center;line-height: 42px;margin-top: 27px;margin: 0 22px;}
+
+
+/**************** 教练团队 **********************/
+.management .page{width: 100%;}
+.management .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
+.management .page ul li{width: 30%;}
+.management .page ul li a{display: flex;background: #171f23;height:44px;border-radius: 4px;color: #fff;font-size: 18px;justify-content: center;align-items: center; }
+.management .page ul li a img{width: 12px;}
+.management .page ul li span{height: 33px;border: 1px solid #000;border-radius: 4px;display: block;width:70%;margin: 5px auto;text-align:center;line-height: 33px;color: #010101;font-size: 16px;}
+
+
+
+/**************** 注册 **********************/
+.join{width: 100%;position: relative; padding: 30px 0;}
+.join > img{width: 100%; position: absolute;bottom: 0; height: 100%;}
+.join .login1{width: 90%;background:rgba(16,18,21,0.9);padding: 30px 0;position: relative;
+margin: 0 auto;}
+.join .login1 > img{margin: 0 auto;}
+.join .login1 h1{text-align: center;color: #eaeaea;font-size: 22px;font-weight: 500;}
+.join .login1 ul{width: 320px;margin: 0 auto;}
+.join .login1 ul li{position: relative;margin-top: 30px;display: flex;flex-wrap: wrap;}
+.join .login1 ul li .input{width: 100%;box-sizing: border-box;border:1px solid #bebfc0;height: 45px;background: none;
+font-size: 16px;color: #fff;text-indent: 130px;border-radius:3px;}
+.join .login1 ul li .input1{width: 70%;}
+.join .login1 ul li span{width:130px;position: absolute;display:flex;height: 45px;align-items: center;color: #fff;
+font-size: 18px;justify-content: center;}
+.join .login1 ul li .yzm{width: 30%;text-align: center;color: #fff;font-size: 16px;line-height: 45px;}
+.join .login1 ul li span img{width: 20px;height: 20px;margin-right: 10px;}
+.join .login1 ul li .next{display: block;width: 100%;height:49px;border-radius:3px;background: #f3be12;color: #fff;
+text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
+.join .login1 ul li .loginbtn{color: #f4d040;font-size: 16px;display: block;margin-top: 20px;}
+.join .login1 ul li p{font-size: 14px;color: #bbb;position: absolute;bottom: -20px;left: 10px;}
+.join .login1 ul li .forget{display: flex;justify-content: space-between;width: 100%;}
+.join .login1 ul li .forget .forgetpwd{font-size: 16px;color: #fff;margin-top: 20px;}
+.join .login1 .success{width: 320px;margin: 0 auto;}
+.join .login1 .success img{margin: 40px auto 0;}
+.join .login1 .success p{font-size: 24px;color: #aaa;text-align: center;margin-top: 30px;margin-bottom: 35px;}
+.join .login1 .success a{display: block;width: 100%;height:49px;border-radius:3px;background: #f3be12;color: #fff;
+text-align: center;line-height: 49px;font-size: 20px;margin-top: 10px;}
+
+
+/**************** 填写订单信息 **********************/
+.order{
+    width: 100%;padding: 25px 0;
+}
+.order h1{
+    color: #111;font-size: 17px;line-height: 26px;
+    margin-left: 15px;display: flex;align-items: center;
+}
+.order h1 img{
+    float: left;margin-right: 10px;
+    width: 21px;height: 21px;
+}
+.order .order1{
+    margin: 0 15px;
+    padding-bottom: 40px;
+}
+.order .order1 .orderinput{
+    display: flex;
+    margin-top: 20px;
+}
+.order .order1 .orderinput1{
+    flex-wrap: wrap;position: relative;
+} 
+.order .order1 .orderinput1 .input{
+    width: 50% !important;
+}
+.order .order1 .orderinput span{
+    font-size: 15px;color: #333;
+    width: 20%;line-height: 50px;
+}
+.order .order1 .orderinput span i{
+    color: #e10002;font-style: normal;
+    display: inline-block;
+    line-height: 50px;margin-left: 3px;
+}
+.order .order1 .orderinput .input{
+    font-size: 15px;color: #555;
+    border:1px solid #ebebeb;
+    height: 50px;box-sizing:border-box;
+    border-radius: 3px;
+    width: 80%;padding: 0 10px;
+}
+.order .order1 .orderinput .input1{
+    color: #fe8005;
+}
+.order .order1 .orderinput .select{
+    width: 80%;
+}
+.order .order1 .orderinput .select div select{
+    font-size: 15px;color: #555;
+    border:1px solid #ebebeb;
+    height: 50px;box-sizing:border-box;
+    border-radius: 3px;
+    width: 100%;padding: 0 10px; 
+}
+.order .order1 .order2{
+    padding: 0 20px;
+}
+.order .order1 .order2 .radio{
+    width: 100%;display: flex;padding: 10px 0;
+    margin-top: 15px;justify-content: space-between;
+    align-items: center;
+}
+.order .order1 .order2 .radio span > img{
+    width: 111px;
+}
+.order .order1 .order2 .radio > img{
+    width: 22px;height: 22px;
+}
+.order .order1 .orderinput > a{
+    width: 70px;height: 28px;
+    background: #f4d040;color: #333;
+    font-size: 13px;border-radius: 3px;
+    text-align: center;line-height: 28px;
+    margin-top: 10px;position: absolute;
+    right: 0;
+}
+.order .order1 .orderinput em{
+    color: #1f5dab;font-style: normal;
+    font-size: 13px;width: 70px;line-height: 50px;
+    text-align: center;position: absolute;
+    right: 0;display: none;
+}
+.order .order1 .orderinput > p{
+    width: 100%;color: #fe9c57;font-size: 13px;
+    box-sizing:border-box;padding-left: 20%;
+    margin-top: 5px;
+}
+.order .order1 ul{
+   margin-top: 20px;padding-bottom: 22px;
+   border-bottom: 1px solid #f4d040;
+   margin-bottom: 0; 
+}
+.order .order1 ul li{
+    margin-bottom: 17px;color: #333;
+    font-size:15px;display: flex;
+}
+.order .order1 ul li span{
+    margin-left: 30px;color: #fe8005;
+    font-size: 18px;
+}
+.order .order1 ul li span.on{
+    color: #e32427;
+}
+.order .submit{
+    padding:0 15px 20px;
+}
+.order .submit a{
+    display: block;color: #333;font-size:18px;
+    width: 100%;height: 42px;text-align: center;
+    line-height: 42px;background: #f6d332;
+    border-radius: 4px;margin: 0 auto;
+}
+
+/**************** 订单支付成功 **********************/
+.pay{
+    width: 100%;padding: 40px 0;
+}
+.pay .pay1{
+    text-align: center;
+}
+.pay .pay1 img{
+    margin: 0 auto;
+}
+.pay .pay1 h2{
+    color: #171f23;font-size: 23px;
+    font-weight: 500;margin-top: 40px;
+}
+.pay .paybtn{
+    padding-top:100px; 
+    padding-bottom: 30px;
+}
+.pay .paybtn a{
+    display: block;height: 36px;
+    width: 60%;text-align: center;
+    line-height: 36px;margin: 30px auto 0;
+    border-radius: 4px;
+    box-sizing:border-box;
+}
+.pay .paybtn a.btn1{
+    border:1px solid #333;
+    color: #333;font-size: 16px;
+}
+.pay .paybtn a.btn2{
+    background: #f4d040;
+    color: #333;font-size: 16px;
+}
+
+
+/**************** 个人中心 **********************/
+.user{width:100%;}
+.user1{
+    width: 100%;background: #fad02c;
+    padding-bottom: 40px;
+    text-align: center;
+}
+.user1 h1{
+    color: #101215;font-size: 16px;
+    padding-top: 20px;
+}
+.user1 a{
+    display: block;width: 75px;height: 75px;
+    border-radius: 50%;margin: 30px auto 20px;
+}
+.user1 a img{
+    width: 100%;height: 100%;
+    border-radius: 50%;
+}
+.user1 p{
+    color: #333;font-size: 16px;
+}
+.user2{width: 100%;padding-bottom: 100px;}
+.user2 .usernav{
+    width: 100%;display: flex;
+    height: 80px;
+}
+.user2 .usernav li{
+    height: 76px;border-bottom: 4px solid #fff;
+    width: 34%;position: relative;
+    text-align: center;
+}
+.user2 .usernav li span{
+    display: block;width: 1px;
+    position: absolute;
+    height: 28px;background: #e7e7e7;
+    right: 0;top: 26px;
+}
+.user2 .usernav li a{
+    height: 100%;box-sizing:border-box;
+    font-size: 13px;color: #333;
+    padding-top: 16px;display: block;
+}
+.user2 .usernav li a img{
+    margin: 0 auto;margin-bottom: 5px;
+}
+.user2 .usernav li.cur{
+    border-bottom: 4px solid #ffcc21;
+}
+.user2 .usernav li.cur a{
+    color: #ffcc21;
+}
+.user2 .usermy{
+    border-top: 10px solid #f6f6f6;
+    padding:0 24px;
+}
+.user2 .usermy li{
+    display: flex;margin-top: 44px;
+    position: relative;
+    flex-flow: wrap;
+}
+.user2 .usermy li span{
+    width: 20%;font-size: 15px;
+    color: #171f23;
+    line-height: 40px;
+}
+.user2 .usermy li .input{
+    width: 80%;box-sizing: border-box;
+    border:1px solid #e7e7e7;height: 40px;
+    background: none;font-size: 15px;
+    color: #171f23;padding: 0 15px;
+    border-radius:3px;
+}
+.user2 .usermy li .input1{
+    width: 50% !important;
+}
+.user2 .usermy li .yzm{
+    color: #2962ad;font-size: 15px;
+    line-height: 40px;width: 30%;
+    text-align: center;
+}
+.user2 .usermy li p{
+    color: #d8d8d8;font-size: 15px;
+    width: 100%;box-sizing:border-box;
+    padding-left: 20%;position: absolute;
+    bottom: -23px;
+}
+.user2 .usermy li .next{
+    width: 60%;height: 35px;
+    background: #f4d040;
+    text-align: center;line-height: 35px;
+    font-size: 16px;color: #fff;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+.user2 .success{
+    width: 100%;
+    padding: 72px 0 150px;
+    text-align: center;
+}
+.user2 .success img{
+    margin: 0 auto;
+}
+.user2 .success p{
+    color: #171f23;font-size: 23px;
+    margin-top: 40px;
+}
+.user2 .userorder{
+    margin: 0 15px;
+}
+.user2 .userorder > li{
+    border-bottom: 1px solid #cecece;
+    padding-bottom: 30px;
+}
+.user2 .userorder li p{
+    color: #333;font-size: 15px;
+    margin: 25px 0;
+}
+.user2 .userorder li p span{
+    float: right;color: #e32427;
+}
+.user2 .userorder li p span.span{
+    color: #00b449;
+}
+.user2 .userorder li ul li{
+    margin-top: 15px;
+    color: #666;font-size: 15px;
+}
+.user2 .userorder li ul li i{
+    margin: 8px 10px 0;float: left;
+}
+.user2 .userorder li ul .dian1{
+    color: #333;
+}
+.user2 .userorder li ul .dian1 i{
+    width: 8px;height: 8px;margin-right: 8px;
+    background: #f2cd4a;border-radius: 8px;
+}
+.user2 .userorder li ul .dian2 i{
+    width: 6px;height: 6px;
+    background: #009944;border-radius: 6px;
+}
+.user2 .userorder li ul .dian3 i{
+    width: 6px;height: 6px;
+    background: #9b9b9b;border-radius: 6px;
+}
+.user2 .userorder li ul .dian4{
+    color: #fe8005;
+}
+.user2 .userorder li ul .dian4 i{
+    width: 6px;height: 6px;
+    background: #fe8005;border-radius: 6px;
+}
+.user2 .userorder li ul li a{
+    float: right;
+    width: 75px;height: 27px;
+    text-align: center;
+    line-height: 27px;
+    font-size: 13px;border-radius: 4px;
+    margin-left: 7px;
+}
+.user2 .userorder li ul li a.pay1{
+    border:1px solid #fe8005;color: #fe8005;
+}
+.user2 .userorder li ul li a.see{
+    border:1px solid #2b66b5;color: #2b66b5;
+}
+.user2 .page ul{
+    margin:25px 15px;display: flex;
+    justify-content: space-between;
+}
+.user2 .page ul li{width: 30%;}
+.user2 .page ul li a{
+    display: flex;background: #171f23;
+    height:44px;border-radius: 4px;
+    color: #fff;font-size: 18px;
+    justify-content: center;
+    align-items: center; 
+}
+.user2 .page ul li a img{width: 12px;}
+.user2 .page ul li span{
+    height: 33px;border: 1px solid #000;
+    border-radius: 4px;display: block;
+    width:70%;margin: 5px auto;
+    text-align:center;line-height: 33px;
+    color: #010101;font-size: 16px;
+}
+.tan{
+    position: fixed;width: 100%;
+    height: 100%;background: rgba(0,0,0,0.5);
+    z-index: 10;top: 0;left: 0;right: 0;
+    display: none;justify-content: center;
+    align-items: center;
+}
+.tan .tanbox{
+    display: none;
+    width: 80%;background: #fff;
+    border-radius: 4px;
+}
+.tan .tanbox .tantitle{
+    height: 69px;box-sizing:border-box;
+    border-bottom: 1px solid #f6d332;
+    color: #333;font-size: 20px;
+    text-align: center;line-height: 69px;
+    position: relative;
+}
+.tan .tanbox .tantitle span{
+    position: absolute;right: 0;
+    width: 12px;height: 12px;
+    padding: 15px;right: 11px;
+    top: 13.5px;
+}
+.tan .tanbox .tantitle img{
+    width: 100%;
+}
+.tan .tanbox .order2{
+    padding: 0 23px;
+}
+.tan .tanbox .order2 .radio{
+    margin-top: 35px;padding: 10px 0;
+    width: 100%;display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tan .tanbox .order2 .radio span > img{
+    width: 111px;
+}
+.tan .tanbox .order2 .radio > img{
+    width: 22px;height: 22px;
+}
+.tanbox > a{
+    display: block;margin: 35px 23px 27px;
+    height: 42px;background: #f4d040;
+    text-align: center;line-height: 42px;
+    color: #333;font-size: 19px;
+    border-radius: 4px;
+}
+.tan .tanbox1{
+    display: none;
+    width: 80%;background: #fff;
+    border-radius: 4px;height: 90%;
+    overflow-y: scroll;
+}
+.tan .tanbox1 .tantitle{
+    height: 69px;box-sizing:border-box;
+    border-bottom: 1px solid #f6d332;
+    color: #333;font-size: 20px;
+    text-align: center;line-height: 69px;
+    position: relative;
+}
+.tan .tanbox1 .tantitle span{
+    position: absolute;right: 0;
+    width: 12px;height: 12px;
+    padding: 15px;right: 11px;
+    top: 13.5px;
+}
+.tan .tanbox1 .tantitle img{
+    width: 100%;
+}
+.tan .tanbox1 .order3{
+    margin:15px;box-sizing:border-box;
+    border:1px solid #dedede;
+    border-radius: 4px;
+}
+.tan .tanbox1 .order3 h1{
+    width: 100%;box-sizing:border-box;
+    border-bottom:1px solid #dedede;
+    background: #f8f8f8;height: 43px;
+    color: #333;font-size: 16px;
+    line-height: 43px;
+    padding: 0 20px;
+}
+.tan .tanbox1 .order3 ul{
+    margin: 20px;
+}
+.tan .tanbox1 .order3 ul li{
+    margin-top: 13px;
+    color: #666;font-size: 14px;
+}
+.tan .tanbox1 .order3 ul li p{
+    margin-top: 19px;
+    color: #333;font-size: 16px;
+}
+.tan .tanbox1 .order3 ul li span{color: #e32427;}
+.tan .tanbox1 .order3 ul li b{color: #e32427;}
+.tan .tanbox1 .order3 ul li i{color: #fe8005;font-style: normal;}
+.tan .tanbox1 > a{
+    display: block;margin: 0 23px 20px;
+    height: 42px;background: #f4d040;
+    text-align: center;line-height: 42px;
+    color: #333;font-size: 19px;
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 414px) {
+    .attestion .form ul li span{width: 37%;}
+}
+@media screen and (max-width: 375px) {
+    .attestion .form ul li span{width: 40%;}
+    .order .order1 .orderinput span{width: 22%;}
+    .order .order1 .orderinput > p{padding-left: 22%;}
+    .user2 .usermy li span{width: 25%;}
+    .user2 .usermy li .input{width: 75%;}
+    .user2 .usermy li .yzm{width: 25%;}
+    .user2 .usermy li p{padding-left: 25%;}
+}
+@media screen and (max-width: 320px) {
+    .attestion .form ul li span{width: 46%;font-size: 14px;}
+    .attestion .form ul li input{width: 54%;}
+    .attestion .form{top: 25px;}
+    .order .order1 .orderinput span{width: 25%;}
+    .order .order1 .orderinput .input{width: 75%;}
+    .order .order1 .orderinput .select{width: 75%;}
+    .order .order1 .orderinput > p{padding-left: 25%;}
+    .user2 .usermy li .yzm{font-size: 13px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
