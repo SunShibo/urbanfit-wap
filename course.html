@@ -19,96 +19,24 @@ input:-moz-placeholder { color:#999; }
 </style>
 <body>
     <div class="content">
-        <!-- nav -->
-        <div class="nav">
-            <a href="index.html"><img src="img/logo.png"></a>
-            <!-- 未登录 -->
-            <div class="login">
-                <a class="on" href="login.html">登录</a>
-                <a href="join.html">注册</a>
-            </div>
-            <!-- 登录后显示 -->
-            <div class="login" style="display: none;">
-                <a class="on" href="user.html">邹市明</a>
-                <a href="login.html">退出</a>
-            </div>
-            
-            <div class="menu">
-                <img src="img/menu.png" class="menuimg">
-                <img src="img/close.png" class="close">
-            </div>
-            <div class="menubox">
-                <div class="search">
-                    <input type="text" placeholder="Search" class="input">
-                    <img src="img/search.jpg">
-                </div>
-                <ul class="menuul">
-                    <li>
-                        <a href="index.html">首页</a>
-                    </li>
-                    <li>
-                        <a href="info.html">活动资讯</a>
-                    </li>
-                    <li>
-                        <a href="match.html">赛法斗</a>
-                    </li>
-                    <li class="on">
-                        <a href="javascript:;">课程介绍
-                        	<img src="img/xiala1.jpg" class="xiala1" style="display: none;">
-                            <img src="img/xiala.jpg" class="xiala2" style="display: block;">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="course.html#slider0">成人课程</a>
-                            <a href="course.html#slider1">青少年课程</a>
-                            <a href="course.html#slider2">私教课程</a>
-                            <a href="course.html#slider3">特色课程</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:;">教练团队
-                            <img src="img/xiala1.jpg" class="xiala1">
-                            <img src="img/xiala.jpg" class="xiala2">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="coach.html#slider0">北京团队</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:;">关于我们
-                            <img src="img/xiala1.jpg" class="xiala1">
-                            <img src="img/xiala.jpg" class="xiala2">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="about.html#slider0">公司介绍</a>
-                            <a href="about.html#slider1">门店查询</a>
-                            <a href="about.html#slider2">联系我们</a>
-                            <!-- <a href="about.html#slider3">管理团队</a> -->
-                            <a href="about.html#slider3">合作伙伴</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="attestion.html">认证查询</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div id="mainPage"></div>
         <div id="header">
             <div class="swiper-wrapper" id="navbox">
-                <div class="swiper-slide">成人课程</div>
-                <div class="swiper-slide">青少年课程</div>
-                <div class="swiper-slide">私教课程</div>
-                <div class="swiper-slide">特色课程</div>
+                <a class="swiper-slide" name="course_1" data-courseid="1">成人课程</a>
+                <a class="swiper-slide" name="course_2" data-courseid="2">青少年课程</a>
+                <a class="swiper-slide" name="course_3" data-courseid="3">私教课程</a>
+                <a class="swiper-slide" name="course_4" data-courseid="4">特色课程</a>
             </div>
         </div>
         <div class="swiper-container" id="tabs-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="content-slide">
+                    <div class="content-slide" id="courseWaitingDiv">
                         <h1 style="margin: 50px;">敬请期待...</h1>
                         <div class="attestion">
 							<img src="img/bga.jpg">
 							<div class="form">
-								<h1>成人课程报名</h1>
+								<h1><label id="waitingCourseName"></label>报名</h1>
 								<ul>
 									<li>
 										<span>姓&emsp;&emsp;名：</span>
@@ -124,171 +52,44 @@ input:-moz-placeholder { color:#999; }
 						</div>
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" id="courseUping">
                     <div class="content-slide">
                         <div class="sell">
-                            <h2>赛法斗-青少年课程</h2>
+                            <h2>赛法斗-<label id="courseName"></label></h2>
                             <ul class="sellbox">
                                 <li>
                                     <p><img src="img/yang.jpg" width="16" height="16">
                                     价&emsp;&emsp;格：</p>
-                                    <span>9999元</span>
+                                    <span><label id="coursePrice"></label>元</span>
                                 </li>
                                 <li>
                                     <p><img src="img/zhi.jpg" width="15" height="20">
                                     上课地域：</p>
                                     <div class="select">
-                                        <div>
-                                            <select id="s_province" name="s_province"></select>
-                                            <select id="s_city" name="s_city" ></select>
+                                        <input type="hidden" name="courseDistrict" id="district">
+                                        <div id="city_info">
+                                            <select id="s_province" name="s_province"></select>&nbsp;&nbsp;
+                                            <select id="s_city" name="s_city" ></select>&nbsp;&nbsp;
                                             <select id="s_county" name="s_county"></select>
                                         </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="javascript:;" id="bao">我要报名</a>
+                                    <a href="javascript:void(0);" id="A_join_course">我要报名</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="course">
-	                        <div class="coursebox" id=""></div>
+	                        <div class="coursebox" id="courseIntroduce"></div>
                         </div>
-                        <div class="attestion">
-							<img src="img/bga.jpg">
-							<div class="form">
-								<h1>青少年课程报名</h1>
-								<ul>
-									<li>
-										<span>姓&emsp;&emsp;名：</span>
-										<input type="text" value="" placeholder="请输入您的姓名">
-									</li>
-									<li>
-										<span>联系电话：</span>
-										<input type="text" value="" placeholder="请输入您的联系电话">
-									</li>
-								</ul>
-								<a href="#">报&emsp;名</a>
-							</div>
-						</div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="content-slide">
-                        <h1 style="margin: 50px;">敬请期待...</h1>
-                        <div class="attestion">
-							<img src="img/bga.jpg">
-							<div class="form">
-								<h1>私教课程报名</h1>
-								<ul>
-									<li>
-										<span>姓&emsp;&emsp;名：</span>
-										<input type="text" value="" placeholder="请输入您的姓名">
-									</li>
-									<li>
-										<span>联系电话：</span>
-										<input type="text" value="" placeholder="请输入您的联系电话">
-									</li>
-								</ul>
-								<a href="#">报&emsp;名</a>
-							</div>
-						</div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="content-slide">
-                        <h1 style="margin: 50px;">敬请期待...</h1>
-                        <div class="attestion">
-							<img src="img/bga.jpg">
-							<div class="form">
-								<h1>特色课程报名</h1>
-								<ul>
-									<li>
-										<span>姓&emsp;&emsp;名：</span>
-										<input type="text" value="" placeholder="请输入您的姓名">
-									</li>
-									<li>
-										<span>联系电话：</span>
-										<input type="text" value="" placeholder="请输入您的联系电话">
-									</li>
-								</ul>
-								<a href="#">报&emsp;名</a>
-							</div>
-						</div>
-                    </div>
-                </div>
+                 </div>
             </div>
         </div>
-        <!-- footer -->
-        <footer class="footer">
-            <ul>
-                <li>
-                    <h1>联系我们</h1>
-                </li>
-                <!-- <li>
-                    <span>地址：北京市朝阳区东四环</span>
-                </li>
-                <li>
-                    <span>北路6号二区5号楼1层商业02号</span>
-                </li> -->
-                <li>
-                    <span>电话：4000-664-688</span>
-                </li>
-                <li>
-                    <span>邮箱：urbanfit@163.com</span>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <h1>合作单位</h1>
-                </li>
-                <li>
-                    <span>北京博克森传媒科技股份有限公司</span>
-                </li>
-                <li>
-                    <span>中国赛法斗联合会</span>
-                </li>
-                <li>
-                    <span>国际赛法斗联合会</span>
-                </li>
-                <li>
-                    <span>法国赛法斗联合会</span>
-                </li>
-            </ul>
-            <div class="footerma">
-                <div>
-                    <img src="img/maa.jpg">
-                    <p>众力飞特官方微信公众号</p>
-                </div>
-                <div>
-                    <img src="img/maa1.jpg">
-                    <p>众力飞特官方微博账号</p>
-                </div>
-            </div>
-        </footer>
+        <div id="footerPage"></div>
     </div>
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/swiper-3.4.2.min.js"></script>
 <script src="js/index.js"></script>
-<script type="text/javascript">
-/*swiper选项卡切换*/
-$(function () {
-    //navbox 是你导航的className,active是你当前状态的className
-    var $tabList =  $('#navbox .swiper-slide'),
-    lens= $tabList.length; /*获取选项卡长度*/
-    var index = 0; /*设置初始索引为0  即 没有哈希值的时候显示第一个选项卡内容*/
-    var hash = window.location.hash;
-    /* *
-    * 获取哈希值（你也可以获取整个url剪切出你要的字段）。根据哈希值中设置的数字显示对应的选项卡内容；
-    * 例如：SwiperPC.html#slide1对应显示第索引值为1的选项卡内容即第二个选项卡
-    * */
-    if(hash){
-        value = hash.match(/\d/g).join('');
-        index = Number(value);/*字符串转换为数字*/
-        index = parseInt(index)%lens;
-    }
-    $tabList.eq(index).addClass('active');
-    tabs('#navbox .swiper-slide','#tabs-container','active',index);
-});
-</script>
+<script src="js/web/course.js"></script>
 </body>
 </html>
