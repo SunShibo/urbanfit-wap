@@ -23,7 +23,7 @@ function clientLogin(){
     // 调用登录接口
     $.ajax({
         type : "post",
-        url : "http://client.urbanfit.cn/client/login",
+        url : baseUrl + "client/login",
         data : {"mobile" : mobile, "password" : pwd},
         dataType : "json",
         success : function (result, status){

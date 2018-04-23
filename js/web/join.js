@@ -19,7 +19,7 @@ function sendVcode(){
     }
     isWaiting = true;
     var param = {
-        url : 'http://client.urbanfit.cn/client/codeSignIn',
+        url : baseUrl + "client/codeSignIn",
         params : {
             mobile : phone,
             type:0,
