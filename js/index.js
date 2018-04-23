@@ -79,7 +79,7 @@ function tabs(obj,swiperObj,className,index) {
         tabSwiper.slideTo($(this).index());/*滑动到对应的滑块*/
         if($(this).index() == 1){
             //alert($(this).index());
-            //queryCourseInfo();
+            queryCourseInfo();
         }
     });
     $(obj).click(function(e) {

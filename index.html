@@ -143,6 +143,47 @@ $(function(){
 	})	
 })
 
+//banner图
+$.ajax({
+	type: "post",
+	url: "http://client.urbanfit.cn/module/list",
+	data:{"type": 2},
+	dataType: "json",
+	success:function(res){
+		var html = '';
+		if(res.code == 1){
+			var banner = res.data.lstBanner;
+			var baseUrl = res.data.baseUrl;  // 图片地址前缀
+			// banner部分遍历
+			if(banner != ""){
+				$.each(banner, function (i, n){
+					//alert(n.linkUrl);    // 链接地址
+					//alert(baseUrl+n.imageUrl);   // 图片地址
+					if(i == 0){
+						html += '<div class="swiper-slide swiper-slide-active">';
+						html += '<a href="'+n.linkUrl+'"><img src="'+baseUrl+n.imageUrl+'" alt="'+n.title+'"></a>';
+						html += '</div>';
+					}
+					if(i == banner.length - 1){
+						html += '<div class="swiper-slide swiper-slide-prev">';
+						html += '<a href="'+n.linkUrl+'"><img src="'+baseUrl+n.imageUrl+'" alt="'+n.title+'"></a>';
+						html += '</div>';
+					}
+					if(i != 0 && i != banner.length - 1){
+						html += '<div class="swiper-slide-next">';
+						html += '<a href="'+n.linkUrl+'"><img src="'+baseUrl+n.imageUrl+'" alt="'+n.title+'"></a>';
+						html += '</div>';
+					}
+				})
+			}
+
+			$(".swiper-wrapper").html(html);
+		}else{
+			alert("接口请求错误");
+		}
+
+	}
+});
 </script>
 </body>
 </html>
