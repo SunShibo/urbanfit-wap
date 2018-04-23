@@ -17,7 +17,7 @@ function queryCoachAuth(){
     }
     $.ajax({
         type : "post",
-        url : "http://client.urbanfit.cn/auth/query",
+        url : baseUrl + "/auth/query",
         data : {"coachName": coachName, "coachCardNum" : coachCardNum},
         dataType : "json",
         success : function(result, status){
