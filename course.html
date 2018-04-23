@@ -20,87 +20,13 @@
 <body>
 <div class="content">
     <!-- nav -->
-    <div class="nav">
-        <a href="index.html"><img src="img/logo.png"></a>
-        <!-- 未登录 -->
-        <div class="login">
-            <a class="on" href="login.html">登录</a>
-            <a href="join.html">注册</a>
-        </div>
-        <!-- 登录后显示 -->
-        <div class="login" style="display: none;">
-            <a class="on" href="user.html">邹市明</a>
-            <a href="login.html">退出</a>
-        </div>
-
-        <div class="menu">
-            <img src="img/menu.png" class="menuimg">
-            <img src="img/close.png" class="close">
-        </div>
-        <div class="menubox">
-            <div class="search">
-                <input type="text" placeholder="Search" class="input">
-                <img src="img/search.jpg">
-            </div>
-            <ul class="menuul">
-                <li>
-                    <a href="index.html">首页</a>
-                </li>
-                <li>
-                    <a href="info.html">活动资讯</a>
-                </li>
-                <li>
-                    <a href="match.html">赛法斗</a>
-                </li>
-                <li class="on">
-                    <a href="javascript:;">课程介绍
-                        <img src="img/xiala1.jpg" class="xiala1" style="display: none;">
-                        <img src="img/xiala.jpg" class="xiala2" style="display: block;">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="course.html#slider0">成人课程</a>
-                        <a href="course.html#slider1">青少年课程</a>
-                        <a href="course.html#slider2">私教课程</a>
-                        <a href="course.html#slider3">特色课程</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript:;">教练团队
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="coach.html#slider0">北京团队</a>
-                        <!-- <a href="coach.html#slider1">上海团队</a>
-                        <a href="coach.html#slider2">广州团队</a>
-                        <a href="coach.html#slider3">深圳团队</a> -->
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript:;">关于我们
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="about.html#slider0">公司介绍</a>
-                        <a href="about.html#slider1">门店查询</a>
-                        <a href="about.html#slider2">联系我们</a>
-                        <!-- <a href="about.html#slider3">管理团队</a> -->
-                        <a href="about.html#slider3">合作伙伴</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="attestion.html">认证查询</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <div id="mainPage"></div>
     <div id="header">
         <div class="swiper-wrapper" id="navbox">
-            <div class="swiper-slide">成人课程</div>
-            <div class="swiper-slide">青少年课程</div>
-            <div class="swiper-slide">私教课程</div>
-            <div class="swiper-slide">特色课程</div>
+            <div class="swiper-slide" name="course_1" data-courseid="1" data-coursename="成人课程">成人课程</div>
+            <div class="swiper-slide" name="course_2" data-courseid="2" data-coursename="青少年课程">青少年课程</div>
+            <div class="swiper-slide" name="course_3" data-courseid="3" data-coursename="私教课程">私教课程</div>
+            <div class="swiper-slide" name="course_4" data-courseid="4" data-coursename="特色课程">特色课程</div>
         </div>
     </div>
     <div class="swiper-container" id="tabs-container">
@@ -130,6 +56,9 @@
             <div class="swiper-slide">
                 <div class="content-slide">
                     <div class="sell">
+                        <div class="sellimg">
+                            <img src="img/coursetu.jpg">
+                        </div>
                         <h2>赛法斗-青少年课程</h2>
                         <ul class="sellbox">
                             <li>
@@ -257,57 +186,15 @@
         </div>
     </div>
     <!-- footer -->
-    <footer class="footer">
-        <ul>
-            <li>
-                <h1>联系我们</h1>
-            </li>
-            <!-- <li>
-                <span>地址：北京市朝阳区东四环</span>
-            </li>
-            <li>
-                <span>北路6号二区5号楼1层商业02号</span>
-            </li> -->
-            <li>
-                <span>电话：4000-664-688</span>
-            </li>
-            <li>
-                <span>邮箱：urbanfit@163.com</span>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <h1>合作单位</h1>
-            </li>
-            <li>
-                <span>北京博克森传媒科技股份有限公司</span>
-            </li>
-            <li>
-                <span>中国赛法斗联合会</span>
-            </li>
-            <li>
-                <span>国际赛法斗联合会</span>
-            </li>
-            <li>
-                <span>法国赛法斗联合会</span>
-            </li>
-        </ul>
-        <div class="footerma">
-            <div>
-                <img src="img/maa.jpg">
-                <p>众力飞特官方微信公众号</p>
-            </div>
-            <div>
-                <img src="img/maa1.jpg">
-                <p>众力飞特官方微博账号</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footerPage"></div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/swiper-3.4.2.min.js"></script>
 <script src="js/index.js"></script>
 <script type="text/javascript">
+
+    var courseId = 1;
+
     /*swiper选项卡切换*/
     $(function () {
         //navbox 是你导航的className,active是你当前状态的className
@@ -326,7 +213,82 @@
         }
         $tabList.eq(index).addClass('active');
         tabs('#navbox .swiper-slide','#tabs-container','active',index);
+
+        //加载头部底部
+        $("#mainPage").load("main.html");
+        $("#footerPage").load("footer.html");
+        $("a[name='course_1']").addClass("active");
+        $("#waitingCourseName").text("成人课程");
+        // 根据课程类型查询
+        var url = document.location.href;
+        var urlList = url.split('#');
+        var a = urlList[1];
+        //alert(a);
+        if (a == 'slider1') {
+            //alert(index);
+            courseId = index + 1;
+            //alert(courseId);
+            queryCourseInfo();
+        }
     });
+
+    function queryCourseInfo(){
+        //alert(courseId);
+        $.ajax({
+            url : "http://client.urbanfit.cn/course/courseDetail",
+            type : "post",
+            data : {"courseId" : courseId},
+            dataType : "json",
+            success : function (result, status){
+                var html1 = '';
+                var html2 = '';
+                if(result.code == 1){
+                    alert(1);
+                    var baseUrl = result.data.baseUrl;  // 图片地址前缀
+                    var course = result.data.course;
+                    alert(course);
+                    alert(course.courseImageUrl);
+                    console.log(course);
+                    if(course != ""){
+                        //alert(baseUrl);
+                        //html1 += '<div class="sell">';
+                        html1 += '    <div class="sellimg">';
+                        html1 += '        <img src="'+course.courseImageUrl+'">';
+                        html1 += '   </div>';
+                        html1 += '   <h2>赛法斗-青少年课程</h2>';
+                        html1 += '   <ul class="sellbox">';
+                        html1 += '       <li>';
+                        html1 += '            <p><img src="img/yang.jpg" width="16" height="16">';
+                        html1 += '               价&emsp;&emsp;格：</p>';
+                        html1 += '            <span>'+course.coursePrice+'元</span>';
+                        html1 += '        </li>';
+                        html1 += '        <li>';
+                        html1 += '            <p><img src="img/zhi.jpg" width="15" height="20">';
+                        html1 += '               上课地域：</p>';
+                        html1 += '           <div class="select">';
+                        html1 += '              <div>';
+                        html1 += '                  <select id="s_province" name="s_province"></select>';
+                        html1 += '                 <select id="s_city" name="s_city" ></select>';
+                        html1 += '                 <select id="s_county" name="s_county"></select>';
+                        html1 += '             </div>';
+                        html1 += '          </div>';
+                        html1 += '      </li>';
+                        html1 += '      <li>';
+                        html1 += ' <input type="hidden" name="courseId" value="'+course.courseId+'">';
+                        html1 += '          <a href="javascript:;" id="bao">我要报名</a>';
+                        html1 += '      </li>';
+                        html1 += '   </ul>';
+                        //html1 += '</div>';
+                    }
+                    //console.log(html);
+                    $(".sell").html(html1);
+                }else{
+                    alert(result.msg);
+                    return ;
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>

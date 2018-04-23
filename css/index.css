@@ -226,6 +226,9 @@
 .course .coursebox i{color: #666;font-size: 17px;display: block;text-indent: 2em;font-style: normal;text-align: left;margin-top: 10px;}
 .course .attestion{margin-top: 30px;}
 .sell{width: 100%;padding-bottom: 10px;}
+.sell{width: 100%;padding-bottom: 10px;}
+.sell .sellimg{width: 100%;}
+.sell .sellimg img{width: 100%;}
 .sell h2{color: #000;font-size: 24px;padding: 25px 0;}
 .sell .sellbox{padding: 0 15px;}
 .sell .sellbox li{display: flex;align-items:flex-start;margin-bottom: 20px;}

@@ -77,6 +77,10 @@ function tabs(obj,swiperObj,className,index) {
         $(obj+"."+className).removeClass(className);
         $(this).addClass(className); /*点击当前导航 改变当前样式*/
         tabSwiper.slideTo($(this).index());/*滑动到对应的滑块*/
+        if($(this).index() == 1){
+            //alert($(this).index());
+            //queryCourseInfo();
+        }
     });
     $(obj).click(function(e) {
         e.preventDefault();/*清除默认点击事件*/
