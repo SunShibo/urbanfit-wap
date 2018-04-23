@@ -13,7 +13,7 @@ function updateClientName(){
     // 修改信息
     $.ajax({
         type : "post",
-        url : baseUrl + "/client/update",
+        url : baseUrl + "client/update",
         data : {"name" : clientName},
         dataType : "json",
         success : function (result, status){

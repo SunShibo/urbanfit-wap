@@ -18,82 +18,7 @@ input:-moz-placeholder { color:#bfbfbf; }
 </style>
 <body>
 	<div class="content">
-		<!-- nav -->
-        <div class="nav">
-            <a href="index.html"><img src="img/logo.png"></a>
-            <!-- 未登录 -->
-            <div class="login" style="display: none;">
-                <a class="on" href="login.html">登录</a>
-                <a href="join.html">注册</a>
-            </div>
-            <!-- 登录后显示 -->
-            <div class="login">
-                <a class="on" href="user.html">邹市明</a>
-                <a href="login.html">退出</a>
-            </div>
-            
-            <div class="menu">
-                <img src="img/menu.png" class="menuimg">
-                <img src="img/close.png" class="close">
-            </div>
-            <div class="menubox">
-                <div class="search">
-                    <input type="text" placeholder="Search" class="input">
-                    <img src="img/search.jpg">
-                </div>
-                <ul class="menuul">
-                    <li class="on">
-                        <a href="index.html">首页</a>
-                    </li>
-                    <li>
-                        <a href="info.html">活动资讯</a>
-                    </li>
-                    <li>
-                        <a href="match.html">赛法斗</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">课程介绍
-                            <img src="img/xiala1.jpg" class="xiala1">
-                            <img src="img/xiala.jpg" class="xiala2">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="course.html#slider0">成人课程</a>
-                            <a href="course.html#slider1">青少年课程</a>
-                            <a href="course.html#slider2">私教课程</a>
-                            <a href="course.html#slider3">特色课程</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:;">教练团队
-                            <img src="img/xiala1.jpg" class="xiala1">
-                            <img src="img/xiala.jpg" class="xiala2">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="coach.html#slider0">北京团队</a>
-                            <!-- <a href="coach.html#slider1">上海团队</a>
-                            <a href="coach.html#slider2">广州团队</a>
-                            <a href="coach.html#slider3">深圳团队</a> -->
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:;">关于我们
-                            <img src="img/xiala1.jpg" class="xiala1">
-                            <img src="img/xiala.jpg" class="xiala2">
-                        </a>
-                        <div class="menuulbox">
-                            <a href="about.html#slider0">公司介绍</a>
-                            <a href="about.html#slider1">门店查询</a>
-                            <a href="about.html#slider2">联系我们</a>
-                            <!-- <a href="about.html#slider3">管理团队</a> -->
-                            <a href="about.html#slider3">合作伙伴</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="attestion.html">认证查询</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+		<div id="mainPage"></div>
         <div class="user">
             <div class="user1">
                 <h1>会员中心</h1>
@@ -137,159 +62,16 @@ input:-moz-placeholder { color:#bfbfbf; }
                         <p id="cpwdmsg"></p>
                     </li>
                     <li>
-                        <a href="javascript:;" class="next">保存</a>
+                        <a href="javascript:void(0);" class="next" id="A_save_password">保存</a>
                     </li>
                 </ul>
             </div>
         </div>
-
-    	<!-- footer -->
-	    <footer class="footer">
-            <ul>
-                <li>
-                    <h1>联系我们</h1>
-                </li>
-                <!-- <li>
-                    <span>地址：北京市朝阳区东四环</span>
-                </li>
-                <li>
-                    <span>北路6号二区5号楼1层商业02号</span>
-                </li> -->
-                <li>
-                    <span>电话：4000-664-688</span>
-                </li>
-                <li>
-                    <span>邮箱：urbanfit@163.com</span>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <h1>合作单位</h1>
-                </li>
-                <li>
-                    <span>北京博克森传媒科技股份有限公司</span>
-                </li>
-                <li>
-                    <span>中国赛法斗联合会</span>
-                </li>
-                <li>
-                    <span>国际赛法斗联合会</span>
-                </li>
-                <li>
-                    <span>法国赛法斗联合会</span>
-                </li>
-            </ul>
-            <div class="footerma">
-                <div>
-                    <img src="img/maa.jpg">
-                    <p>众力飞特官方微信公众号</p>
-                </div>
-                <div>
-                    <img src="img/maa1.jpg">
-                    <p>众力飞特官方微博账号</p>
-                </div>
-            </div>
-        </footer>
+        <div id="footerPage"></div>
 	</div>	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/index.js"></script>
-<script>
-$(function(){
-    $('.input').focus(function(){
-        $('.input').css("border-color","#ebebeb");
-        $(this).css("border-color","#f6d332");
-    })
-
-    $(".radio").click(function(){
-        $(".radio").each(function(i,v){
-            $(this).find('.radioimg').attr('src','img/radio.png');
-        });
-        $(this).find('.radioimg').attr('src','img/radio1.png');
-    });
-
-    $(".next").click(checkForm);
-    $('#sendcode').click(sendVcode);
-    //获取短信验证
-    function sendVcode(){
-        var _this  = $(this);
-        var phone = $('#phone').val();
-        if(!isMobile(phone)){
-            $('#phonemsg').text('请输入正确的手机号');
-            $("#phone").focus();
-            return;
-        }else{
-            $('#phonemsg').text('');
-        }
-
-        var validCode=true;
-        var time=59;
-        var code=$('.yzm');
-        if (validCode) {
-            validCode=false;
-            var t=setInterval(function(){
-                code.html('获取中'+time+'S');
-                //code.addClass("msgs1");
-                time--;
-                if(time==0){
-                    clearInterval(t);
-                    code.html("重新获取");
-                    validCode=true;
-                    //code.removeClass("msgs1");
-                }
-            },1000)
-        }
-    }
-
-    function checkForm(){
-        var mobile = $.trim($("#phone").val());
-        if(!isMobile(mobile)){
-            $('#phonemsg').text('请输入正确的手机号');
-            $("#phone").focus();
-            return;
-        }else{
-            $('#phonemsg').text('');
-        }
-        var vcode = $.trim($("#vcode").val());
-        if(vcode.length != 6){
-            $('#yzmmsg').text("请输入验证码");
-            $("#vcode").focus();
-            return;
-        }else{
-            $('#yzmmsg').text('');
-        }
-        var pwd = $.trim($("#pwd").val());
-        if(pwd == ''){
-            $('#pwdmsg').text("请输入您的密码");
-            $("#pwd").focus();
-            return;
-        }else{
-            $('#pwdmsg').text('');
-        }
-        if(pwd.length < 6){
-            $('#pwdmsg').text("登陆密码不能小于6位");
-            $("#pwd").focus();
-            return;
-        }else{
-            $('#pwdmsg').text('');
-        }
-        if(pwd != $.trim($("#cpwd").val())) {
-            $('#cpwdmsg').text("两次密码不一致");
-            $("#cpwd").focus();
-            return;
-        }else{
-            $('#cpwdmsg').text('');
-        }
-    };
-    //粗略验证手机号
-    function isMobile(mobile){
-        var re = /^1[0-9]{10}$/;
-        var validCode=true;
-        if(re.test(mobile))
-            return true;
-        else
-            return false;
-    }
-})
-</script>
+<script src="js/web/config.js"></script>
+<script src="js/web/user_reset.js"></script>
 </body>
 </html>
