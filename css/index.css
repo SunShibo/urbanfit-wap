@@ -137,6 +137,7 @@
 #header .swiper-wrapper{width: auto;padding-left: 10px;padding-right: 20px;}
 #header .swiper-slide {margin: 0 15px;height:auto;background: none;width:auto;color: #101215;
     font-size: 1.8rem;}
+#header .swiper-slide a{color: #101215;}
 #header .active {border-bottom: 3px solid #000;}
 
 .swiper-pagination-bullet {
