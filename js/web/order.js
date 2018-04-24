@@ -59,7 +59,24 @@ function queryCouponInfo(){
 }
 
 
+//获取url中的参数
+function GetRequest(){
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+//接收get参数
+var canshu = GetRequest();
+
 function submitorder(){
+    //alert(11);
     var payWay = "";
     $(".radio").each(function(i,v){
         if($(this).hasClass("seleted")){
@@ -97,7 +114,7 @@ function submitorder(){
         "childrenName" : name,
         "clientMobile" : mobile,
         "couponNum" : $("#ma").val(),
-        "courseId" : $('#courseId').val(),
+        "courseId" : canshu['courseId'],
         "payment" : payWay,
         "courseDistrict" : courseDistrict
     }
@@ -108,7 +125,8 @@ function submitorder(){
         data: {"params" : JSON.stringify(params)},
         success: function(result){
             if(result.code == 1){
-                if(payWay == 0){   // 支付宝支付
+                alert('成功');
+                /*if(payWay == 0){   // 支付宝支付
                     $('body').append(result.data);
                     $("form").attr("target", "_blank");
                 }else if(payWay == 1){  // 微信支付
@@ -116,9 +134,9 @@ function submitorder(){
                     var wechatPayQr = result.data.wechatPayQr;
                     window.location.href = "/order/wechatPay?orderNum=" + orderNum
                         + "&wechatPayQr=" + wechatPayQr;
-                }
+                }*/
             }else{
-                alert('参数有误');
+                alert(result.msg);
             }
         }
     });

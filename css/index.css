@@ -367,7 +367,7 @@
 .order .order1 .orderinput > p{
     width: 100%;color: #fe9c57;font-size: 13px;
     box-sizing:border-box;padding-left: 20%;
-    margin-top: 5px;
+    margin-top: 5px;display: none;
 }
 .order .order1 ul{
     margin-top: 20px;padding-bottom: 22px;
