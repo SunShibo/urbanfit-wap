@@ -49,23 +49,24 @@ input:-moz-placeholder { color:#bfbfbf; }
                     <h1>订单编号：73749857806</h1>
                     <ul>
                         <li><p>学生信息：</p></li>
-                        <li>学生姓名：赵雷振</li>
-                        <li>手机号：18888888888</li>
-                        <li>学生姓名：北京-北京-朝阳</li>
+                        <li>学生姓名：<label id="childrenNameLabel"></label></li>
+                        <li>手机号：<label id="mobileLabel"></label></li>
+                        <li>上课区域：<label id="courseDistrictLabel"></label></li>
                         <li><p>支付信息：</p></li>
-                        <li>支付方式：支付宝</li>
-                        <li>支付额度：<b>￥49.00</b></li>
-                        <li>支付状态：<span>未支付</span></li>
+                        <li>支付方式：<label id="paymentLabel"></label></li>
+                        <li>支付额度：<b>￥<label id="payPriceLabel"></label></b></li>
+                        <li>支付状态：<span><label id="statusLabel"></label></span></li>
                         <li><p>课程信息：</p></li>
-                        <li>课程名称：成人课程</li>
-                        <li>课程价格：￥99.00</li>
+                        <li>课程名称：<label id="courseNameLabel"></label></li>
+                        <li>课程价格：￥<label id="coursePriceLabel"></label></li>
                         <li><p>提交时间：</p></li>
-                        <li>2018/4/1 21:44:12</li>
-                        <li><p>优惠码：</p></li>
-                        <li><i>-￥50  成人课程5折折扣</i></li>
+                        <li><label id="createTimeLabel"></label></li>
+                        <li name="couponInfo" style="display: none;"><p>优惠码：</p></li>
+                        <li name="couponInfo" style="display: none;">
+                            <i>-￥<label id="couponPriceLabel"></label>  <label id="couponNameLabel"></label></i>
+                        </li>
                     </ul>
                 </div>
-                <a href="javascript:;" class="yes">确&emsp;认</a>
             </div>
         </div>
 
@@ -93,14 +94,14 @@ input:-moz-placeholder { color:#bfbfbf; }
                 <div class="page">
                     <ul>
                         <li>
-                            <a href="javascript:;" class="previous"><img src="img/jiao.png">&nbsp;上一页</a>
+                            <a href="javascript:void(0);" class="previous"><img src="img/jiao.png">&nbsp;上一页</a>
                             <i></i>
                         </li>
                         <li id="page">
                             <span>1-30</span>
                         </li>
                         <li>
-                            <a href="javascript:;" class="next">下一页&nbsp;<img src="img/jiao1.png"></a>
+                            <a href="javascript:void(0);" class="next">下一页&nbsp;<img src="img/jiao1.png"></a>
                             <i></i>
                         </li>
                     </ul>
@@ -113,28 +114,5 @@ input:-moz-placeholder { color:#bfbfbf; }
 <script src="js/index.js"></script>
 <script src="js/web/config.js"></script>
 <script src="js/web/user_order.js"></script>
-<script>
-$(function(){
-    $(".radio").click(function(){
-        $(".radio").each(function(i,v){
-            $(this).find('.radioimg').attr('src','img/radio.png');
-        });
-        $(this).find('.radioimg').attr('src','img/radio1.png');
-    });
-    $('.close,.yes').click(function(){
-        $('.tan').css({'display':'none'});
-        $('.tanbox').hide();
-        $('.tanbox1').hide();
-    })
-    $('.pay1').click(function(){
-        $('.tan').css({'display':'flex'});
-        $('.tanbox').show();
-    })
-    $('.see').click(function(){
-        $('.tan').css({'display':'flex'});
-        $('.tanbox1').show();
-    })
-})
-</script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 $(function (){
+    $("#mainPage").load("main.html");
+    $("#footerPage").load("footer.html");
     $("#A_save_password").click(updatePassword);
     $('#sendcode').click(sendVcode);
 })
