@@ -1,6 +1,15 @@
 $(function() {
 
-    $("#submitorder").click(submitorder);
+    var webuser = JSON.stringify($.cookie('webuser'));
+    if(webuser != ''){
+        $("#submitorder").click(submitorder);  //cookie值不为空的时候  调用下单接口
+    }else(
+        $("#submitorder").click(function(){
+            window.location.href = "login_success.html";//否则跳转登录页
+        })
+
+    );
+
 
     //加载头部底部
     $("#mainPage").load("main.html");
@@ -9,7 +18,7 @@ $(function() {
     $('.input').focus(function () {
         $('.input').css("border-color", "#ebebeb");
         $(this).css("border-color", "#f6d332");
-    })
+    });
 
     $(".radio").click(function () {
         $(".radio").each(function (i, v) {
@@ -22,7 +31,7 @@ $(function() {
 
     $("#changebtn").click(queryCouponInfo);
     $('#change').click(queryCouponInfo);
-})
+});
 
 function queryCouponInfo(){
 
@@ -121,7 +130,7 @@ function submitorder(){
         "courseId" : canshu['courseId'],
         "payment" : payWay,
         "courseDistrict" : courseDistrict
-    }
+    };
     $.ajax({
         type:"post",
         url:"http://client.urbanfit.cn/order/addOrder",
@@ -206,7 +215,7 @@ $.ajax({
             return ;
         }
     }
-})
+});
 
 function initCourseDistrict(){
     var courseDistrict = $("input[name='courseDistrict']").val();

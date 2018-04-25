@@ -40,10 +40,19 @@ function clientLogin(){
                 $('#phonemsg').text('');
                 $('#pwdmsg').text('');
                 window.location.href = "login_success.html";
+                var user_str = JSON.stringify(result);
+                //alert(user_str);
+                $.cookie('webuser',user_str,{path:'/'});
             }
         }
     });
 };
+var webuser = JSON.stringify($.cookie('webuser'));
+console.log(webuser);
+alert(webuser);
+
+
+
 
 //粗略验证手机号
 function isMobile(mobile){
