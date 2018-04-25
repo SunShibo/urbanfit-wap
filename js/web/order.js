@@ -1,5 +1,5 @@
 $(function() {
-    initCourseDistrict();
+
     $("#submitorder").click(submitorder);
 
     //加载头部底部
@@ -11,15 +11,12 @@ $(function() {
         $(this).css("border-color", "#f6d332");
     })
 
-    $("#s_province").change(changeProvince);
-    $("#s_city").change(changeCity);
-
     $(".radio").click(function () {
         $(".radio").each(function (i, v) {
-            $(this).find('.radioimg').attr('src', '../img/radio.png');
+            $(this).find('.radioimg').attr('src', './img/radio.png');
             $(this).removeClass("seleted");
         });
-        $(this).find('.radioimg').attr('src', '../img/radio1.png');
+        $(this).find('.radioimg').attr('src', './img/radio1.png');
         $(this).addClass('seleted');
     });
 
@@ -28,6 +25,7 @@ $(function() {
 })
 
 function queryCouponInfo(){
+
     var couponNum = $.trim($("#ma").val());
     if(couponNum == ''){
         alert('优惠码不能为空');
@@ -45,21 +43,44 @@ function queryCouponInfo(){
                 $('#change').hide();
                 $('#changebtn').show();
                 $('#couponName').text(result.data.couponName).show();
-                var coursePrice = $("input[name='coursePrice']").val();
+                $('#changebtn').click(function(){
+                    $('#couponName').hide();
+                    $("#ma").val('').focus();
+                })
+                var coursePrice = $("#price").text();
+                //console.log(coursePrice);
                 $("#couponprice").text(coursePrice * result.data.percent / 100);
                 $("#payPrice").text(coursePrice - (coursePrice * result.data.percent / 100));
-                $("#couponDiv").show();
+                //$("#couponDiv").show();
+
             }else{
                 alert('优惠码不存在');
                 $('#couponName').text("").hide();
-                $("#couponDiv").hide();
+                //$("#couponDiv").hide();
             }
         }
     });
 }
 
 
+//获取url中的参数
+function GetRequest(){
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+//接收get参数
+var canshu = GetRequest();
+
 function submitorder(){
+    //alert(11);
     var payWay = "";
     $(".radio").each(function(i,v){
         if($(this).hasClass("seleted")){
@@ -97,18 +118,21 @@ function submitorder(){
         "childrenName" : name,
         "clientMobile" : mobile,
         "couponNum" : $("#ma").val(),
-        "courseId" : $('#courseId').val(),
+        "courseId" : canshu['courseId'],
         "payment" : payWay,
         "courseDistrict" : courseDistrict
     }
     $.ajax({
         type:"post",
-        url:"http://client.urbanfit.cn/order/add",
+        url:"http://client.urbanfit.cn/order/addOrder",
         dataType: "json",
-        data: {"params" : JSON.stringify(params)},
+        data: {"params" : JSON.stringify(params), "clientId":1,},
         success: function(result){
+
+            //console.log(result.courseDistrict);
             if(result.code == 1){
-                if(payWay == 0){   // 支付宝支付
+                alert('成功');
+                /*if(payWay == 0){   // 支付宝支付
                     $('body').append(result.data);
                     $("form").attr("target", "_blank");
                 }else if(payWay == 1){  // 微信支付
@@ -116,9 +140,10 @@ function submitorder(){
                     var wechatPayQr = result.data.wechatPayQr;
                     window.location.href = "/order/wechatPay?orderNum=" + orderNum
                         + "&wechatPayQr=" + wechatPayQr;
-                }
+                }*/
+
             }else{
-                alert('参数有误');
+                alert(result.msg);
             }
         }
     });
@@ -133,9 +158,59 @@ function submitorder(){
     }
 }
 
+$.ajax({
+    url : "http://client.urbanfit.cn/course/courseDetail",
+    type : "post",
+    data : {"courseId" : canshu['courseId']},
+    dataType : "json",
+    success : function (res, status){
+        var html = '';
+        var html1 = '';
+        var html2 = '';
+        var html3 = '';
+        if(res.code == 1){
+            var course = JSON.parse(res.data.course);
+            console.log(course);
+            console.log(course.courseDistrict);
+            if(course != ""){
+                html += '<input type="hidden" name="courseDistrict" id="district" value="'+course.courseDistrict+'">';
+                html += '<div id="city_info">';
+                html += '    <select id="s_province" name="s_province"></select>&nbsp;&nbsp;';
+                html += '   <select id="s_city" name="s_city" ></select>&nbsp;&nbsp;';
+                html += '   <select id="s_county" name="s_county"></select>';
+                html += '</div>';
+                html1 += '   <div class="orderinput">';
+                html1 += '    <span>课程名称</span>';
+                html1 += '   <input type="text" value="'+course.courseName+'" placeholder="请输入课程名" class="input" id="coursename" readonly="readonly">';
+                html1 += '   </div>';
+                html1 += '   <div class="orderinput">';
+                html1 += '    <span>课程价格</span>';
+                html1 += '   <input type="text" value="'+course.coursePrice+'" readonly="readonly" class="input input1" id="courseprice" readonly="readonly">';
+                html1 += '    </div>';
+                html2 += '课程价格<span id="price">'+course.coursePrice+'</span>';
+                html3 += '应付总额<span class="on">￥<label id="payPrice">'+course.coursePrice+'</label></span>';
+            }
+            $(".select").html(html);
+            $("#price0").html(html2);
+            $("#price1").html(html3);
+
+            //调用地址管理
+            initCourseDistrict();
+            $("#s_province").change(changeProvince);
+            $("#s_city").change(changeCity);
+
+            $("#news").html(html1);
+
+        }else{
+            alert(result.msg);
+            return ;
+        }
+    }
+})
 
 function initCourseDistrict(){
     var courseDistrict = $("input[name='courseDistrict']").val();
+    console.log(courseDistrict);
     if(courseDistrict != ""){
         var districtProvinceArr = [];
         var districtProvinceHtml = [];
