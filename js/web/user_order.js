@@ -154,10 +154,54 @@ function payOrderMaster(orderNum){
     $.ajax({
         url : baseUrl + "order/payWechatCommonAgain",
         type : "post",
-        data : {"clientId" : 1, "params" : JSON.stringify(params)},
+        data : {"params" : JSON.stringify(params)},
         dataType : "json",
         success : function (result){
             alert("微信支付！！！");
         }
     });*/
 }
+
+
+/*
+function payWechatCommonAgain(content, func, json, data){
+    var appId ;
+    var timestamp ;
+    var nonceStr ;
+    var signatureStr ;
+    var url = baseUrl + "order/getSignature";
+    $.ajax({
+        type: "post",
+        url: url, // 提交到一般处理程序请求数据
+        data: {"url" :location.href.split('#')[0]},
+        dataType: "json",
+        async : false,
+        success: function(data) {
+            if ("" == data) return;
+            appId = data.appId;
+            timestamp = data.timestamp;
+            nonceStr = data.noncestr;
+            signatureStr = data.signature;
+        }
+    });
+
+    WeixinJSBridge.invoke('getBrandWCPayRequest', {
+            "appId" : json.appId,     //公众号名称，由商户传入
+            "timeStamp" : json.timeStamp,         //时间戳，自1970年以来的秒数
+            "nonceStr" : json.nonceStr, //随机串
+            "package" : json.package,
+            "signType" : json.signType,         //微信签名方式:
+            "paySign" : json.paySign //微信签名
+        },function(res){
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                if(func != null && typeof(func) == 'function') {
+                    data.wxPayRecordId = json.wxPayRecordId;
+                    func(data);
+                }
+            }else{
+                errorContent(content, null);
+            }
+        }
+    );
+}*/
