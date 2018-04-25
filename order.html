@@ -61,14 +61,14 @@ input:-moz-placeholder { color:#bfbfbf; }
                 </div>
             </div>
             <h1><img src="img/ling.png">课程信息：</h1>
-            <div class="order1">
+            <div class="order1" id="news">
                 <div class="orderinput">
                     <span>课程名称</span>
                     <input type="text" value="赛法斗-成人课程" placeholder="请输入课程名" class="input" id="coursename" readonly="readonly">
                 </div>
                 <div class="orderinput">
                     <span>课程价格</span>
-                    <input type="text" value="￥9999" readonly="readonly" class="input input1" id="courseprice" readonly="readonly">
+                    <input type="text" value="" readonly="readonly" class="input input1" id="courseprice" readonly="readonly">
                 </div>
             </div>
             <h1><img src="img/ling.png">优惠码：</h1>
@@ -82,12 +82,12 @@ input:-moz-placeholder { color:#bfbfbf; }
                 </div>
             </div>
             <h1><img src="img/ling.png">课程价格：</h1>
-            <div class="order1" style="margin-bottom: 0; display: none;" id="couponDiv">
+            <div class="order1">
                 <ul>
-                    <li>课程价格<span id="price">￥9999</span></li>
-                    <li>优&emsp;&emsp;惠<span>-￥<label id="couponprice">50</label></span></li>
-                    <li>应付总额<span class="on">￥<label id="payPrice">9900</label></span></li>
-                    <input type="hidden" name="coursePrice" value="">
+                    <li id="price0">课程价格<span id="price">￥9999</span></li>
+                    <li>优&emsp;&emsp;惠<span>-￥<label id="couponprice">0</label></span></li>
+                    <li id="price1">应付总额<span class="on">￥<label id="payPrice">9900</label></span></li>
+                    <input type="hidden" name="coursePrice" value="" id="coursePrice1">
                 </ul>
             </div>
             <div class="submit">
