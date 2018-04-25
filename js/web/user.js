@@ -2,9 +2,14 @@ $(function (){
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
     $("#A_save").click(updateClientName);
+    $("input[name='name']").val(clientName);
 })
 
 function updateClientName(){
+    if(clientIsLogin() == false){
+        alert("请您先登录账号");
+        return ;
+    }
     var clientName = $("input[name='name']").val();
     if(clientName == ""){
         alert("真是姓名不能为空");
@@ -13,8 +18,8 @@ function updateClientName(){
     // 修改信息
     $.ajax({
         type : "post",
-        url : baseUrl + "client/update",
-        data : {"name" : clientName},
+        url : baseUrl + "apiClient/update",
+        data : {"clientId" : clientId, "name" : clientName},
         dataType : "json",
         success : function (result, status){
             if(result.code != 1){

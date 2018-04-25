@@ -19,7 +19,7 @@ function sendVcode(){
     }
     isWaiting = true;
     var param = {
-        url : baseUrl + "client/codeSignIn",
+        url : baseUrl + "apiClient/codeSignIn",
         params : {
             mobile : phone,
             type:0,
@@ -91,7 +91,7 @@ function checkForm(){
     }
 
     var param = {
-        url : "http://client.urbanfit.cn/client/register",
+        url : baseUrl + "apiClient/register",
         params : {
             mobile : mobile,
             password : pwd,

@@ -12,13 +12,13 @@
     <div class="nav">
         <a href="index.html"><img src="img/logo.png"></a>
         <!-- 未登录 -->
-        <div class="login">
+        <div class="login" style="display: none;" id="loginedDiv">
             <a class="on" href="login.html">登录</a>
             <a href="join.html">注册</a>
         </div>
         <!-- 登录后显示 -->
-        <div class="login" style="display: none;">
-            <a class="on" href="user.html">邹市明</a>
+        <div class="login" style="display: none;" id="noLoginDiv">
+            <a class="on" href="user.html"><label id="clientName_label"></label></a>
             <a href="login.html">退出</a>
         </div>
         <div class="menu">
@@ -79,7 +79,9 @@
             </ul>
         </div>
     </div>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/index.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/index.js"></script>
+<script src="js/web/main.js"></script>
 </body>
 </html>

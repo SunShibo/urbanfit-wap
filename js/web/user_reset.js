@@ -3,10 +3,15 @@ $(function (){
     $("#footerPage").load("footer.html");
     $("#A_save_password").click(updatePassword);
     $('#sendcode').click(sendVcode);
+    $('#phone').val(clientMobile);
 })
 
 //获取短信验证
 function sendVcode(){
+    if(clientIsLogin() == false){
+        alert("请您先登录账号");
+        return ;
+    }
     var isWaiting = false;
     var _this  = $(this);
     var phone = $('#phone').val();
@@ -54,6 +59,11 @@ function sendVcode(){
 }
 
 function updatePassword(){
+    if(clientIsLogin() == false){
+        alert("请您先登录账号");
+        return ;
+    }
+
     var mobile = $.trim($("#phone").val());
     if(!isMobile(mobile)){
         $('#phonemsg').text('请输入正确的手机号');

@@ -23,7 +23,7 @@ function clientLogin(){
     // 调用登录接口
     $.ajax({
         type : "post",
-        url : baseUrl + "client/login",
+        url : baseUrl + "apiClient/login",
         data : {"mobile" : mobile, "password" : pwd},
         dataType : "json",
         success : function (result, status){
@@ -40,19 +40,12 @@ function clientLogin(){
                 $('#phonemsg').text('');
                 $('#pwdmsg').text('');
                 window.location.href = "login_success.html";
-                var user_str = JSON.stringify(result);
-                //alert(user_str);
-                $.cookie('webuser',user_str,{path:'/'});
+                var user_str = JSON.stringify(result.data);
+                $.cookie('webuser', user_str, {path:'/'});
             }
         }
     });
 };
-var webuser = JSON.stringify($.cookie('webuser'));
-console.log(webuser);
-alert(webuser);
-
-
-
 
 //粗略验证手机号
 function isMobile(mobile){
