@@ -4,7 +4,7 @@
 
         // 默认值
         settings=$.extend({
-            url:"city.min.js",
+            url:"./js/web/city.min.js",
             prov:null,
             city:null,
             dist:null,

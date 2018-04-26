@@ -12,4 +12,8 @@ $(function(){
         nodata: "none",
         required: false
     });
+
+    /*$("#proviceId").change(queryStore);
+    $("#cityId").change(queryStore);
+    $("#districtId").change(queryStore);*/
 })
