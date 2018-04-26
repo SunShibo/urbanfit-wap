@@ -3,10 +3,12 @@ $(function(){
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
 
+    alert("r465");
+
     $("#city_info").citySelect({
-        prov : store.provice,
-        city : store.city,
-        dist : store.district,
+        prov : "",
+        city : "",
+        dist : "",
         nodata: "none",
         required: false
     });
