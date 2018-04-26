@@ -8,11 +8,11 @@ function clientIsLogin(){
     var isLogin = false;
     var webuser = $.cookie('webuser');
     if(webuser != ""){
-        isLogin = true;
+        /*isLogin = true;
         alert(JSON.parse(webuser).name + JSON.parse(webuser).mobile);
         clientId = JSON.parse(webuser).clientId;
         clientName = JSON.parse(webuser).name;
-        clientMobile = JSON.parse(webuser).mobile;
+        clientMobile = JSON.parse(webuser).mobile;*/
     }
     return isLogin;
 }
