@@ -69,7 +69,6 @@ function queryStore(){
                         html1 += '<p>电话:'+ v.mobile+'</p>';
                         html1 += '<p>联系:'+ v.contactName+'</p>';
                         html1 += '</li>';
-
                     });
                     $(".matchul").html(html1);
                 }
