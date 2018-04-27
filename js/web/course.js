@@ -37,7 +37,7 @@ $(function () {
 });
 
 function queryCourseInfo(){
-    alert(courseId);
+    //alert(courseId);
     $.ajax({
         url : "http://client.urbanfit.cn/course/courseDetail",
         type : "post",
