@@ -30,51 +30,41 @@ $(function(){
     }
     $tabList.eq(index).addClass('active');
     tabs('#navbox .swiper-slide','#tabs-container','active',index);
-
-
+    // 初始化门店信息
+    queryStore();
     // 根据关于我们类型查询
     var url = document.location.href;
     var urlList = url.split('#');
     var a = urlList[1];
-    alert(a);
-    if (a == 'slider1') {
-        $("#proviceId").change(function(){
-            //alert(11);
-            //alert($(this).val());
-            queryStore();
-        });
-        $("#cityId").change(function(){
-            queryStore();
-        });
-        $("#districtId").change(function(){
-            queryStore();
-        });
-    }
+
+    $("#proviceId").change(function(){
+        queryStore();
+    });
+    $("#cityId").change(function(){
+        queryStore();
+    });
+    $("#districtId").change(function(){
+        queryStore();
+    });
 });
 
 
 var pageNo = 1;
 function queryStore(){
-    var provice = $($("#proviceId").val());
-    var city = $($("#cityId").val());
-    var district = $($("#districtId").val());
-     //alert(courseId);
+    var provice = $("#proviceId").val();
+    var city = $("#cityId").val();
+    var district = $("#districtId").val();
     $.ajax({
          url : "http://client.urbanfit.cn/apiStore/list",
          type : "post",
-         data : {"provice" : provice, "city" : city, "district" : district , "pageNo" : pageNo, "pageSize" : 10,},
+         data : {"provice" : provice, "city" : city, "district" : district , "pageNo" : pageNo, "pageSize" : 10},
          dataType : "json",
-         success : function (result, status){
+         success : function (result){
             var html1 = '';
-            //var html2 = '';
             if(result.code == 1){
-                var lstStore = JSON.parse(result.data.lstStore);
-                //alert(course);
-                //alert(course.courseImageUrl);
-                //console.log(course);
+                var lstStore = result.data.lstStore;
                 if(lstStore != ""){
                     $.each(lstStore, function (k, v) {
-                        //alert(v.lstStore);
                         html1 += '<li>';
                         html1 += '<h3><img src="img/ling.png">'+ v.storeName+'</h3>';
                         html1 += '    <p>'+ v.storeDistrict+ v.storeAddress+'</p>';
