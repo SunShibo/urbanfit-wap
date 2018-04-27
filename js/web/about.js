@@ -3,7 +3,6 @@ $(function(){
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
 
-
     $("#city_info").citySelect({
         prov : "",
         city : "",
@@ -11,7 +10,6 @@ $(function(){
         nodata: "none",
         required: false
     });
-
 
     /*swiper选项卡切换*/
     //navbox 是你导航的className,active是你当前状态的className
