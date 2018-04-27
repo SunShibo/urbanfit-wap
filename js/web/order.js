@@ -7,7 +7,6 @@ $(function() {
         $("#submitorder").click(function(){
             window.location.href = "login_success.html";//否则跳转登录页
         })
-
     );
 
     //加载头部底部

@@ -3,7 +3,7 @@ $(function(){
     $("#footerPage").load("footer.html");
     queryOrderMasterList();
     $("#A_payOrder").click(payOrderMasterAgain);
-    $('.close,.yes').click(function(){
+    $('.close').click(function(){
         $('.tan').css({'display':'none'});
         $('.tanbox').hide();
         $('.tanbox1').hide();
@@ -11,11 +11,11 @@ $(function(){
 
     $(".radio").click(function () {
         $(".radio").each(function (i, v) {
-            $(this).find('.radioimg').attr('src', '../static/img/radio.png');
+            $(this).find('.radioimg').attr('src', './img/radio.png');
             $(this).removeClass("seleted");
         });
-        $(this).find('.radioimg').attr('src', '../static/img/radio1.png');
-        $(this).addClass('seleted');
+        $(this).find('.radioimg').attr('src', './img/radio1.png');
+        $(this).addClass("seleted");
     });
 
     // 查询上一页
@@ -157,11 +157,10 @@ function choosePayment(orderNum){
 }
 
 function payOrderMasterAgain(){
-    /*var url = baseUrl + "order/payWechatCommonAgain";
-    var appid = "wxfceafb8ea3eae188";
-    var weixinUrl="https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri="
-        + encodeURI(url) + "&response_type=code&scope=snsapi_userinfo&state=" + orderNum + "#wechat_redirect";
-    window.location.href = encodeURI(weixinUrl);*/
+
+    $('.tan').css({'display':'none'});
+    $('.tanbox').hide();
+    $('.tanbox1').hide();
 
     var orderNum = $("input[name='payOrderNum']").val();
     var payWay = "";
@@ -175,11 +174,33 @@ function payOrderMasterAgain(){
             }
         };
     });
+
+    alert(payWay);
+    if(payWay == 1){
+        /*var url = baseUrl + "wapOrder/wechatPayAgain";*/
+        //var url = "http://wap.test.urbanfit.cn";
+        //alert(encodeURI(url));
+        /*var appid = "wxfceafb8ea3eae188";
+        var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
+            + "&redirect_uri=" + encodeURI(url) + "&response_type=code&scope=snsapi_base&state="
+            + orderNum + "#wechat_redirect";
+        window.location.href = encodeURI(weixinUrl);*/
+
+        var url = "http://wap.test.urbanfit.cn/order-pay.html";
+        var appid = "wxfceafb8ea3eae188";
+        var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
+            + "&redirect_uri=" + url + "&response_type=code&scope=snsapi_base&state="
+            + orderNum + "#wechat_redirect";
+        window.location.href = weixinUrl;
+        return ;
+    }
+
     // 订单再支付
     var params = {
         "payment" : payWay,
         "orderNum" : orderNum
     };
+
     $.ajax({
         url : baseUrl + "wapOrder/payOrderAgain",
         type : "post",
