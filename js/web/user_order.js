@@ -175,25 +175,22 @@ function payOrderMasterAgain(){
         };
     });
 
-    alert(payWay);
-    if(payWay == 1){
-        /*var url = baseUrl + "wapOrder/wechatPayAgain";*/
-        //var url = "http://wap.test.urbanfit.cn";
-        //alert(encodeURI(url));
-        /*var appid = "wxfceafb8ea3eae188";
-        var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
-            + "&redirect_uri=" + encodeURI(url) + "&response_type=code&scope=snsapi_base&state="
-            + orderNum + "#wechat_redirect";
-        window.location.href = encodeURI(weixinUrl);*/
+    /*var url = baseUrl + "wapOrder/wechatPayAgain";*/
+    //var url = "http://wap.test.urbanfit.cn";
+    //alert(encodeURI(url));
+    /*var appid = "wxfceafb8ea3eae188";
+    var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
+        + "&redirect_uri=" + encodeURI(url) + "&response_type=code&scope=snsapi_base&state="
+        + orderNum + "#wechat_redirect";
+    window.location.href = encodeURI(weixinUrl);*/
 
-        var url = "http://wap.test.urbanfit.cn/order-pay.html";
-        var appid = "wxfceafb8ea3eae188";
-        var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
-            + "&redirect_uri=" + url + "&response_type=code&scope=snsapi_base&state="
-            + orderNum + "#wechat_redirect";
-        window.location.href = weixinUrl;
-        return ;
-    }
+    /*var url = "http://wap.test.urbanfit.cn/order-pay.html";
+    var appid = "wxfceafb8ea3eae188";
+    var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
+        + "&redirect_uri=" + url + "&response_type=code&scope=snsapi_base&state="
+        + orderNum + "#wechat_redirect";
+    window.location.href = weixinUrl;
+    return ;*/
 
     // 订单再支付
     var params = {
@@ -211,6 +208,8 @@ function payOrderMasterAgain(){
                 if(payWay == 0){   // 支付宝支付
                     $('body').append(result.data);
                     $("form").attr("target", "_blank");
+                }else if(payWay == 1){
+                    alert(result.data);
                 }
             }
         }
