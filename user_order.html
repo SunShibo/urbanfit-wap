@@ -28,16 +28,17 @@ input:-moz-placeholder { color:#bfbfbf; }
                     <span class="close"><img src="img/close1.png"></span>
                 </div>
                 <div class="order2">
-                    <div class="radio">
+                    <div class="radio seleted" seleted-value="alipay">
                         <span><img src="img/zhifubao.jpg"></span>
                         <img src="img/radio1.png" class="radioimg">
                     </div>
-                    <div class="radio">
+                    <div class="radio" seleted-value="wechatpay">
                         <span><img src="img/weixin.jpg"></span>
                         <img src="img/radio.png" class="radioimg">
                     </div>
                 </div>
-                <a href="javascript:;" class="yes">确&emsp;认</a>
+                <input type="hidden" name="payOrderNum">
+                <a href="javascript:void(0);" id="A_payOrder">确&emsp;认</a>
             </div>
             <!-- 付款方式 -->
             <div class="tanbox1">

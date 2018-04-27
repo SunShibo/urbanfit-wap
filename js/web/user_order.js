@@ -2,12 +2,21 @@ $(function(){
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
     queryOrderMasterList();
-
+    $("#A_payOrder").click(payOrderMasterAgain);
     $('.close,.yes').click(function(){
         $('.tan').css({'display':'none'});
         $('.tanbox').hide();
         $('.tanbox1').hide();
     })
+
+    $(".radio").click(function () {
+        $(".radio").each(function (i, v) {
+            $(this).find('.radioimg').attr('src', '../static/img/radio.png');
+            $(this).removeClass("seleted");
+        });
+        $(this).find('.radioimg').attr('src', '../static/img/radio1.png');
+        $(this).addClass('seleted');
+    });
 
     // 查询上一页
     $('.previous').click(function(){
@@ -35,7 +44,7 @@ $(function(){
 var pageNo = 1;
 function queryOrderMasterList(){
     $.ajax({
-        url : baseUrl + "order/orderList",
+        url : baseUrl + "wapOrder/list",
         type : "post",
         data : {"clientId" : 1, "pageNo" : pageNo, "pageSize" : 10},
         dataType : "json",
@@ -87,7 +96,7 @@ function queryOrderMasterList(){
                 // 订单支付
                 $('.pay1').click(function(){
                     var orderNum = $(this).data("ordernum");
-                    payOrderMaster(orderNum);
+                    choosePayment(orderNum);
                 })
             }
         }
@@ -97,7 +106,7 @@ function queryOrderMasterList(){
 // 查询订单详情
 function queryOrderMasterDetail(orderNum){
     $.ajax({
-        url : baseUrl + "order/queryOrderDetail",
+        url : baseUrl + "wapOrder/detail",
         type : "post",
         data : {"orderNum" : orderNum, "clientId" : 1},
         dataType : "json",
@@ -140,26 +149,51 @@ function queryOrderMasterDetail(orderNum){
     })
 }
 
-function payOrderMaster(orderNum){
-    var url = baseUrl + "order/payWechatCommonAgain";
+
+function choosePayment(orderNum){
+    $("input[name='payOrderNum']").val(orderNum);
+    $('.tan').css({'display':'flex'});
+    $('.tanbox').show();
+}
+
+function payOrderMasterAgain(){
+    /*var url = baseUrl + "order/payWechatCommonAgain";
     var appid = "wxfceafb8ea3eae188";
     var weixinUrl="https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri="
         + encodeURI(url) + "&response_type=code&scope=snsapi_userinfo&state=" + orderNum + "#wechat_redirect";
-    window.location.href = encodeURI(weixinUrl);
+    window.location.href = encodeURI(weixinUrl);*/
 
-    /*var params = {
-        "payment" : 1,
+    var orderNum = $("input[name='payOrderNum']").val();
+    var payWay = "";
+    $(".radio").each(function(i, v){
+        if($(this).hasClass("seleted")){
+            if ($(this).attr("seleted-value") == "alipay"){
+                payWay = 0 ;
+            }
+            if ($(this).attr("seleted-value") == "wechatpay"){
+                payWay = 1 ;
+            }
+        };
+    });
+    // 订单再支付
+    var params = {
+        "payment" : payWay,
         "orderNum" : orderNum
     };
     $.ajax({
-        url : baseUrl + "order/payWechatCommonAgain",
+        url : baseUrl + "wapOrder/payOrderAgain",
         type : "post",
         data : {"params" : JSON.stringify(params)},
         dataType : "json",
         success : function (result){
-            alert("微信支付！！！");
+            if(result.code == 1){
+                if(payWay == 0){   // 支付宝支付
+                    $('body').append(result.data);
+                    $("form").attr("target", "_blank");
+                }
+            }
         }
-    });*/
+    });
 }
 
 
