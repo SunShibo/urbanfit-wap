@@ -52,14 +52,16 @@ $.ajax({
     success:function(res){
         var html = '';
         if(res.code == 1){
-            //console.log(res);
+
             var baseUrl0 = res.data.baseUrl;  // 图片地址前缀
+            //console.log(baseUrl0);
             var activityMessage = res.data.activityMessage;
-            //console.log(activityMessage);
+            console.log(baseUrl0+activityMessage.detailImage);
             if(activityMessage != ""){
                 html += '<h1>'+activityMessage.title+'</h1>';
                 html += '<p>'+activityMessage.createTime+'</p>';
                 html += '<div class="infotext">';
+                html += '<img src="'+baseUrl0+activityMessage.detailImage+'">';
                 html += '<p>'+activityMessage.content+'</p>';
                 html += '</div>';
             }
