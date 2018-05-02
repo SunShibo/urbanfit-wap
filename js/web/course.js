@@ -26,24 +26,26 @@ $(function () {
     var url = document.location.href;
     var urlList = url.split('#');
     var a = urlList[1];
-    //alert(a);
     if (a == 'slider1') {
-        //alert(index);
         courseId = index + 1;
-        //alert(courseId);
-        queryCourseInfo();
-        //console.log('123courseDistrict: ' + $("input[name='courseDistrict']").val());
+        queryCourseInfo(courseId);
     }
+
+    $("div[name^='course_']").click(function(){
+        var thisCourseId = $(this).data("courseid");
+        if(thisCourseId == 2){
+            queryCourseInfo(thisCourseId);
+        }
+    })
 });
 
-function queryCourseInfo(){
-    //alert(courseId);
+function queryCourseInfo(courseId){
     $.ajax({
-        url : "http://client.urbanfit.cn/course/courseDetail",
+        url : baseUrl + "/apiCourse/detail",
         type : "post",
         data : {"courseId" : courseId},
         dataType : "json",
-        success : function (result, status){
+        success : function (result){
             var html1 = '';
             var html2 = '';
             if(result.code == 1){
@@ -74,23 +76,22 @@ function queryCourseInfo(){
                     html1 += '      </li>';
                     html1 += '      <li>';
                     html1 += ' <input type="hidden" name="courseId" value="'+course.courseId+'">';
-                    html1 += '          <a href="javascript:;" id="A_join_course">我要报名</a>';
+                    html1 += '          <a href="javascript:void(0);" id="A_join_course">我要报名</a>';
                     html1 += '      </li>';
                     html1 += '   </ul>';
                     html2 += '    <div class="coursebox">';
                     html2 += course.introduce;
                     html2 += '   </div>';
                 }
-                //console.log(html);
+
                 $(".sell").html(html1);
                 $(".course").html(html2);
-
+                $("#courseIntroduceDiv").html(course.introduce);
                 //调用地址管理
                 initCourseDistrict();
                 $("#s_province").change(changeProvince);
                 $("#s_city").change(changeCity);
                 $("#A_join_course").click(joinCourse);
-
             }else{
                 alert(result.msg);
                 return ;

@@ -76,18 +76,18 @@ input:-moz-placeholder { color:#bfbfbf; }
                 <div class="orderinput orderinput1">
                     <span>优 惠 码</span>
                     <input type="text" name="couponNum" placeholder="请输入您的优惠码" class="input" id="ma">
-                    <a href="javascript:;" id="change">立即兑换</a>
+                    <a href="javascript:void(0);" id="change">立即兑换</a>
                     <em id="changebtn">修改</em>
-                    <p id="couponName">我有一个优惠</p>
+                    <p id="couponName">优惠码优惠信息显示（全场5折）</p>
                 </div>
             </div>
-            <h1><img src="img/ling.png">课程价格：</h1>
-            <div class="order1">
+            <div class="order1" style="display: none;" id="couponDiv">
+                <h1><img src="img/ling.png">课程价格：</h1>
                 <ul>
-                    <li id="price0">课程价格<span id="price">￥9999</span></li>
-                    <li>优&emsp;&emsp;惠<span>-￥<label id="couponprice">0</label></span></li>
-                    <li id="price1">应付总额<span class="on">￥<label id="payPrice">9900</label></span></li>
-                    <input type="hidden" name="coursePrice" value="" id="coursePrice1">
+                    <li>课程价格<span id="price">￥<label id="coursePriceLabel"></label></span></li>
+                    <li>优&emsp;&emsp;惠<span>-￥<label id="couponprice"></label></span></li>
+                    <li>应付总额<span class="on">￥<label id="payPrice"></label></span></li>
+                    <input type="hidden" name="coursePrice">
                 </ul>
             </div>
             <div class="submit">
@@ -95,13 +95,12 @@ input:-moz-placeholder { color:#bfbfbf; }
                 <a href="javascript:;" id="submitorder">提交订单</a>
             </div>
         </div>
-
-
-    	<!-- footer -->
         <div id="footerPage"></div>
 	</div>	
 <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/web/main.js"></script>
+<script src="js/web/config.js"></script>
 <script src="js/web/order.js"></script>
 <script src="js/web/cityselect.js"></script>
 

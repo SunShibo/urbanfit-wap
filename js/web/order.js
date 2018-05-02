@@ -1,11 +1,9 @@
 $(function() {
-
-    var webuser = JSON.stringify($.cookie('webuser'));
-    if(webuser != ''){
+    if(clientIsLogin() == true){
         $("#submitorder").click(submitorder);  //cookie值不为空的时候  调用下单接口
     }else(
         $("#submitorder").click(function(){
-            window.location.href = "login_success.html";//否则跳转登录页
+            window.location.href = "login.html";//否则跳转登录页
         })
     );
 
@@ -32,7 +30,6 @@ $(function() {
 });
 
 function queryCouponInfo(){
-
     var couponNum = $.trim($("#ma").val());
     if(couponNum == ''){
         alert('优惠码不能为空');
@@ -42,7 +39,7 @@ function queryCouponInfo(){
 
     $.ajax({
         type:"post",
-        url:"http://client.urbanfit.cn/coupon/detail ",
+        url: baseUrl + "apiCoupon/detail ",
         dataType: "json",
         data: {"couponNum" : couponNum},
         success: function(result){
@@ -50,25 +47,18 @@ function queryCouponInfo(){
                 $('#change').hide();
                 $('#changebtn').show();
                 $('#couponName').text(result.data.couponName).show();
-                $('#changebtn').click(function(){
-                    $('#couponName').hide();
-                    $("#ma").val('').focus();
-                })
-                var coursePrice = $("#price").text();
-                //console.log(coursePrice);
+                var coursePrice = $("input[name='coursePrice']").val();
                 $("#couponprice").text(coursePrice * result.data.percent / 100);
                 $("#payPrice").text(coursePrice - (coursePrice * result.data.percent / 100));
-                //$("#couponDiv").show();
-
+                $("#couponDiv").show();
             }else{
                 alert('优惠码不存在');
                 $('#couponName').text("").hide();
-                //$("#couponDiv").hide();
+                $("#couponDiv").hide();
             }
         }
     });
 }
-
 
 //获取url中的参数
 function GetRequest(){
@@ -87,7 +77,6 @@ function GetRequest(){
 var canshu = GetRequest();
 
 function submitorder(){
-    //alert(11);
     var payWay = "";
     $(".radio").each(function(i,v){
         if($(this).hasClass("seleted")){
@@ -131,29 +120,26 @@ function submitorder(){
     };
     $.ajax({
         type:"post",
-        url:"http://client.urbanfit.cn/order/addOrder",
+        url: baseUrl + "wapOrder/addOrder",
         dataType: "json",
-        data: {"params" : JSON.stringify(params), "clientId":1,},
+        data: {"params" : JSON.stringify(params), "clientId": clientId},
         success: function(result){
-
-            //console.log(result.courseDistrict);
             if(result.code == 1){
-                alert('成功');
-                /*if(payWay == 0){   // 支付宝支付
-                    $('body').append(result.data);
-                    $("form").attr("target", "_blank");
-                }else if(payWay == 1){  // 微信支付
-                    var orderNum = result.data.orderNum;
-                    var wechatPayQr = result.data.wechatPayQr;
-                    window.location.href = "/order/wechatPay?orderNum=" + orderNum
-                        + "&wechatPayQr=" + wechatPayQr;
-                }*/
-
+                if(result.code == 1){
+                    if(payWay == 0){   // 支付宝支付
+                        $('body').append(result.data);
+                        $("form").attr("target", "_blank");
+                    }else if(payWay == 1){       // 微信支付
+                        window.location.href = result.data.wechatPayUrl;
+                    }
+                }
             }else{
                 alert(result.msg);
+                return ;
             }
         }
     });
+
     //粗略验证手机号
     function isMobile(mobile){
         var re = /^1[0-9]{10}$/;
@@ -166,15 +152,13 @@ function submitorder(){
 }
 
 $.ajax({
-    url : "http://client.urbanfit.cn/course/courseDetail",
+    url : baseUrl + "apiCourse/detail",
     type : "post",
     data : {"courseId" : canshu['courseId']},
     dataType : "json",
-    success : function (res, status){
+    success : function (res){
         var html = '';
         var html1 = '';
-        var html2 = '';
-        var html3 = '';
         if(res.code == 1){
             var course = JSON.parse(res.data.course);
             console.log(course);
@@ -194,22 +178,15 @@ $.ajax({
                 html1 += '    <span>课程价格</span>';
                 html1 += '   <input type="text" value="'+course.coursePrice+'" readonly="readonly" class="input input1" id="courseprice" readonly="readonly">';
                 html1 += '    </div>';
-                html2 += '课程价格<span id="price">'+course.coursePrice+'</span>';
-                html3 += '应付总额<span class="on">￥<label id="payPrice">'+course.coursePrice+'</label></span>';
             }
             $(".select").html(html);
-            $("#price0").html(html2);
-            $("#price1").html(html3);
-
             //调用地址管理
             initCourseDistrict();
             $("#s_province").change(changeProvince);
             $("#s_city").change(changeCity);
-
             $("#news").html(html1);
-
         }else{
-            alert(result.msg);
+            alert(res.msg);
             return ;
         }
     }
