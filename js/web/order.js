@@ -185,6 +185,8 @@ $.ajax({
             $("#s_province").change(changeProvince);
             $("#s_city").change(changeCity);
             $("#news").html(html1);
+            $("#coursePriceLabel").text(course.coursePrice);
+            $("input[name='coursePrice']").val(course.coursePrice);
         }else{
             alert(res.msg);
             return ;
