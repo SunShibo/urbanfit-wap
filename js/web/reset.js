@@ -1,17 +1,11 @@
-$(function (){
-    $("#mainPage").load("main.html");
-    $("#footerPage").load("footer.html");
-    $("#A_save_password").click(updatePassword);
+$(function() {
+    $("#A_save").click(checkForm);
     $('#sendcode').click(sendVcode);
-    $('#phone').val(clientMobile);
-})
+});
+
 
 //获取短信验证
 function sendVcode(){
-    if(clientIsLogin() == false){
-        alert("请您先登录账号");
-        return ;
-    }
     var isWaiting = false;
     var _this  = $(this);
     var phone = $('#phone').val();
@@ -26,10 +20,10 @@ function sendVcode(){
 
     isWaiting = true;
     var param = {
-        url : baseUrl + "apiClient/codeSignIn",
+        url : 'codeSignIn',
         params : {
             mobile : phone,
-            type : 1,
+            type:1,
         },
         callback : function(d){
             if(d.code==0){
@@ -38,17 +32,15 @@ function sendVcode(){
                 return;
             }else if(d.code==1){
                 var messageCode = d.data.messageCode;
-                $.cookie("userResetPwd_" + phone + "", messageCode, {path:'/'});
+                $.cookie("resetPwd_" + phone + "", messageCode, {path:'/'});
                 var time=60;
                 var t=setInterval(function(){
                     $(_this).html('('+time+'s)后重发');
-                    $(_this).addClass("msg");
                     time--;
                     if(time==0){
                         clearInterval(t);
                         $(_this).html("重新获取");
                         isWaiting=true;
-                        $(_this).removeClass("msg");
                     }
                 },1000)
             }else{
@@ -60,12 +52,7 @@ function sendVcode(){
     ajax(param);
 }
 
-function updatePassword(){
-    if(clientIsLogin() == false){
-        alert("请您先登录账号");
-        return ;
-    }
-
+function checkForm(){
     var mobile = $.trim($("#phone").val());
     if(!isMobile(mobile)){
         $('#phonemsg').text('请输入正确的手机号');
@@ -83,12 +70,13 @@ function updatePassword(){
         $('#yzmmsg').text('');
     }
     // 判断验证码是否正确
-    var messageCode = $.cookie("userResetPwd_" + mobile + "");
+    var messageCode = $.cookie("resetPwd_" + mobile + "");
     if(messageCode != vcode){
         $('#yzmmsg').text("验证码输入有误");
         $("#vcode").focus();
         return ;
     }
+
     var pwd = $.trim($("#pwd").val());
     if(pwd == ''){
         $('#pwdmsg').text("请输入您的密码");
@@ -118,10 +106,11 @@ function updatePassword(){
         params : {
             mobile : mobile,
             newPassword : pwd,
-            confirmPassword :$('#cpwd').val(),
-            type : 2,
+            confirmPassword : $('#cpwd').val(),
+            type:1,
         },
         callback : function(d){
+            //console.log(d)
             if(d.code == 2){
                 $('#cpwdmsg').text('两次密码不一致');
                 $("#cpwd").focus();
@@ -134,15 +123,10 @@ function updatePassword(){
                 $("#vcode").focus();
                 return ;
             }else if(d.code == 1){
-                $("#phonemsg").text("");
-                $("#vcode").val("");
-                $('#yzmmsg').text('');
-                $("#pwd").val("");
-                $("#pwdmsg").text("");
-                $("#cpwd").val("");
+                // 成功跳转下一步
                 $('#cpwdmsg').text('');
-                $.cookie("userResetPwd_" + mobile + "", "");
-                alert("重置密码成功");
+                $('#yzmmsg').text('');
+                window.location.href = "reset_success.html";
             }
         }
     }

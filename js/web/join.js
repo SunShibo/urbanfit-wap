@@ -30,6 +30,8 @@ function sendVcode(){
                 $("#phone").focus();
                 return;
             }else if(d.code==1){
+                var messageCode = d.data.messageCode;
+                $.cookie("register_" + phone + "", messageCode, {path:'/'});
                 var time=60;
                 var t=setInterval(function(){
                     $(_this).html('('+time+'s)后重发');
@@ -66,6 +68,13 @@ function checkForm(){
     }else {
         $('#yzmmsg').text('');
     }
+    // 判断验证码是否正确
+    var messageCode = $.cookie("register_" + mobile + "");
+    if(messageCode != vcode){
+        $('#yzmmsg').text("验证码输入有误");
+        $("#vcode").focus();
+        return ;
+    }
     var pwd = $.trim($("#pwd").val());
     if(pwd == ''){
         $('#pwdmsg').text("请输入您的密码");
@@ -95,8 +104,7 @@ function checkForm(){
         params : {
             mobile : mobile,
             password : pwd,
-            confirmPassword :$('#cpwd').val(),
-            authCode : vcode
+            confirmPassword :$('#cpwd').val()
         },
         callback : function(d){
             if(d.code == 2){
@@ -114,6 +122,9 @@ function checkForm(){
                 // 成功跳转下一步
                 $('#cpwdmsg').text('');
                 $('#yzmmsg').text('');
+                $.cookie("register_" + mobile + "", "");
+                var user_str = JSON.stringify(d.data);
+                $.cookie('webuser', user_str, {path:'/'});
                 window.location.href = "join_success.html";
             }
         }

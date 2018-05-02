@@ -27,6 +27,9 @@ function updateClientName(){
                 return;
             }else{
                 alert("修改真实姓名成功");
+                $("#clientName_label").text(clientName);
+                var user_str = JSON.stringify(result.data);
+                $.cookie('webuser', user_str, {path:'/'});
             }
         }
     })

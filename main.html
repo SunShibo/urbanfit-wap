@@ -12,14 +12,14 @@
     <div class="nav">
         <a href="index.html"><img src="img/logo.png"></a>
         <!-- 未登录 -->
-        <div class="login" style="display: none;" id="loginedDiv">
+        <div class="login" style="display: none;" id="noLoginDiv">
             <a class="on" href="login.html">登录</a>
             <a href="join.html">注册</a>
         </div>
         <!-- 登录后显示 -->
-        <div class="login" style="display: none;" id="noLoginDiv">
+        <div class="login" style="display: none;" id="loginedDiv">
             <a class="on" href="user.html"><label id="clientName_label"></label></a>
-            <a href="login.html">退出</a>
+            <a href="javascript:void(0);" id="A_login_out">退出</a>
         </div>
         <div class="menu">
             <img src="img/menu.png" class="menuimg">
