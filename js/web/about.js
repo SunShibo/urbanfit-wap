@@ -1,15 +1,9 @@
-//加载头部底部
+// 当前页数
+var pageNo = 1;
 $(function(){
+    //加载头部底部
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
-
-    $("#city_info").citySelect({
-        prov : "",
-        city : "",
-        dist : "",
-        nodata: "none",
-        required: false
-    });
 
     /*swiper选项卡切换*/
     //navbox 是你导航的className,active是你当前状态的className
@@ -28,54 +22,77 @@ $(function(){
     }
     $tabList.eq(index).addClass('active');
     tabs('#navbox .swiper-slide','#tabs-container','active',index);
-    // 初始化门店信息
-    queryStore();
     // 根据关于我们类型查询
     var url = document.location.href;
     var urlList = url.split('#');
     var a = urlList[1];
 
-    $("#proviceId").change(function(){
-        queryStore();
-    });
-    $("#cityId").change(function(){
-        queryStore();
-    });
-    $("#districtId").change(function(){
-        queryStore();
-    });
+    // 初始化门店信息
+    queryStoreList();
+    $("#proviceId").change(queryStoreList);
+    $("#cityId").change(queryStoreList);
+    $("#districtId").change(queryStoreList);
+
+    // 查询上一页
+    $('.previous').click(function(){
+        if(pageNo == 1){
+            $(this).next('i').show();
+            alert('这已经是第一页了');
+        }else{
+            pageNo -= 1;
+            queryStoreList();
+        }
+    })
+
+    // 查询下一页
+    $('.next').click(function(){
+        if(pageNo == total){
+            $(this).next('i').show();
+            alert('这已经是最后一页了');
+        }else{
+            pageNo += 1;
+            queryStoreList();
+        }
+    })
 });
 
-
-var pageNo = 1;
-function queryStore(){
+function queryStoreList(){
     var provice = $("#proviceId").val();
     var city = $("#cityId").val();
     var district = $("#districtId").val();
     $.ajax({
-         url : "http://client.urbanfit.cn/apiStore/list",
-         type : "post",
-         data : {"provice" : provice, "city" : city, "district" : district , "pageNo" : pageNo, "pageSize" : 10},
-         dataType : "json",
-         success : function (result){
+        url : baseUrl + "apiStore/list",
+        type : "post",
+        data : {"provice" : provice, "city" : city, "district" : district , "pageNo" : pageNo, "pageSize" : 10},
+        dataType : "json",
+        success : function (result) {
             var html1 = '';
-            if(result.code == 1){
+            if (result.code == 1 && totalRecord != 0) {
                 var lstStore = result.data.lstStore;
-                if(lstStore != ""){
+                var totalRecord = result.data.totalRecord;
+                if (lstStore != "") {
+                    total = Math.ceil(totalRecord / 10);
+                    var Page = '';
+                    if (total == 1) {
+                        Page += '<span>' + pageNo + '</span>';
+                    } else {
+                        Page += '<span>' + pageNo + '-' + total + '</span>';
+                    }
                     $.each(lstStore, function (k, v) {
                         html1 += '<li>';
-                        html1 += '<h3><img src="img/ling.png">'+ v.storeName+'</h3>';
-                        html1 += '    <p>'+ v.storeDistrict+ v.storeAddress+'</p>';
-                        html1 += '<p>电话:'+ v.mobile+'</p>';
-                        html1 += '<p>联系:'+ v.contactName+'</p>';
+                        html1 += '<h3><img src="img/ling.png">' + v.storeName + '</h3>';
+                        html1 += '    <p>' + v.storeDistrict + v.storeAddress + '</p>';
+                        html1 += '<p>电话:' + v.mobile + '</p>';
+                        html1 += '<p>联系:' + v.contactName + '</p>';
                         html1 += '</li>';
                     });
-                    $(".matchul").html(html1);
+                    $("#page").html(Page);
                 }
-             }else{
-                 alert(result.msg);
-                 return ;
-             }
+                $(".page").show();
+                $(".matchul").html(html1);
+            } else {
+                $(".page").hide();
+            }
         }
     })
  }
