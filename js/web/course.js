@@ -1,42 +1,41 @@
-var courseId = 1;
+var courseId = 2;
 /*swiper选项卡切换*/
 $(function () {
-    //navbox 是你导航的className,active是你当前状态的className
-    var $tabList =  $('#navbox .swiper-slide'),
-        lens= $tabList.length; /*获取选项卡长度*/
-    var index = 1; /*设置初始索引为0  即 没有哈希值的时候显示第一个选项卡内容*/
-    var hash = window.location.hash;
-    /* *
-     * 获取哈希值（你也可以获取整个url剪切出你要的字段）。根据哈希值中设置的数字显示对应的选项卡内容；
-     * 例如：SwiperPC.html#slide1对应显示第索引值为1的选项卡内容即第二个选项卡
-     * */
-    if(hash){
-        value = hash.match(/\d/g).join('');
-        index = Number(value);/*字符串转换为数字*/
-        index = parseInt(index)%lens;
-    }
-    $tabList.eq(index).addClass('active');
-    tabs('#navbox .swiper-slide','#tabs-container','active',index);
-
     //加载头部底部
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
 
-    // 根据课程类型查询
-    var url = document.location.href;
-    var urlList = url.split('#');
-    var a = urlList[1];
-    if (a == 'slider1') {
-        courseId = index + 1;
-        queryCourseInfo(courseId);
+    setTimeout(aa,200);
+    function aa() {
+        //navbox 是你导航的className,active是你当前状态的className
+        var $tabList = $('#navbox .swiper-slide'),
+            lens = $tabList.length;
+        /*获取选项卡长度*/
+        var index = 1;
+        /*设置初始索引为0  即 没有哈希值的时候显示第一个选项卡内容*/
+        var hash = window.location.hash;
+        /* *
+         * 获取哈希值（你也可以获取整个url剪切出你要的字段）。根据哈希值中设置的数字显示对应的选项卡内容；
+         * 例如：SwiperPC.html#slide1对应显示第索引值为1的选项卡内容即第二个选项卡
+         * */
+        if (hash) {
+            value = hash.match(/\d/g).join('');
+            index = Number(value);
+            /*字符串转换为数字*/
+            index = parseInt(index) % lens;
+        }
+        $tabList.eq(index).addClass('active');
+        tabs('#navbox .swiper-slide', '#tabs-container', 'active', index);
     }
 
+    queryCourseInfo(courseId);
     $("div[name^='course_']").click(function(){
         var thisCourseId = $(this).data("courseid");
         if(thisCourseId == 2){
             queryCourseInfo(thisCourseId);
         }
     })
+
 });
 
 function queryCourseInfo(courseId){

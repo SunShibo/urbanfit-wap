@@ -24,12 +24,14 @@ $(function(){
 *   其他参数参阅官网 http://www.swiper.com.cn
 * */
 //tab切换效果
+
 function tabs(obj,swiperObj,className,index) {
     var mySwiper1 = new Swiper('#header',{
         freeMode : true,
         slidesPerView : 'auto',
         freeModeSticky : true ,
-        freeModeMomentumRatio: 0.5, 
+        freeModeMomentumRatio: 0.5,
+        autoHeight:true,
     });
       
     swiperWidth = mySwiper1.container[0].clientWidth; 
@@ -79,7 +81,7 @@ function tabs(obj,swiperObj,className,index) {
         tabSwiper.slideTo($(this).index());/*滑动到对应的滑块*/
         if($(this).index() == 1){
             //alert($(this).index());
-            // queryCourseInfo();
+            //queryCourseInfo();
         }
     });
     $(obj).click(function(e) {

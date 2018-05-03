@@ -20,7 +20,77 @@
 <body>
 <div class="content">
     <!-- nav -->
-    <div id="mainPage"></div>
+    <div class="nav">
+        <a href="index.html"><img src="img/logo.png"></a>
+        <!-- 未登录 -->
+        <div class="login" style="display: none;" id="noLoginDiv">
+            <a class="on" href="login.html">登录</a>
+            <a href="join.html">注册</a>
+        </div>
+        <!-- 登录后显示 -->
+        <div class="login" style="display: none;" id="loginedDiv">
+            <a class="on" href="user.html"><label id="clientName_label"></label></a>
+            <a href="javascript:void(0);" id="A_login_out">退出</a>
+        </div>
+        <div class="menu">
+            <img src="img/menu.png" class="menuimg">
+            <img src="img/close.png" class="close">
+        </div>
+        <div class="menubox">
+            <div class="search">
+                <input type="text" placeholder="Search" class="input">
+                <img src="img/search.jpg">
+            </div>
+            <ul class="menuul">
+                <li>
+                    <a href="index.html">首页</a>
+                </li>
+                <li>
+                    <a href="info.html">活动资讯</a>
+                </li>
+                <li>
+                    <a href="match.html">赛法斗</a>
+                </li>
+                <li class="on">
+                    <a href="javascript:;">课程报名
+                        <!--<img src="img/xiala1.jpg" class="xiala1">
+                        <img src="img/xiala.jpg" class="xiala2">-->
+                    </a>
+                    <!--<div class="menuulbox">
+                        <a href="course.html#slider0">成人课程</a>
+                        <a href="course.html#slider1">青少年课程</a>
+                        <a href="course.html#slider2">私教课程</a>
+                        <a href="course.html#slider3">特色课程</a>
+                    </div>-->
+                </li>
+                <li>
+                    <a href="javascript:;">教练团队
+                        <img src="img/xiala1.jpg" class="xiala1">
+                        <img src="img/xiala.jpg" class="xiala2">
+                    </a>
+                    <div class="menuulbox">
+                        <a href="coach.html#slider0">北京团队</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;">关于我们
+                        <img src="img/xiala1.jpg" class="xiala1">
+                        <img src="img/xiala.jpg" class="xiala2">
+                    </a>
+                    <div class="menuulbox">
+                        <a href="about.html#slider0">公司介绍</a>
+                        <a href="about.html#slider1">门店查询</a>
+                        <a href="about.html#slider2">联系我们</a>
+                        <a href="about.html#slider3">合作伙伴</a>
+                    </div>
+                </li>
+                <li><!-- class="on"-->
+                    <a href="attestion.html">认证查询</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <div id="header">
         <div class="swiper-wrapper" id="navbox">
             <div class="swiper-slide" name="course_1" data-courseid="1" data-coursename="成人课程">成人课程</div>
@@ -158,5 +228,7 @@
 <script src="js/index.js"></script>
 <script src="js/web/config.js"></script>
 <script src="js/web/course.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/web/main.js"></script>
 </body>
 </html>

@@ -115,6 +115,9 @@
 @media screen and (min-width: 414px) {
     .match1 .match3{padding-top:30px;}
 }
+@media (min-width:640px) {
+    .matchbox .people{ width:35%;}
+}
 
 
 /**************** 认证查询 **********************/
@@ -135,7 +138,7 @@
 /**************** tabs **********************/
 #header{width: 100%;height: 55px;background: #f6d332;overflow: hidden;}
 #header .swiper-wrapper{width: auto;padding-left: 10px;padding-right: 20px;}
-#header .swiper-slide {margin: 0 15px;height:auto;background: none;width:auto;color: #101215;
+#header .swiper-slide {margin: 0 15px;height:52px;background: none;width:auto;color: #101215;
     font-size: 1.8rem;}
 #header .swiper-slide a{color: #101215;}
 #header .active {border-bottom: 3px solid #000;}
