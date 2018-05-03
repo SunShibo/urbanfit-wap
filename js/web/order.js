@@ -253,7 +253,7 @@ function changeProvince(){
         $.each(districtArr, function (i, n){
             var districDetailtArr = n.split(",");
             if(districDetailtArr[0] == province && districtCityArr.indexOf(districDetailtArr[1]) < 0){
-                if(i == 0){
+                if(city == "") {
                     city = districDetailtArr[1];
                 }
                 districtCityArr.push(districDetailtArr[1]);
@@ -266,7 +266,7 @@ function changeProvince(){
         var districtCountyHtml = [];
         $.each(districtArr, function (i, n){
             var districDetailtArr = n.split(",");
-            if (districDetailtArr.length == 3 && districDetailtArr[1] == city && districtCountyArr.indexOf(districDetailtArr[2]) < 0) {
+            if (districDetailtArr[1] == city && districtCountyArr.indexOf(districDetailtArr[2]) < 0) {
                 districtCountyArr.push(districDetailtArr[2]);
                 districtCountyHtml.push('<option value="' + districDetailtArr[2] + '">' + districDetailtArr[2] + '</option>');
             }
