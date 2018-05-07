@@ -67,7 +67,6 @@ $(document).ready(function(){
         }
     })
     $('.next').click(function(){
-        //alert(total);
         if(pageNo == total){
             $(this).next('i').show();
             alert('这已经是最后一页了');
@@ -80,7 +79,7 @@ $(document).ready(function(){
 function reladPage(){
     $.ajax({
         type: "post",
-        url: "http://client.urbanfit.cn/message/list",
+        url: baseUrl + "/message/list",
         data: {"pageNo": pageNo, "pageSize": 10},
         dataType: "json",
         success: function (res) {
