@@ -105,6 +105,7 @@
 	</div>	
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/swiper-4.1.6.min.js"></script>
+<script src="js/web/config.js"></script>
 <script>
 var swiper = new Swiper('.swiper-container', {
   	spaceBetween: 30,
@@ -146,8 +147,8 @@ $(function(){
 //banner图
 $.ajax({
 	type: "post",
-	url: "http://client.urbanfit.cn/module/list",
-	data:{"type": 2},
+	url: baseUrl + "/module/list",
+	data:{"type": 1},
 	dataType: "json",
 	success:function(res){
 		var html = '';
