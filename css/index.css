@@ -24,6 +24,15 @@
     margin-top: 10px;display: block;}
 .match{width: 100%;}
 .match > img{width: 100%;}
+.match div{position: relative}
+.match div > img{width: 100%;}
+.match div ul{ position: absolute;top: 15px; width:100%;}
+.match div ul li{width:70%;height: 43px;margin-left: 30px;margin-top: 15px;line-height: 43px;}
+.match div ul li.one{ background:url(../img/titlebg.png) no-repeat; background-size: 100% 100%;}
+.match div ul li.two{ background:url(../img/titlebg1.png) no-repeat; background-size: 100% 100%;}
+.match div ul li.three{ background:url(../img/titlebg2.png) no-repeat; background-size: 100% 100%;}
+.match div ul li.four{ background:url(../img/titlebg3.png) no-repeat; background-size: 100% 100%;}
+.match div ul li a{display: block;color: #fff;font-size: 14px;padding-left: 20px;}
 .store{width: 100%;}
 .store > img{width: 145px;margin-top: 25px;margin-left: 60px;}
 .store .map{width: 100%;margin-top: -20px;}
