@@ -1,4 +1,4 @@
-var courseId = 2;
+var courseId = 1;
 /*swiper选项卡切换*/
 $(function () {
     //加载头部底部
@@ -31,11 +31,9 @@ $(function () {
     queryCourseInfo(courseId);
     $("div[name^='course_']").click(function(){
         var thisCourseId = $(this).data("courseid");
-        if(thisCourseId == 2){
-            queryCourseInfo(thisCourseId);
-        }
+        queryCourseInfo(thisCourseId);
     })
-
+    $("#A_join_course").click(joinCourse);
 });
 
 function queryCourseInfo(courseId){
@@ -48,49 +46,20 @@ function queryCourseInfo(courseId){
             var html1 = '';
             var html2 = '';
             if(result.code == 1){
-                var baseUrl = result.data.baseUrl;  // 图片地址前缀
+                var baseUrl = result.data.baseUrl;
                 var course = JSON.parse(result.data.course);
                 if(course != ""){
-                    html1 += '    <div class="sellimg">';
-                    html1 += '        <img src="'+baseUrl+course.courseImageUrl+'">';
-                    html1 += '   </div>';
-                    html1 += '   <h2>赛法斗-青少年课程</h2>';
-                    html1 += '   <ul class="sellbox">';
-                    html1 += '       <li>';
-                    html1 += '            <p><img src="img/yang.jpg" width="16" height="16">';
-                    html1 += '               价&emsp;&emsp;格：</p>';
-                    html1 += '            <span>'+course.coursePrice+'元</span>';
-                    html1 += '        </li>';
-                    html1 += '        <li>';
-                    html1 += '            <p><img src="img/zhi.jpg" width="15" height="20">';
-                    html1 += '               上课地域：</p>';
-                    html1 += '           <div class="select">';
-                    html1 += '<input type="hidden" name="courseDistrict" id="district" value="'+course.courseDistrict+'">';
-                    html1 += '              <div id="city_info">';
-                    html1 += '                  <select id="s_province" name="s_province"></select>';
-                    html1 += '                 <select id="s_city" name="s_city" ></select>';
-                    html1 += '                 <select id="s_county" name="s_county"></select>';
-                    html1 += '             </div>';
-                    html1 += '          </div>';
-                    html1 += '      </li>';
-                    html1 += '      <li>';
-                    html1 += ' <input type="hidden" name="courseId" value="'+course.courseId+'">';
-                    html1 += '          <a href="javascript:void(0);" id="A_join_course">我要报名</a>';
-                    html1 += '      </li>';
-                    html1 += '   </ul>';
-                    html2 += '    <div class="coursebox">';
-                    html2 += course.introduce;
-                    html2 += '   </div>';
+                    $("#courseImage").attr("src", baseUrl + course.courseImageUrl);
+                    $("#courseNameLabel").text(course.courseName);
+                    $("#coursePriceLable").text(course.coursePrice);
+                    $("#courseIntroduceDiv").html(course.introduce);
+                    $("input[name='courseId']").val(course.courseId);
+                    $("input[name='courseDistrict']").val(course.courseDistrict);
+                    //调用地址管理
+                    initCourseDistrict();
+                    $("#s_province").change(changeProvince);
+                    $("#s_city").change(changeCity);
                 }
-
-                $(".sell").html(html1);
-                $(".course").html(html2);
-                $("#courseIntroduceDiv").html(course.introduce);
-                //调用地址管理
-                initCourseDistrict();
-                $("#s_province").change(changeProvince);
-                $("#s_city").change(changeCity);
-                $("#A_join_course").click(joinCourse);
             }else{
                 alert(result.msg);
                 return ;

@@ -144,6 +144,10 @@ function queryOrderMasterDetail(orderNum){
                     $("#couponPriceLabel").text(result.data.couponPrice);
                     $("#couponNameLabel").text(result.data.couponName);
                 }
+                if(result.data.remarks != ""){
+                    $("#remarksLabel").text(result.data.remarks);
+                    $("#remarksInfo").show();
+                }
                 // 打开弹窗
                 $('.tan').css({'display':'flex'});
                 $('.tanbox1').show();

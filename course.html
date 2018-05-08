@@ -19,122 +19,36 @@
 </style>
 <body>
 <div class="content">
-    <!-- nav -->
-    <div class="nav">
-        <a href="index.html"><img src="img/logo.png"></a>
-        <!-- 未登录 -->
-        <div class="login" style="display: none;" id="noLoginDiv">
-            <a class="on" href="login.html">登录</a>
-            <a href="join.html">注册</a>
-        </div>
-        <!-- 登录后显示 -->
-        <div class="login" style="display: none;" id="loginedDiv">
-            <a class="on" href="user.html"><label id="clientName_label"></label></a>
-            <a href="javascript:void(0);" id="A_login_out">退出</a>
-        </div>
-        <div class="menu">
-            <img src="img/menu.png" class="menuimg">
-            <img src="img/close.png" class="close">
-        </div>
-        <div class="menubox">
-            <div class="search">
-                <input type="text" placeholder="Search" class="input">
-                <img src="img/search.jpg">
-            </div>
-            <ul class="menuul">
-                <li>
-                    <a href="index.html">首页</a>
-                </li>
-                <li>
-                    <a href="info.html">活动资讯</a>
-                </li>
-                <li>
-                    <a href="match.html">赛法斗</a>
-                </li>
-                <li class="on">
-                    <a href="javascript:;">课程报名
-                        <!--<img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">-->
-                    </a>
-                    <!--<div class="menuulbox">
-                        <a href="course.html#slider0">成人课程</a>
-                        <a href="course.html#slider1">青少年课程</a>
-                        <a href="course.html#slider2">私教课程</a>
-                        <a href="course.html#slider3">特色课程</a>
-                    </div>-->
-                </li>
-                <li>
-                    <a href="javascript:;">教练团队
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="coach.html#slider0">北京团队</a>
-                    </div>
-                </li>
-                <li><!-- class="on"-->
-                    <a href="attestion.html">认证查询</a>
-                </li>
-                <li>
-                    <a href="javascript:;">关于我们
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="about.html#slider0">公司介绍</a>
-                        <a href="about.html#slider1">门店查询</a>
-                        <a href="about.html#slider2">联系我们</a>
-                        <a href="about.html#slider3">合作伙伴</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
+    <div id="mainPage"></div>
     <div id="header">
         <div class="swiper-wrapper" id="navbox">
-            <div class="swiper-slide" name="course_1" data-courseid="1" data-coursename="成人课程">成人课程</div>
-            <div class="swiper-slide" name="course_2" data-courseid="2" data-coursename="青少年课程">青少年课程</div>
-            <div class="swiper-slide" name="course_3" data-courseid="3" data-coursename="私教课程">私教课程</div>
-            <div class="swiper-slide" name="course_4" data-courseid="4" data-coursename="特色课程">特色课程</div>
+            <div class="swiper-slide" name="course_1" data-courseid="1" data-coursename="少儿课程小课包">少儿课程小课包</div>
+            <div class="swiper-slide" name="course_2" data-courseid="2" data-coursename="少儿课程中课包">少儿课程中课包</div>
+            <div class="swiper-slide" name="course_3" data-courseid="3" data-coursename="少儿课程大课包">少儿课程大课包</div>
+            <div class="swiper-slide" name="course_4" data-courseid="4" data-coursename="少儿课程无限包">少儿课程无限包</div>
         </div>
     </div>
     <div class="swiper-container" id="tabs-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <!-- 没有课程信息显示 -->
+            <div class="swiper-slide" style="display: none;">
                 <div class="content-slide">
                     <h1 style="margin: 50px;">敬请期待...</h1>
-                    <div class="attestion">
-                        <img src="img/bga.jpg">
-                        <div class="form">
-                            <h1>成人课程报名</h1>
-                            <ul>
-                                <li>
-                                    <span>姓&emsp;&emsp;名：</span>
-                                    <input type="text" value="" placeholder="请输入您的姓名">
-                                </li>
-                                <li>
-                                    <span>联系电话：</span>
-                                    <input type="text" value="" placeholder="请输入您的联系电话">
-                                </li>
-                            </ul>
-                            <a href="#">报&emsp;名</a>
-                        </div>
-                    </div>
                 </div>
             </div>
+            <!-- 有课程信息显示 -->
             <div class="swiper-slide">
                 <div class="content-slide">
                     <div class="sell">
                         <div class="sellimg">
-                            <img src="img/coursetu.jpg">
+                            <img src="img/coursetu.jpg" id="courseImage">
                         </div>
-                        <h2>赛法斗-青少年课程</h2>
+                        <h2><label id="courseNameLabel"></label></h2>
                         <ul class="sellbox">
                             <li>
                                 <p><img src="img/yang.jpg" width="16" height="16">
                                     价&emsp;&emsp;格：</p>
-                                <span>9999元</span>
+                                <span><label id="coursePriceLable"></label></span>
                             </li>
                             <li>
                                 <p><img src="img/zhi.jpg" width="15" height="20">
@@ -148,79 +62,19 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="javascript:;" id="bao">我要报名</a>
+                                <input type="hidden" name="courseId">
+                                <input type="hidden" name="courseDistrict">
+                                <a href="javascript:void(0);" id="A_join_course">我要报名</a>
                             </li>
                         </ul>
                     </div>
                     <div class="course">
                         <div class="coursebox" id="courseIntroduceDiv"></div>
                     </div>
-                    <div class="attestion">
-                        <img src="img/bga.jpg">
-                        <div class="form">
-                            <h1>青少年课程报名</h1>
-                            <ul>
-                                <li>
-                                    <span>姓&emsp;&emsp;名：</span>
-                                    <input type="text" value="" placeholder="请输入您的姓名">
-                                </li>
-                                <li>
-                                    <span>联系电话：</span>
-                                    <input type="text" value="" placeholder="请输入您的联系电话">
-                                </li>
-                            </ul>
-                            <a href="#">报&emsp;名</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="content-slide">
-                    <h1 style="margin: 50px;">敬请期待...</h1>
-                    <div class="attestion">
-                        <img src="img/bga.jpg">
-                        <div class="form">
-                            <h1>私教课程报名</h1>
-                            <ul>
-                                <li>
-                                    <span>姓&emsp;&emsp;名：</span>
-                                    <input type="text" value="" placeholder="请输入您的姓名">
-                                </li>
-                                <li>
-                                    <span>联系电话：</span>
-                                    <input type="text" value="" placeholder="请输入您的联系电话">
-                                </li>
-                            </ul>
-                            <a href="#">报&emsp;名</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="content-slide">
-                    <h1 style="margin: 50px;">敬请期待...</h1>
-                    <div class="attestion">
-                        <img src="img/bga.jpg">
-                        <div class="form">
-                            <h1>特色课程报名</h1>
-                            <ul>
-                                <li>
-                                    <span>姓&emsp;&emsp;名：</span>
-                                    <input type="text" value="" placeholder="请输入您的姓名">
-                                </li>
-                                <li>
-                                    <span>联系电话：</span>
-                                    <input type="text" value="" placeholder="请输入您的联系电话">
-                                </li>
-                            </ul>
-                            <a href="#">报&emsp;名</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- footer -->
     <div id="footerPage"></div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>

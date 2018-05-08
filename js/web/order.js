@@ -105,18 +105,17 @@ function submitorder(){
     var proviceInfo = $("#s_province").val();
     var cityInfo = $("#s_city").val();
     var districtInfo = $("#s_county").val();
-    var courseDistrict = proviceInfo + "," + cityInfo;
-    if(districtInfo != ""){
-        courseDistrict += "," + districtInfo;
-    }
+    var courseDistrict = proviceInfo + "," + cityInfo + "," + districtInfo;
 
+    var remarks = $("#remarks").val();
     var params = {
         "childrenName" : name,
         "clientMobile" : mobile,
         "couponNum" : $("#ma").val(),
         "courseId" : canshu['courseId'],
         "payment" : payWay,
-        "courseDistrict" : courseDistrict
+        "courseDistrict" : courseDistrict,
+        "remarks" : remarks
     };
     $.ajax({
         type:"post",
