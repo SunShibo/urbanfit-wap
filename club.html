@@ -6,7 +6,7 @@
     <meta content="telephone=no" name="format-detection">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <title>众力飞特-关于我们</title>
+    <title>众力飞特-俱乐部</title>
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
@@ -19,90 +19,21 @@
 </style>
 <div class="content">
     <!-- nav -->
-    <div class="nav">
-        <a href="index.html"><img src="img/logo.png"></a>
-        <!-- 未登录 -->
-        <div class="login" style="display: none;" id="noLoginDiv">
-            <a class="on" href="login.html">登录</a>
-            <a href="join.html">注册</a>
-        </div>
-        <!-- 登录后显示 -->
-        <div class="login" style="display: none;" id="loginedDiv">
-            <a class="on" href="user.html"><label id="clientName_label"></label></a>
-            <a href="javascript:void(0);" id="A_login_out">退出</a>
-        </div>
-        <div class="menu">
-            <img src="img/menu.png" class="menuimg">
-            <img src="img/close.png" class="close">
-        </div>
-        <div class="menubox">
-            <div class="search">
-                <input type="text" placeholder="Search" class="input">
-                <img src="img/search.jpg">
-            </div>
-            <ul class="menuul">
-                <li>
-                    <a href="index.html">首页</a>
-                </li>
-                <li>
-                    <a href="info.html">活动资讯</a>
-                </li>
-                <li>
-                    <a href="match.html">赛法斗</a>
-                </li>
-                <li>
-                    <a href="javascript:;">课程报名
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="course.html#slider0">少儿课程小课包</a>
-                        <a href="course.html#slider1">少儿课程中课包</a>
-                        <a href="course.html#slider2">少儿课程大课包</a>
-                        <a href="course.html#slider3">少儿课程无限包</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript:;">教练团队
-                        <img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">
-                    </a>
-                    <div class="menuulbox">
-                        <a href="coach.html#slider0">北京团队</a>
-                    </div>
-                </li>
-                <!--<li>&lt;!&ndash; class="on"&ndash;&gt;
-                    <a href="attestion.html">认证查询</a>
-                </li>-->
-                <li>
-                    <a href="club.html">俱乐部</a>
-                </li>
-                <li class="on">
-                    <a href="javascript:;">关于我们
-                        <!--<img src="img/xiala1.jpg" class="xiala1">
-                        <img src="img/xiala.jpg" class="xiala2">-->
-                    </a>
-                    <!--<div class="menuulbox">
-                        <a href="about.html#slider0">公司介绍</a>
-                        <a href="about.html#slider1">门店查询</a>
-                        <a href="about.html#slider2">联系我们</a>
-                        <a href="about.html#slider3">合作伙伴</a>
-                    </div>-->
-                </li>
-            </ul>
-        </div>
+    <div id="mainPage"></div>
+    <div class="navbox">
+        <h1>俱乐部</h1>
     </div>
-    <div id="header">
+    <!--<div id="header">
         <div class="swiper-wrapper" id="navbox">
             <div class="swiper-slide">公司介绍</div>
-            <!--<div class="swiper-slide">俱乐部</div>-->
+            <div class="swiper-slide">俱乐部</div>
             <div class="swiper-slide">联系我们</div>
             <div class="swiper-slide">合作伙伴</div>
         </div>
-    </div>
+    </div>-->
     <div class="swiper-container" id="tabs-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <!--<div class="swiper-slide">
                 <div class="content-slide">
                     <div class="company">
                         <img src="img/company.png">
@@ -112,8 +43,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--<div class="swiper-slide">
+            </div>-->
+            <div class="swiper-slide">
                 <div class="content-slide">
                     <div class="store1">
                         <img src="img/store.png">
@@ -142,8 +73,8 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
-            <div class="swiper-slide">
+            </div>
+            <!--<div class="swiper-slide">
                 <div class="content-slide">
                     <div class="contact">
                         <img src="img/contact.png">
@@ -205,18 +136,37 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div id="footerPage"></div>
 </div>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/swiper-3.4.2.min.js"></script>
-<script src="js/index.js"></script>
 <script src="js/web/config.js"></script>
 <script src="js/common/distpicker.js"></script>
-<script src="js/web/about.js"></script>
+<script src="js/web/club.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/web/main.js"></script>
+<script>
+    //nav下拉效果
+    $(function(){
+        $('.menu .menuimg').click(function(){
+            $('.menubox').slideDown(100);
+            $(this).hide();
+            $('.close').show();
+        })
+        $('.menu .close').click(function(){
+            $('.menubox').slideUp("fast");
+            $(this).hide();
+            $('.menuimg').show();
+        })
+        $('.menuul li').hover(function(){
+            $(this).children('.menuulbox').slideDown(100);
+        },function(){
+            $(this).children('.menuulbox').slideUp("fast");
+        })
+    })
+</script>
 </body>
 </html>
