@@ -237,6 +237,7 @@
 .course .coursebox p{color: #333;font-size: 17px;margin-top: 30px;text-align: left;}
 .course .coursebox i{color: #666;font-size: 17px;display: block;text-indent: 2em;font-style: normal;text-align: left;margin-top: 10px;}
 .course .attestion{margin-top: 30px;}
+.course .coursebox img{width: 100%;}
 .sell{width: 100%;padding-bottom: 10px;}
 .sell{width: 100%;padding-bottom: 10px;}
 .sell .sellimg{width: 100%;}
