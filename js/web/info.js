@@ -105,7 +105,7 @@ function reladPage(){
                         listbox += '</div>';
                         listbox += '<div class="listtext">';
                         listbox += '<h1>'+v.title+'<span>'+v.createTime+'</span></h1>';
-                        listbox += '<p>'+ v.content +'</p>';
+                        listbox += '<p>'+ v.introduce +'</p>';
                         listbox += '</div>';
                         listbox += '</a>';
                         listbox += '</li>';
@@ -114,7 +114,7 @@ function reladPage(){
                         listbox += '<a href="info_detail.html?messageId='+ v.messageId + '">';
                         listbox += '<div class="listtext1">';
                         listbox += '<h1>'+v.title+'<span>'+v.createTime+'</span></h1>';
-                        listbox += '<p>'+v.content+'</p>';
+                        listbox += '<p>'+v.introduce+'</p>';
                         listbox += '</div>';
                         listbox += '</a>';
                         listbox += '</li>';
