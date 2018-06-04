@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>众力飞特-课程介绍</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<style>
+::-webkit-input-placeholder { color:#999; }
+::-moz-placeholder { color:#999; } /* firefox 19+ */
+:-ms-input-placeholder { color:#999; } /* ie */
+input:-moz-placeholder { color:#999; }
+</style>
+<body>
+    <div class="content">
+        <!-- nav -->
+        <div id="mainPage"></div>
+        
+        <div class="navbox">
+            <h1>课程介绍</h1>
+        </div>
+        <div class="cbanner">
+            <h1>课程介绍</h1>
+            <img src="img/cbanner.jpg">
+        </div>
+        <div class="cfilter">
+            <div class="ccourse">
+                <span>课程类型：</span>
+                <ul>
+                    <li>
+                        <a href="javascript:;">全部</a>
+                    </li>
+                    <li class="on">
+                        <a href="javascript:;">成人课程</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">青少年课程</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">私教课程</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">特色课程</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="caddr">
+                <span>所属地区：</span>
+                <div class="cselect">
+                    <select id="s_province" name="s_province"></select>&nbsp;&nbsp;
+                    <select id="s_city" name="s_city" ></select>&nbsp;&nbsp;
+                    <select id="s_county" name="s_county"></select>
+                </div>
+            </div>
+        </div>
+        <div class="clist">
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="clistcourse">
+                            <img src="img/tu5.jpg" width="150" height="95">
+                            <ul>
+                                <li>
+                                    <h1>赛法斗-少儿课程10次包</h1>
+                                </li>
+                                <li>
+                                    <p>少儿课程</p>
+                                </li>
+                                <li>
+                                    <p>浩沙健身（金隅店）</p>
+                                </li>
+                                <li>
+                                    <p>山东  济南  历下区<span>9999元</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="clistcourse">
+                            <img src="img/tu5.jpg" width="150" height="95">
+                            <ul>
+                                <li>
+                                    <h1>赛法斗-少儿课程10次包</h1>
+                                </li>
+                                <li>
+                                    <p>少儿课程</p>
+                                </li>
+                                <li>
+                                    <p>浩沙健身（金隅店）</p>
+                                </li>
+                                <li>
+                                    <p>山东  济南  历下区<span>9999元</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="clistcourse">
+                            <img src="img/tu5.jpg" width="150" height="95">
+                            <ul>
+                                <li>
+                                    <h1>赛法斗-少儿课程10次包</h1>
+                                </li>
+                                <li>
+                                    <p>少儿课程</p>
+                                </li>
+                                <li>
+                                    <p>浩沙健身（金隅店）</p>
+                                </li>
+                                <li>
+                                    <p>山东  济南  历下区<span>9999元</span></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="page">
+                <ul>
+                    <li>
+                        <a href="#"><img src="img/jiao.png">&nbsp;上一页</a>
+                    </li>
+                    <li>
+                        <span>1-30</span>
+                    </li>
+                    <li>
+                        <a href="#">下一页&nbsp;<img src="img/jiao1.png"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div id="footerPage"></div>
+    </div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/index.js"></script>
+<script src="js/web/config.js"></script>
+<script src="js/web/course_list.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+    $(function(){
+        $('.ccourse ul li').click(function(){
+            $('.ccourse ul li').removeClass('on');
+            $(this).addClass('on');
+        })
+    })
+</script>
+</body>
+</html>

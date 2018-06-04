@@ -232,6 +232,232 @@
 
 
 /**************** 课程介绍 **********************/
+/**************** 课程介绍 **********************/
+.cbanner{
+    width: 100%;
+    position: relative;
+}
+.cbanner > img{
+    width: 100%;
+}
+.cbanner > h1{
+    color: #fff;font-size: 20px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    top: 50%;
+    margin-top: -25px;
+}
+.cfilter{
+    margin: 20px 10px;
+}
+.cfilter .ccourse{
+    width: 100%;
+    box-sizing:border-box;
+    border:1px solid #e5e5e5;
+    background: #fafafa;
+}
+.cfilter .ccourse span{
+    display: block;
+    width: 100%;background: #e4e4e4;
+    height: 38px;
+    line-height: 38px;
+    color: #222;
+    font-size: 14px;
+    text-indent: 12px;
+}
+.cfilter .ccourse ul{
+    display: flex;
+}
+.cfilter .ccourse ul li{
+    height: 38px;
+}
+.cfilter .ccourse ul li a{
+    display: block;padding: 0 10px;
+    color: #222;line-height: 38px;
+    font-size: 14px;
+    width: 100%;
+}
+.cfilter .ccourse ul li.on a{
+    color: #f4bf00;
+}
+.cfilter .caddr{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.cfilter .caddr span{
+    width: 100px;
+    line-height: 42px;
+    text-align: center;
+    color: #222;
+    font-size: 14px;
+}
+.cfilter .caddr .cselect{
+    display: flex;
+}
+.cfilter .caddr .cselect select{
+    height: 42px;margin: 0 20px;
+    border:none;
+    outline: none;
+}
+.clist{
+    margin: 0 10px;
+}
+.clist > ul > li{
+    border-bottom: 1px solid #f4f4f4;
+    padding: 20px 0;
+}
+.clist > ul > li a{
+    display: block;
+}
+.clist > ul > li .clistcourse{
+    display: flex;
+}
+.clist > ul > li .clistcourse ul{
+    width: 100%;
+}
+.clist > ul > li .clistcourse ul li{
+    margin-left: 10px;
+    margin-bottom: 6px;
+}
+.clist > ul > li .clistcourse ul li h1{
+    color: #222;font-size: 14px;
+    font-weight: 500;
+}
+.clist > ul > li .clistcourse ul li p{
+    color: #666;font-size: 13px;
+}
+.clist > ul > li .clistcourse ul li p span{
+    color: #fe8005;font-size: 15px;
+    float: right;
+}
+.page ul{
+    margin:25px 15px;display: flex;
+    justify-content: space-between;
+}
+.page ul li{
+    width: 30%;
+}
+.page ul li a{
+    display: flex;background: #171f23;
+    height:44px;border-radius: 4px;
+    color: #fff;font-size: 18px;
+    justify-content: center;align-items: center;
+}
+.page ul li a img{
+    width: 12px;
+}
+.page ul li span{
+    height: 33px;border: 1px solid #000;
+    border-radius: 4px;display: block;
+    width:70%;margin: 5px auto;
+    text-align:center;line-height: 33px;
+    color: #010101;font-size: 16px;
+}
+
+/**************** 课程详情页 **********************/
+.cdetailbox{
+    width: 100%;
+}
+.cdetailbox > img{
+    width: 100%;
+}
+.cdetailbox1{
+    width: 100%;
+}
+.cdetailbox1 h1{
+    color: #222;font-size: 20px;
+    text-align: center;
+    padding-top: 25px;
+}
+.cdetailbox1 > a{
+    display: block;
+    width: 80%;
+    height: 43px;
+    background: #f3be12;
+    line-height: 43px;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;border-radius: 4px;
+    margin: 30px auto 50px;
+}
+.cdetailbox1 ul{
+    margin: 0 10px;
+}
+.cdetailbox1 ul li{
+    padding: 8px 0;
+    border-bottom: 1px solid #f4f4f4;
+    display: flex;
+    position: relative;
+    line-height: 40px;
+}
+.cdetailbox1 ul li img{
+    position: absolute;
+    top: 19px;
+}
+.cdetailbox1 ul li p{
+    color: #222;font-size: 17px;
+    margin-left: 23px;
+    width: 100%;
+}
+.cdetailbox1 ul li p span{
+    color: #fe8005;font-size: 20px;
+    margin-left: 20px;
+}
+.cdetailbox1 ul li p i{
+    color: #333;font-size: 17px;
+    font-style: normal;
+    margin-left: 20px;
+}
+.cdetailbox1 ul li p select{
+    box-sizing:border-box;
+    border: 1px solid #ebebeb;
+    height: 40px;
+    padding: 0 10px;
+    color: #333;font-size: 17px;
+    margin-left: 20px;
+}
+.cdetailbox1 ul li p em{
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-style: normal;
+}
+.cdetailbox1 ul li p em a{
+    width: 45%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 3px;
+    border:1px solid #222;
+    font-size: 16px;
+    color: #222;
+    margin-top: 15px;
+}
+.cdetailbox1 ul li p em a.on{
+    color: #fe8005;
+    border:1px solid #fe8005;
+}
+.cdetailbox1 ul li:last-child{
+    border-bottom:none;
+}
+.cdetailbox1 ul li:last-child p{
+    display: flex;
+}
+.cdetaillist{
+    width: 100%;
+}
+.cdetaillist > img{
+    width: 100%;
+}
+
+
+
+
 .course{padding: 0 15px;padding-bottom: 30px;}
 .course .coursebox h1{color: #000;font-size: 24px;margin-top: 30px;text-align: left;}
 .course .coursebox p{color: #333;font-size: 17px;margin-top: 30px;text-align: left;}
