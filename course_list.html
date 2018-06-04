@@ -31,20 +31,21 @@ input:-moz-placeholder { color:#999; }
         <div class="cfilter">
             <div class="ccourse">
                 <span>课程类型：</span>
+                <input type="hidden" value="" name="courseType" />
                 <ul>
-                    <li>
+                    <li class="on" data="">
                         <a href="javascript:;">全部</a>
                     </li>
-                    <li class="on">
+                    <li data="1">
                         <a href="javascript:;">成人课程</a>
                     </li>
-                    <li>
+                    <li data="2">
                         <a href="javascript:;">青少年课程</a>
                     </li>
-                    <li>
+                    <li data="3">
                         <a href="javascript:;">私教课程</a>
                     </li>
-                    <li>
+                    <li data="4">
                         <a href="javascript:;">特色课程</a>
                     </li>
                 </ul>
@@ -59,7 +60,7 @@ input:-moz-placeholder { color:#999; }
             </div>
         </div>
         <div class="clist">
-            <ul>
+            <ul id="clistbox">
                 <li>
                     <a href="#">
                         <div class="clistcourse">
@@ -127,13 +128,13 @@ input:-moz-placeholder { color:#999; }
             <div class="page">
                 <ul>
                     <li>
-                        <a href="#"><img src="img/jiao.png">&nbsp;上一页</a>
+                        <a href="javascript:void(0);"><img src="img/jiao.png">&nbsp;上一页</a>
                     </li>
-                    <li>
+                    <li id="page">
                         <span>1-30</span>
                     </li>
                     <li>
-                        <a href="#">下一页&nbsp;<img src="img/jiao1.png"></a>
+                        <a href="javascript:void(0);">下一页&nbsp;<img src="img/jiao1.png"></a>
                     </li>
                 </ul>
             </div>
@@ -147,13 +148,5 @@ input:-moz-placeholder { color:#999; }
 <script src="js/web/config.js"></script>
 <script src="js/web/course_list.js"></script>
 <script src="js/jquery.cookie.js"></script>
-<script>
-    $(function(){
-        $('.ccourse ul li').click(function(){
-            $('.ccourse ul li').removeClass('on');
-            $(this).addClass('on');
-        })
-    })
-</script>
 </body>
 </html>
