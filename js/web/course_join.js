@@ -17,8 +17,6 @@ $(function() {
     courseId = getParamValue("courseId");
     storeId = getParamValue("storeId");
     detailId = getParamValue("detailId");
-
-    alert(courseId + "_" + storeId + "_" + detailId);
     initCourseDetail();
 
     $('.input').focus(function () {
