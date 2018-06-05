@@ -5,13 +5,13 @@ $(function () {
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
 
-    setTimeout(aa,200);
+    setTimeout(aa, 200);
     function aa() {
         //navbox 是你导航的className,active是你当前状态的className
         var $tabList = $('#navbox .swiper-slide'),
             lens = $tabList.length;
         /*获取选项卡长度*/
-        var index = 1;
+        var index = 0;
         /*设置初始索引为0  即 没有哈希值的时候显示第一个选项卡内容*/
         var hash = window.location.hash;
         /* *

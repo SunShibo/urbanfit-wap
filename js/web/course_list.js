@@ -1,44 +1,24 @@
-
 $(function () {
     //加载头部底部
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
 
-
     $('.ccourse ul li').click(function(){
         $('.ccourse ul li').removeClass('on');
         $(this).addClass('on');
-
-        var courseType = $(this).attr('data');
-        //alert(courseType);
+        var courseType = $(this).data("coursetype");
         $("input[name=courseType]").val(courseType);
-
         reladPage();
     })
 
-    // 初始化门店信息
-    queryStoreList();
-    $("#proviceId").change(queryStoreList);
-    $("#cityId").change(queryStoreList);
-    $("#districtId").change(queryStoreList);
+    $("#proviceId").change(reladPage);
+    $("#cityId").change(reladPage);
+    $("#districtId").change(reladPage);
 });
 
+var pageNo = 1;
+var pageSize = 3;
 
-function queryStoreList(){
-    var provice = $("#proviceId").val();
-    var city = $("#cityId").val();
-    var district = $("#districtId").val();
-    reladPage();
-}
-
-
-var pageNo=1;
-var pageSize=3;
-
-var parameter = {
-    'pageNo':pageNo,
-    'pageSize':pageSize
-}
 $(document).ready(function(){
     $('.previous').click(function(){
         if(pageNo == 1){
@@ -58,11 +38,18 @@ $(document).ready(function(){
     })
 });
 function reladPage(){
-
-    var courseType = $("input[name=courseType]").val();
-
-    parameter.courseType = courseType;
-
+    var courseType = $("input[name='courseType']").val();
+    var provice = $("#proviceId").val();
+    var city = $("#cityId").val();
+    var district = $("#districtId").val();
+    var parameter = {
+        "pageNo":pageNo,
+        "pageSize":pageSize,
+        "courseType" : courseType,
+        "provice" : provice,
+        "city" : city,
+        "district" : district
+    }
     $.ajax({
         type: "post",
         url: baseUrl + "apiCourse/list",
@@ -72,6 +59,7 @@ function reladPage(){
             var listbox = '';
             var Page = '';
             if (res.code == 1) {
+                var baseUrl = res.data.baseUrl;
                 var lstCourse = res.data.lstCourse;
                 var totalRecord = res.data.totalRecord;
                 total = Math.ceil(totalRecord/pageSize);
@@ -85,7 +73,7 @@ function reladPage(){
                     listbox += "<li>";
                     listbox += '<a href="course_detail.html?courseId='+ v.courseId + '">';
                     listbox += '<div class="clistcourse">';
-                    listbox += '<img src="'+v.courseImageUrl+'" width="150" height="95">';
+                    listbox += '<img src="'+baseUrl + v.courseImageUrl+'" width="150" height="95">';
                     listbox += '<ul>';
                     listbox += '<li>';
                     listbox += '<h1>'+v.courseName+'</h1>';

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>填写订单</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<style>
+    ::-webkit-input-placeholder { color:#bfbfbf; }
+    ::-moz-placeholder { color:#bfbfbf; } /* firefox 19+ */
+    :-ms-input-placeholder { color:#bfbfbf; } /* ie */
+    input:-moz-placeholder { color:#bfbfbf; }
+</style>
+<body>
+    <div class="content">
+        <div id="mainPage"></div>
+        <div class="navbox">
+            <h1>填写订单信息</h1>
+        </div>
+        <div class="order">
+            <h1><img src="img/ling.png">学生信息：</h1>
+            <div class="order1">
+                <div class="orderinput">
+                    <span>学生姓名<i>*</i></span>
+                    <input type="text" value="" placeholder="请输入您的姓名" class="input" id="name">
+                </div>
+                <div class="orderinput">
+                    <span>手机号码<i>*</i></span>
+                    <input type="text" value="" placeholder="请输入您的手机号" class="input" id="phone">
+                </div>
+            </div>
+            <div class="order">
+                <h1><img src="img/ling.png">课程信息：</h1>
+                <div class="order1">
+                    <div class="orderinput">
+                        <span>课程名称&nbsp;&nbsp;&nbsp;</span>
+                        <input type="text" class="input" id="courseName" readonly="readonly">
+                    </div>
+                    <div class="orderinput">
+                        <span>课程价格</span>
+                        <input type="text" class="input" id="coursePrice" readonly="readonly">
+                    </div>
+                </div>
+                <div class="order1">
+                    <div class="orderinput">
+                        <span>俱乐部名称</span>
+                        <input type="text" class="input" readonly="readonly" id="storeName"/>
+                    </div>
+                </div>
+                <div class="order1">
+                    <div class="orderinput">
+                        <span>俱乐部地址</span>
+                        <input type="text" class="input" readonly="readonly" id="storeAddress"/>
+                    </div>
+                </div>
+                <div class="order1">
+                    <div class="orderinput">
+                        <span>课程规格&nbsp;&nbsp;&nbsp;</span>
+                        <input type="text" class="input" id="courseSize" readonly="readonly">
+                    </div>
+                </div>
+            </div>
+            <h1><img src="img/ling.png">支付信息：</h1>
+            <div class="order1">
+                <div class="order2">
+                    <div class="radio seleted" seleted-value="alipay">
+                        <span><img src="img/zhifubao.jpg"></span>
+                        <img src="img/radio1.png" class="radioimg">
+                    </div>
+                    <div class="radio" seleted-value="wechatpay">
+                        <span><img src="img/weixin.jpg"></span>
+                        <img src="img/radio.png" class="radioimg">
+                    </div>
+                </div>
+            </div>
+            <h1><img src="img/ling.png">优惠码：</h1>
+            <div class="order1">
+                <div class="orderinput orderinput1">
+                    <span>优 惠 码</span>
+                    <input type="text" name="couponNum" placeholder="请输入您的优惠码" class="input" id="ma">
+                    <a href="javascript:void(0);" id="change">立即兑换</a>
+                    <em id="changebtn">修改</em>
+                    <p id="couponName">优惠码优惠信息显示（全场5折）</p>
+                </div>
+            </div>
+            <div class="order1" style="display: none;" id="couponDiv">
+                <h1><img src="img/ling.png">课程价格：</h1>
+                <ul>
+                    <li>课程价格<span id="price">￥<label id="coursePriceLabel"></label></span></li>
+                    <li>优&emsp;&emsp;惠<span>-￥<label id="couponprice"></label></span></li>
+                    <li>应付总额<span class="on">￥<label id="payPrice"></label></span></li>
+                    <input type="hidden" name="coursePrice">
+                </ul>
+            </div>
+            <h1><img src="img/ling.png">备注信息：</h1>
+            <div class="order1">
+                <div class="orderinput">
+                    <span>备注</span>
+                    <input type="text" class="input" id="remarks">
+                </div>
+            </div>
+            <div class="submit">
+                <input type="hidden" name="courseId" value="" id="courseId">
+                <a href="javascript:void(0);" id="submitorder">提交订单</a>
+            </div>
+        </div>
+        <div id="footerPage"></div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/web/main.js"></script>
+    <script src="js/web/config.js"></script>
+    <script src="js/web/course_join.js"></script>
+    <script src="js/web/cityselect.js"></script>
+</body>
+</html>

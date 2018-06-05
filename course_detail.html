@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>众力飞特-课程详情页</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+    <style>
+        ::-webkit-input-placeholder { color:#999; }
+        ::-moz-placeholder { color:#999; }
+        :-ms-input-placeholder { color:#999; }
+        input:-moz-placeholder { color:#999; }
+    </style>
+<body>
+    <div class="content">
+        <div id="mainPage"></div>
+        <div class="navbox">
+            <h1 id="courseNameH1"></h1>
+        </div>
+            <div class="cdetailbox">
+                <img src="img/coursetu.jpg">
+                <div class="cdetailbox1">
+                    <h1>赛法斗-<label id="courseName"></label></h1>
+                    <ul>
+                        <li>
+                            <img src="img/yang.jpg" width="16" height="16" style="top:21px;">
+                            <p>价&emsp;&emsp;格：<span><label id="coursePrice"></label>元</span></p>
+                        </li>
+                        <li>
+                            <img src="img/lei.jpg" width="17" height="17">
+                            <p>课程类型：<i><label id="courseType"></label></i></p>
+                        </li>
+                        <li>
+                            <img src="img/zhi.jpg" width="15" height="20">
+                            <p>所属地区：<i><label id="storeDistrict"></label></i></p>
+                        </li>
+                        <li>
+                            <img src="img/ju.jpg" width="16" height="16">
+                            <p>俱&nbsp;乐&nbsp;部&nbsp;：<select id="courseStore"></select></p>
+                            <input type="hidden" name="storeId">
+                        </li>
+                        <li>
+                            <ul id="courseSizeDetail"></ul>
+                            <input type="hidden" name="courseSizePrice">
+                            <input type="hidden" name="sizeTypeIndex">
+                            <input type="hidden" name="detailId">
+                            <input type="hidden" name="courseId">
+                        </li>
+                    </ul>
+                    <li>
+                        <a href="javascript:void(0);" id="B_join_course">我要报名</a>
+                    </li>
+                </div>
+            </div>
+            <div class="cdetaillist" id="courseDetailDiv"></div>
+        <div id="footerPage"></div>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/web/config.js"></script>
+    <script src="js/web/course_detail.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/web/main.js"></script>
+</body>
+</html>
