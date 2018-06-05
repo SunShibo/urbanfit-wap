@@ -58,8 +58,7 @@ $.ajax({
 var pageNo = 1;
 $(document).ready(function(){
     $('.previous').click(function(){
-        if(pageNo == total){
-            $(this).next('i').show();
+        if(pageNo == 1){
             alert('这已经是第一页了');
         }else{
             pageNo -= 1;
@@ -68,7 +67,6 @@ $(document).ready(function(){
     })
     $('.next').click(function(){
         if(pageNo == total){
-            $(this).next('i').show();
             alert('这已经是最后一页了');
         }else{
             pageNo += 1;

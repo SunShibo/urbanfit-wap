@@ -53,10 +53,13 @@ input:-moz-placeholder { color:#999; }
             <div class="caddr">
                 <span>所属地区：</span>
                 <div class="cselect">
-                    <select id="s_province" name="s_province"></select>&nbsp;&nbsp;
-                    <select id="s_city" name="s_city" ></select>&nbsp;&nbsp;
-                    <select id="s_county" name="s_county"></select>
+                    <div id="city_info" data-toggle="distpicker">
+                        <select class="prov" id="proviceId" name="provice"></select>&nbsp;&nbsp;
+                        <select class="city" id="cityId" name="city"></select>&nbsp;&nbsp;
+                        <select class="dist" id="districtId" name="district"></select>
+                    </div>
                 </div>
+                <input type="hidden" name="courseDistrict">
             </div>
         </div>
         <div class="clist">
@@ -128,13 +131,13 @@ input:-moz-placeholder { color:#999; }
             <div class="page">
                 <ul>
                     <li>
-                        <a href="javascript:void(0);"><img src="img/jiao.png">&nbsp;上一页</a>
+                        <a href="javascript:;" class="previous"><img src="img/jiao.png">&nbsp;上一页</a>
                     </li>
                     <li id="page">
                         <span>1-30</span>
                     </li>
                     <li>
-                        <a href="javascript:void(0);">下一页&nbsp;<img src="img/jiao1.png"></a>
+                        <a href="javascript:;" class="next">下一页&nbsp;<img src="img/jiao1.png"></a>
                     </li>
                 </ul>
             </div>
@@ -147,6 +150,7 @@ input:-moz-placeholder { color:#999; }
 <script src="js/index.js"></script>
 <script src="js/web/config.js"></script>
 <script src="js/web/course_list.js"></script>
+<script src="js/common/distpicker.js"></script>
 <script src="js/jquery.cookie.js"></script>
 </body>
 </html>
