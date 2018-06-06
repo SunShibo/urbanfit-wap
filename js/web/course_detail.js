@@ -44,7 +44,7 @@ function initCourseSizeDetail(data){
     var courseSizeArr = [];
     $.each(lstSizeType, function(i, n){
         courseSizeArr.push('<li><img src="img/gui.jpg" width="15" height="16">');
-        courseSizeArr.push('<p>' + n.sizeName + '：<em>');
+        courseSizeArr.push('<p><label class="biaoqian">' + n.sizeName + '：</label><em>');
         $.each(lstCourseSize, function (j, s){
             if(s.parentId == n.sizeId){
                 courseSizeArr.push('<a data-parentid="' + s.parentId + '" data-sizeid="' + s.sizeId

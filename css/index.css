@@ -379,7 +379,7 @@
     text-align: center;
     padding-top: 25px;
 }
-.cdetailbox1 > a{
+#B_join_course{
     display: block;
     width: 80%;
     height: 43px;
@@ -388,10 +388,13 @@
     text-align: center;
     font-size: 17px;
     color: #fff;border-radius: 4px;
-    margin: 30px auto 50px;
+    margin: 30px auto 20px;
 }
-.cdetailbox1 ul{
+.cdetailbox1 > ul{
     margin: 0 10px;
+}
+#courseSizeDetail{
+    width:100%;
 }
 .cdetailbox1 ul li{
     padding: 8px 0;
@@ -408,6 +411,10 @@
     color: #222;font-size: 17px;
     margin-left: 23px;
     width: 100%;
+    display: flex;
+}
+.cdetailbox1 ul li p .biaoqian{
+    width:85px;
 }
 .cdetailbox1 ul li p span{
     color: #fe8005;font-size: 20px;
@@ -425,6 +432,7 @@
     padding: 0 10px;
     color: #333;font-size: 17px;
     margin-left: 20px;
+    outline: none;
 }
 .cdetailbox1 ul li p em{
     margin-left: 20px;
@@ -432,6 +440,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     font-style: normal;
+    width:70%;
 }
 .cdetailbox1 ul li p em a{
     width: 45%;
@@ -455,7 +464,9 @@
     display: flex;
 }
 .cdetaillist{
-    width: 100%;
+    padding:15px;
+    color: #000;
+    font-size: 15px;
 }
 .cdetaillist > img{
     width: 100%;
@@ -986,6 +997,7 @@
     .user2 .usermy li .input{width: 75%;}
     .user2 .usermy li .yzm{width: 25%;}
     .user2 .usermy li p{padding-left: 25%;}
+    .cdetailbox1 ul li p select{width:70%;}
 }
 @media screen and (max-width: 320px) {
     .attestion .form ul li span{width: 46%;font-size: 14px;}
@@ -996,6 +1008,9 @@
     .order .order1 .orderinput .select{width: 75%;}
     .order .order1 .orderinput > p{padding-left: 25%;}
     .user2 .usermy li .yzm{font-size: 13px;}
+    .cdetailbox1 ul li p em{width:65%;}
+    .cdetailbox1 ul li p .biaoqian{width:89px;}
+    .cdetailbox1 ul li p select{width:65%;}
 }
 
 
