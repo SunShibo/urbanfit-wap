@@ -1,5 +1,15 @@
 /**************** 首页 **********************/
 .swiper-container { width: 100%;}
+.swiper-wrapper > div{
+    text-align: center;font-size: 18px;background: #fff;display: flex;justify-content: center;
+    align-items: center;
+}
+.swiper-wrapper > div a{
+    width: 100%;display: block;
+}
+.swiper-wrapper > div a img{
+    width: 100%;
+}
 .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: flex;justify-content: center;
     align-items: center;}
 .swiper-slide a{width: 100%;display: block;}
