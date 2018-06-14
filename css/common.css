@@ -62,9 +62,10 @@ text-indent: 15px;color: #fff;font-size: 17px;}
 .footer .footerma div img{width: 100%;}
 .footer .footerma div p{color: #feecad;font-size: 1.3rem;margin-top: 10px;}
 
-@media (max-width:320px) {
+@media (max-width:360px) {
 	.login{width: 45%;}
 }
+
 
 
 

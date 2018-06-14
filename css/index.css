@@ -77,9 +77,12 @@
 .infolist > ul li .listtext p{color: #101215; font-size: 14px;overflow : hidden;
     text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
 .infolist > ul li .listtext1{padding: 15px;background: #eaebeb; width: 100%;
-    box-sizing: border-box;max-height: 102px; overflow: hidden;}
-.infolist > ul li .listtext1 h1{color: #101215; font-size: 16px;font-weight: 500;overflow : hidden;
-    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+    box-sizing: border-box;min-height: 100px; overflow: hidden;}
+.infolist > ul li .listtext1 h1{color: #101215; font-size: 16px;font-weight: 500;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
 .infolist > ul li .listtext1 h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
 .infolist > ul li .listtext1 p{color: #101215; font-size: 14px;overflow : hidden;
     text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}}
@@ -109,7 +112,7 @@
 .infodetail .infotext p{color: #333;font-size: 17px;display: flex;margin-top: 10px;}
 /*.infodetail .infotext p span{width: 50%;text-align: center;}*/
 .infodetail .infotext > img{width: 100%;margin: 10px 0;}
-
+.infodetail .infotext p > img{width: 100%;margin: 10px 0;}
 
 /**************** 赛法斗 **********************/
 .matchbox{width: 100%;padding-top:45px; position: relative;}
