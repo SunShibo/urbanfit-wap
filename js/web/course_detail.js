@@ -42,14 +42,22 @@ function initCourseSizeDetail(data){
         }
     });
     var courseSizeArr = [];
+    var chooseSizeIdArr = [];
     $.each(lstSizeType, function(i, n){
         courseSizeArr.push('<li><img src="img/gui.jpg" width="15" height="16">');
         courseSizeArr.push('<p><label class="biaoqian">' + n.sizeName + '：</label><em>');
         $.each(lstCourseSize, function (j, s){
             if(s.parentId == n.sizeId){
-                courseSizeArr.push('<a data-parentid="' + s.parentId + '" data-sizeid="' + s.sizeId
-                    + '" id="A_choose_size_' + s.parentId + '_' + n.sizeId + '" href="javascript:void(0);">'
-                    + s.sizeName + '</a>');
+                if(j == 1){
+                    chooseSizeIdArr.push(s.sizeId);
+                    courseSizeArr.push('<a class="on" data-parentid="' + s.parentId + '" data-sizeid="' + s.sizeId
+                        + '" id="A_choose_size_' + s.parentId + '_' + n.sizeId + '" href="javascript:void(0);">'
+                        + s.sizeName + '</a>');
+                }else{
+                    courseSizeArr.push('<a data-parentid="' + s.parentId + '" data-sizeid="' + s.sizeId
+                        + '" id="A_choose_size_' + s.parentId + '_' + n.sizeId + '" href="javascript:void(0);">'
+                        + s.sizeName + '</a>');
+                }
             }
         });
         courseSizeArr.push('</em></p>');
@@ -59,6 +67,15 @@ function initCourseSizeDetail(data){
     $("input[name='courseSizePrice']").val(JSON.stringify(data.data.lstSizeDetail));
     $("input[name='sizeTypeIndex']").val(lstSizeType.length);
     $("a[id^='A_choose_size_']").click(chooseCourseSize);
+
+    // 计算选择课程价格
+    var courseSizePrice = $("input[name='courseSizePrice']").val();
+    $.each(JSON.parse(courseSizePrice), function(i, n){
+        if(n.sizeDetail == chooseSizeIdArr.join(",")){
+            $("#coursePrice").text(n.sizePrice);
+            $("input[name='detailId']").val(n.detailId);
+        }
+    });
 }
 
 function chooseCourseSize(){
