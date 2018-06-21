@@ -111,7 +111,7 @@
 .infodetail .infotext{padding:32px 0; }
 .infodetail .infotext p{color: #333;font-size: 17px;margin-top: 10px;}
 /*.infodetail .infotext p span{width: 50%;text-align: center;}*/
-.infodetail .infotext > img{width: 100%;margin: 10px 0;}
+.infodetail .infotext img{width: 100%;margin: 10px 0;}
 .infodetail .infotext p > img{width: 100%;margin: 10px 0;}
 
 /**************** 赛法斗 **********************/
