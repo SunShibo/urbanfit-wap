@@ -109,7 +109,7 @@
 .infodetail > p{color: #888;font-size: 15px;margin-top: 15px;}
 .infodetail > p span{color: #576b95;padding-left: 20px;}
 .infodetail .infotext{padding:32px 0; }
-.infodetail .infotext p{color: #333;font-size: 17px;display: flex;margin-top: 10px;}
+.infodetail .infotext p{color: #333;font-size: 17px;margin-top: 10px;}
 /*.infodetail .infotext p span{width: 50%;text-align: center;}*/
 .infodetail .infotext > img{width: 100%;margin: 10px 0;}
 .infodetail .infotext p > img{width: 100%;margin: 10px 0;}
