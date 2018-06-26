@@ -47,9 +47,18 @@
 .store > img{width: 145px;margin-top: 25px;margin-left: 60px;}
 .store .map{width: 100%;margin-top: -20px;}
 .store .map img{width: 100%;}
-.store .storeattr{margin-left: 20px;margin-bottom: 30px;margin-top: -30px;}
+.store .storeattr{margin-left: 20px;margin-bottom: 30px;margin-top: 15px;}
 .store .storeattr img{width: 110px;}
 .store .storeattr p{color: #101215;font-size: 12px;line-height: 20px;margin-top: 10px;}
+.store .storeattr a{display: block;
+    width: 80px;
+    height: 28px;
+    border-radius: 28px;
+    background: #fcd124;
+    text-align: center;
+    line-height: 28px;
+    font-size: 14px;
+    color: #020202;margin-top: 10px;}
 .train{width: 100%;position: relative;}
 .train > img{width: 100%;}
 .train .trainbox{margin: 0 14px;position: absolute;top: 0;}
