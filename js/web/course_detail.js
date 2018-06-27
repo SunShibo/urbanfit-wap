@@ -83,10 +83,9 @@ function chooseCourseSize(){
     var parentId = $(this).data("parentid");
     $("a[id^='A_choose_size_" + parentId + "']").removeClass("on");
     $(this).addClass("on");
-
     var chooseSizeAmount = 0;
     var chooseSizeIdArr = [];
-    $("a[id^='A_choose_size_").each(function (i, n){
+    $("a[id^='A_choose_size_']").each(function (i, n){
         if($(this).hasClass("on")){
             chooseSizeAmount += 1;
             chooseSizeIdArr.push($(this).data("sizeid"));

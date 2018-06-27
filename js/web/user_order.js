@@ -1,4 +1,12 @@
 $(function(){
+    if(isWeixinBrowser()){     // 如果是在微信浏览器内部打开，不支持支付宝支付
+        $("#alipayDiv").hide();
+        $("#alipayDiv").removeClass("seleted");
+        $("#wechatDiv").addClass("seleted");
+        $("#alipayDivImg").attr("src", "img/radio.png");
+        $("#wechatDivImg").attr("src", "img/radio1.png");
+    }
+
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
     queryOrderMasterList();
@@ -47,10 +55,11 @@ function queryOrderMasterList(){
         alert("请您先登录账号");
         return ;
     }
+    var wechatType = isWeixinBrowser() ? 2 : 1;
     $.ajax({
         url : baseUrl + "wapOrder/list",
         type : "post",
-        data : {"clientId" : clientId, "pageNo" : pageNo, "pageSize" : 10},
+        data : {"clientId" : clientId, "pageNo" : pageNo, "pageSize" : 10, "wechatType" : wechatType},
         dataType : "json",
         success : function(result){
             var lstOrder = result.data.lstOrder
@@ -139,6 +148,9 @@ function queryOrderMasterDetail(orderNum){
                 $("#courseNameLabel").text(result.data.courseName);
                 $("#coursePriceLabel").text(result.data.price);
                 $("#createTimeLabel").text(result.data.createTime);
+                $("#storeNameLabel").text(result.data.storeName);
+                $("#storeAddressLabel").text(result.data.storeAddress);
+                $("#courseSizeLabel").text(result.data.courseSize);
                 if(result.data.isUseCoupon == 1){
                     $("li[name^='couponInfo']").show();
                     $("#couponPriceLabel").text(result.data.couponPrice);
@@ -167,7 +179,6 @@ function choosePayment(orderNum){
 }
 
 function payOrderMasterAgain(){
-
     $('.tan').css({'display':'none'});
     $('.tanbox').hide();
     $('.tanbox1').hide();
@@ -191,80 +202,37 @@ function payOrderMasterAgain(){
         "orderNum" : orderNum
     };
 
-    $.ajax({
-        url : baseUrl + "wapOrder/payOrderAgain",
-        type : "post",
-        data : {"params" : JSON.stringify(params)},
-        dataType : "json",
-        success : function (result){
-            if(result.code == 1){
-                if(payWay == 0){   // 支付宝支付
-                    $('body').append(result.data);
-                    $("form").attr("target", "_blank");
-                }else if(payWay == 1){
-                    window.location.href = result.data.wechatPayUrl;
+    if(isWeixinBrowser()){   // 微信内部浏览器支付信息
+        var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
+            + JSON.stringify(params) + "&type=payAgain");
+
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
+            "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
+    }else {       // 微信外部浏览器支付信息
+        $.ajax({
+            url: baseUrl + "wapOrder/payOrderAgain",
+            type: "post",
+            data: {"params": JSON.stringify(params)},
+            dataType: "json",
+            success: function (result) {
+                if (result.code == 1) {
+                    if (payWay == 0) {   // 支付宝支付
+                        $('body').append(result.data);
+                        $("form").attr("target", "_blank");
+                    } else if (payWay == 1) {
+                        window.location.href = result.data.wechatPayUrl;
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 }
 
-/*var url = baseUrl + "wapOrder/wechatPayAgain";*/
-//var url = "http://wap.test.urbanfit.cn";
-//alert(encodeURI(url));
-/*var appid = "wxfceafb8ea3eae188";
- var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
- + "&redirect_uri=" + encodeURI(url) + "&response_type=code&scope=snsapi_base&state="
- + orderNum + "#wechat_redirect";
- window.location.href = encodeURI(weixinUrl);*/
-
-/*var url = "http://wap.test.urbanfit.cn/order-pay.html";
- var appid = "wxfceafb8ea3eae188";
- var weixinUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid
- + "&redirect_uri=" + url + "&response_type=code&scope=snsapi_base&state="
- + orderNum + "#wechat_redirect";
- window.location.href = weixinUrl;
- return ;*/
-
-/*
-function payWechatCommonAgain(content, func, json, data){
-    var appId ;
-    var timestamp ;
-    var nonceStr ;
-    var signatureStr ;
-    var url = baseUrl + "order/getSignature";
-    $.ajax({
-        type: "post",
-        url: url, // 提交到一般处理程序请求数据
-        data: {"url" :location.href.split('#')[0]},
-        dataType: "json",
-        async : false,
-        success: function(data) {
-            if ("" == data) return;
-            appId = data.appId;
-            timestamp = data.timestamp;
-            nonceStr = data.noncestr;
-            signatureStr = data.signature;
-        }
-    });
-
-    WeixinJSBridge.invoke('getBrandWCPayRequest', {
-            "appId" : json.appId,     //公众号名称，由商户传入
-            "timeStamp" : json.timeStamp,         //时间戳，自1970年以来的秒数
-            "nonceStr" : json.nonceStr, //随机串
-            "package" : json.package,
-            "signType" : json.signType,         //微信签名方式:
-            "paySign" : json.paySign //微信签名
-        },function(res){
-            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
-                // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-                if(func != null && typeof(func) == 'function') {
-                    data.wxPayRecordId = json.wxPayRecordId;
-                    func(data);
-                }
-            }else{
-                errorContent(content, null);
-            }
-        }
-    );
-}*/
+function isWeixinBrowser() {
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+    } else {
+        return false;
+    }
+}

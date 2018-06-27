@@ -28,13 +28,13 @@ input:-moz-placeholder { color:#bfbfbf; }
                     <span class="close"><img src="img/close1.png"></span>
                 </div>
                 <div class="order2">
-                    <div class="radio seleted" seleted-value="alipay">
+                    <div class="radio seleted" seleted-value="alipay" id="alipayDiv">
                         <span><img src="img/zhifubao.jpg"></span>
-                        <img src="img/radio1.png" class="radioimg">
+                        <img src="img/radio1.png" class="radioimg" id="alipayDivImg">
                     </div>
-                    <div class="radio" seleted-value="wechatpay">
+                    <div class="radio" seleted-value="wechatpay" id="wechatDiv">
                         <span><img src="img/weixin.jpg"></span>
-                        <img src="img/radio.png" class="radioimg">
+                        <img src="img/radio.png" class="radioimg" id="wechatDivImg">
                     </div>
                 </div>
                 <input type="hidden" name="payOrderNum">
@@ -52,14 +52,16 @@ input:-moz-placeholder { color:#bfbfbf; }
                         <li><p>学生信息：</p></li>
                         <li>学生姓名：<label id="childrenNameLabel"></label></li>
                         <li>手机号：<label id="mobileLabel"></label></li>
-                        <li>上课区域：<label id="courseDistrictLabel"></label></li>
                         <li><p>支付信息：</p></li>
                         <li>支付方式：<label id="paymentLabel"></label></li>
                         <li>支付额度：<b>￥<label id="payPriceLabel"></label></b></li>
                         <li>支付状态：<span><label id="statusLabel"></label></span></li>
                         <li><p>课程信息：</p></li>
                         <li>课程名称：<label id="courseNameLabel"></label></li>
+                        <li>课程规格：<label id="courseSizeLabel"></label></li>
                         <li>课程价格：￥<label id="coursePriceLabel"></label></li>
+                        <li>俱乐部名称：<label id="storeNameLabel"></label></li>
+                        <li>俱乐部地址：<label id="storeAddressLabel"></label></li>
                         <li><p>提交时间：</p></li>
                         <li><label id="createTimeLabel"></label></li>
                         <li name="couponInfo" style="display: none;"><p>优惠码：</p></li>
@@ -76,8 +78,7 @@ input:-moz-placeholder { color:#bfbfbf; }
         <div class="user">
             <div class="user1">
                 <h1>会员中心</h1>
-                <a href="#"><img src="img/head.jpg"></a>
-                <p>设计师</p>
+                <a href="javascript:void(0);"><img src="img/head.jpg"></a>
             </div>
             <div class="user2">
                 <ul class="usernav">

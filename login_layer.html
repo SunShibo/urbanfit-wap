@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<style>
+    ::-webkit-input-placeholder { color:#bbb !important; }
+    ::-moz-placeholder { color:#bbb !important; } /* firefox 19+ */
+    :-ms-input-placeholder { color:#bbb !important; } /* ie */
+    input:-moz-placeholder { color:#bbb !important; }
+</style>
+<body>
+<div class="content">
+    <div class="join">
+        <img src="img/loginbg.jpg">
+        <div class="login1">
+            <img src="img/logo1.png">
+            <h1>会员登录</h1>
+            <ul>
+                <li>
+                    <span><img src="img/user.png">手机号码</span>
+                    <input type="text" value="" placeholder="请输入您的手机号" class="input" id="phone">
+                    <p id="phonemsg"></p>
+                </li>
+                <li>
+                    <span><img src="img/passwd.png">密&emsp;&emsp;码</span>
+                    <input type="password" value="" placeholder="请输入您的密码" class="input" id="pwd">
+                    <p id="pwdmsg"></p>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="next" id="A_login">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/index.js"></script>
+<script src="js/web/config.js"></script>
+<script src="js/web/login_layer.js"></script>
+</body>
+</html>

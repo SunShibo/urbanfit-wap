@@ -2,13 +2,21 @@ var courseId;
 var storeId;
 var detailId;
 $(function() {
-    if(clientIsLogin() == true){
-        $("#submitorder").click(submitorder);  //cookie值不为空的时候  调用下单接口
-    }else(
-        $("#submitorder").click(function(){
-            window.location.href = "login.html";//否则跳转登录页
-        })
-    );
+    if(isWeixinBrowser()){     // 如果是在微信浏览器内部打开，不支持支付宝支付
+        $("#alipayDiv").hide();
+        $("#alipayDiv").removeClass("seleted");
+        $("#wechatDiv").addClass("seleted");
+        $("#alipayDivImg").attr("src", "img/radio.png");
+        $("#wechatDivImg").attr("src", "img/radio1.png");
+    }
+
+    $("#submitorder").click(function () {
+        if(clientIsLogin() == true){
+            submitorder();  //cookie值不为空的时候  调用下单接口
+        }else{
+            openClientLoginLayer();
+        }
+    })
 
     //加载头部底部
     $("#mainPage").load("main.html");
@@ -36,6 +44,37 @@ $(function() {
     $("#changebtn").click(queryCouponInfo);
     $('#change').click(queryCouponInfo);
 });
+
+function openClientLoginLayer(){
+    layer.open({
+        title : '登录',
+        type: 2,
+        content : "login_layer.html",
+        area: ['100%', '100%'],
+        full: true,
+        end : function (){
+            var loginStatus = $("body").data("LOGIN_STATUS");
+            if(loginStatus == "success"){
+                var webuser = $.cookie('webuser');
+                if(webuser != "" && webuser != null){        // 已登录
+                    $("#noLoginDiv").hide();
+                    $("#loginedDiv").show();
+                    var nameLabel = JSON.parse(webuser).name;
+                    if(nameLabel == ""){
+                        nameLabel = JSON.parse(webuser).mobile;
+                    }
+                    $("#clientName_label").text(nameLabel);
+                    clientId = JSON.parse(webuser).clientId;
+                    clientName = JSON.parse(webuser).name;
+                    clientMobile = JSON.parse(webuser).mobile;
+                }else{
+                    $("#noLoginDiv").show();
+                    $("#loginedDiv").hide();
+                }
+            }
+        }
+    });
+}
 
 function initCourseDetail(){
     $.ajax({
@@ -119,6 +158,7 @@ function submitorder(){
         return;
     }
     var remarks = $("#remarks").val();
+    var wechatType = isWeixinBrowser() ? 2 : 1;  // 微信内部为微信公众号
     var params = {
         "childrenName" : name,
         "clientMobile" : mobile,
@@ -127,15 +167,23 @@ function submitorder(){
         "payment" : payWay,
         "storeId" : storeId,
         "detailId" : detailId,
-        "remarks" : remarks
+        "remarks" : remarks,
+        "wechatType" : wechatType
     };
-    $.ajax({
-        type:"post",
-        url: baseUrl + "wapOrder/addOrder",
-        dataType: "json",
-        data: {"params" : JSON.stringify(params), "clientId": clientId},
-        success: function(result){
-            if(result.code == 1){
+
+    if(isWeixinBrowser()){   // 微信内部浏览器支付信息
+        var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
+            + JSON.stringify(params) + "&clientId=" + clientId + "&type=add");
+
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
+            "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
+    }else{       // 微信外部浏览器支付信息
+        $.ajax({
+            type:"post",
+            url: baseUrl + "wapOrder/addOrder",
+            dataType: "json",
+            data: {"params" : JSON.stringify(params), "clientId": clientId},
+            success: function(result){
                 if(result.code == 1){
                     if(payWay == 0){   // 支付宝支付
                         $('body').append(result.data);
@@ -143,6 +191,28 @@ function submitorder(){
                     }else if(payWay == 1){       // 微信支付
                         window.location.href = result.data.wechatPayUrl;
                     }
+                }else{
+                    alert(result.msg);
+                    return ;
+                }
+            }
+        });
+    }
+}
+
+function addOrderMaster(params, clientId){
+    $.ajax({
+        type:"post",
+        url: baseUrl + "wapOrder/addOrder",
+        dataType: "json",
+        data: {"params" : JSON.stringify(params), "clientId": clientId},
+        success: function(result){
+            if(result.code == 1){
+                if(payWay == 0){   // 支付宝支付
+                    $('body').append(result.data);
+                    $("form").attr("target", "_blank");
+                }else if(payWay == 1){       // 微信支付
+                    window.location.href = result.data.wechatPayUrl;
                 }
             }else{
                 alert(result.msg);
@@ -166,4 +236,13 @@ function getParamValue(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
+}
+
+function isWeixinBrowser() {
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.match(/MicroMessenger/i) == "micromessenger") {
+        return true;
+    } else {
+        return false;
+    }
 }
