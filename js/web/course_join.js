@@ -14,7 +14,8 @@ $(function() {
         if(clientIsLogin() == true){
             submitorder();  //cookie值不为空的时候  调用下单接口
         }else{
-            openClientLoginLayer();
+            window.location.href = "client_login.html?courseId=" + courseId + "&storeId=" + storeId
+                + "&detailId=" + detailId;
         }
     })
 
@@ -49,7 +50,7 @@ function openClientLoginLayer(){
     layer.open({
         title : '登录',
         type: 2,
-        content : "login_layer.html",
+        content : "login_layer.html?courseId=" + courseId + "&storeId=" + storeId + "&detailId=" + detailId,
         area: ['100%', '100%'],
         full: true,
         end : function (){

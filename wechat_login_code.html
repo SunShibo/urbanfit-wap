@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/web/config.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 获取code值
+            var code = getParamValue("code");
+            var type = getParamValue("type");
+            $.ajax({
+                type : "post",
+                url : baseUrl + "client/wechatRegister",
+                data : {"code" : code},
+                dataType : "json",
+                success : function (result){
+                    if(result.code == 1){        // 授权登录成功
+                        var user_str = JSON.stringify(result.data);
+                        $.cookie('webuser', user_str, {path:'/'});
+                    }
+                    if(type == "loginPage"){      // 登录界面
+                        window.location.href = wechatPayUrl;
+                    }else{          // 登录弹框界面
+                        var courseId = getParamValue("courseId");
+                        var storeId = getParamValue("storeId");
+                        var detailId = getParamValue("detailId");
+                        window.location.href = wechatPayUrl + "course_join.html?courseId=" + courseId
+                                + "&storeId=" + storeId + "&detailId=" + detailId;
+                    }
+                }
+            })
+        })
+
+        function getParamValue(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

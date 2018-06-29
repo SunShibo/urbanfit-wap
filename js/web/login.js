@@ -1,7 +1,14 @@
 $(function (){
     $("#footerPage").load("footer.html");
     $("#A_login").click(clientLogin);
+    $("#A_wechat_login").click(wechatClientLogin);
 });
+
+function wechatClientLogin(){
+    var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_login_code.html?type=loginPage");
+    window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
+        "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
+}
 
 function clientLogin(){
     var mobile = $.trim($("#phone").val());

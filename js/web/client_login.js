@@ -1,6 +1,5 @@
 $(function (){
     $("#A_login").click(clientLogin);
-    parent.$("body").data("LOGIN_STATUS", "");
     $("#A_wechat_login").click(wechatClientLogin);
 });
 
@@ -53,17 +52,12 @@ function clientLogin(){
                 $('#pwdmsg').text('');
                 var user_str = JSON.stringify(result.data);
                 $.cookie('webuser', user_str, {path:'/'});
-                parent.$("body").data("LOGIN_STATUS", "success");
-                closeLayer();
+                window.location.href = wechatPayUrl + "course_join.html?courseId=" + courseId
+                    + "&storeId=" + storeId + "&detailId=" + detailId;
             }
         }
     });
 };
-
-function closeLayer(){
-    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-    parent.layer.close(index);
-}
 
 //粗略验证手机号
 function isMobile(mobile){
