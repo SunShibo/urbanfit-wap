@@ -6,7 +6,7 @@ $(function(){
         $("#alipayDivImg").attr("src", "img/radio.png");
         $("#wechatDivImg").attr("src", "img/radio1.png");
     }
-
+    $("#B_apply_back_money").click(applyBackMoney);
     $("#mainPage").load("main.html");
     $("#footerPage").load("footer.html");
     queryOrderMasterList();
@@ -90,6 +90,9 @@ function queryOrderMasterList(){
                     orderArr.push('     <li class="dian3"><i></i>' + n.createTime + '</li>');
                     orderArr.push('     <li class="dian4"><i></i>价格：￥' + n.price);
                     orderArr.push('         <a href="javascript:void(0);" data-ordernum="' + n.orderNum + '" class="see">查  看</a>');
+                    if(n.status == 1){
+                        orderArr.push('    <a href="javascript:void(0);" data-ordernum="' + n.orderNum + '" class="backApply">申请退款</a>');
+                    }
                     if(n.status == 0){  // 待支付
                         orderArr.push('     <a href="javascript:void(0);" data-ordernum="' + n.orderNum + '" class="pay1">支  付</a>');
                     }
@@ -106,6 +109,10 @@ function queryOrderMasterList(){
                     var orderNum = $(this).data("ordernum");
                     queryOrderMasterDetail(orderNum);
                 });
+                $('.backApply').click(function(){
+                    var orderNum = $(this).data("ordernum");
+                    backOrder(orderNum);
+                });
                 // 订单支付
                 $('.pay1').click(function(){
                     var orderNum = $(this).data("ordernum");
@@ -117,6 +124,18 @@ function queryOrderMasterList(){
         }
     });
 }
+//退款申请
+function backOrder(orderNum){
+    $("input[name='applyOrderNum']").val(orderNum);
+    layer.open({
+        title : '申请退款',
+        type: 1,
+        content : $("#applyBackMoneyDiv"),//指定弹出DIV内容
+        area: ['500px', '500px'],
+        full: false
+    });
+    }
+
 
 // 查询订单详情
 function queryOrderMasterDetail(orderNum){
@@ -171,7 +190,29 @@ function queryOrderMasterDetail(orderNum){
     })
 }
 
-
+function applyBackMoney(){
+    var orderNum = $("input[name='applyOrderNum']").val();
+    var reason = $("textarea[name='reason']").val();
+    if(reason == ""){
+        alert("请填写申请退款原因！");
+        return ;
+    }
+    // 申请退款操作
+    $.ajax({
+        type : "post",
+        url : "/order/applyBackMoney",    // 调用方法
+        data : {"orderNum" : orderNum, "reason" : reason},   // 参数信息
+        dataType : "json",
+        success : function (result){      // 调用方法成功处理函数
+            if(result.code != 1){
+                alert(result.msg);
+                return ;
+            }else{     // 成功处理
+                alert("提交申请成功");
+            }
+        }
+    });
+}
 function choosePayment(orderNum){
     $("input[name='payOrderNum']").val(orderNum);
     $('.tan').css({'display':'flex'});

@@ -94,7 +94,7 @@
 }
 .infolist > ul li .listtext1 h1 span{display:block;font-size: 14px;color: #999;margin: 3px 0;}
 .infolist > ul li .listtext1 p{color: #101215; font-size: 14px;overflow : hidden;
-    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}}
+    text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;}
 .infolist .page{width: 100%;}
 .infolist .page ul{margin:25px 15px;display: flex;justify-content: space-between;}
 .infolist .page ul li{width: 30%;position: relative;}
@@ -873,6 +873,9 @@
     border:1px solid #fe8005;color: #fe8005;
 }
 .user2 .userorder li ul li a.see{
+    border:1px solid #2b66b5;color: #2b66b5;
+}
+.user2 .userorder li ul li a.backApply{
     border:1px solid #2b66b5;color: #2b66b5;
 }
 .user2 .page ul{
