@@ -39,10 +39,28 @@ input:-moz-placeholder { color:#bfbfbf; }
                     </li>
                 </ul>
                 <ul class="usermy">
+                    <li id="wechatLoginDiv">
+                        <span>绑定微信</span>
+                        <a href="javascript:void(0);" class="next" id="A_wechat_login">绑定微信</a>
+                    </li>
                     <li>
-                        <span>真实姓名:</span>
+                        <span>真实姓名</span>
                         <input type="text" placeholder="请输入您的姓名" class="input" name="name">
-                        <p id="namemsg"></p>
+                    </li>
+                    <li>
+                        <span>昵称</span>
+                        <input type="text" name="nickname" placeholder="请输入昵称" class="input">
+                    </li>
+                    <li>
+                        <span>性别</span>
+                        <input type="radio" name="gender" value="0" style="width: auto;height:54px;line-height:54px">&nbsp;&nbsp;
+                        <label style="height:54px;line-height:54px;">男</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="gender" value="1" style="width: auto;height:54px;line-height:54px">&nbsp;&nbsp;
+                        <label style="height:54px;line-height:54px;">女</label>
+                    </li>
+                    <li>
+                        <span>电子邮箱</span>
+                        <input type="text" name="email" placeholder="请输入电子邮箱" class="input">
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="next" id="A_save">保存</a>

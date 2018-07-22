@@ -125,7 +125,16 @@ function checkForm(){
                 $.cookie("register_" + mobile + "", "");
                 var user_str = JSON.stringify(d.data);
                 $.cookie('webuser', user_str, {path:'/'});
-                window.location.href = "join_success.html";
+                var type = getParamValue("type");
+                if(type == "loginPage"){
+                    window.location.href = wechatPayUrl;
+                }else if(type == "orderPage"){
+                    var courseId = getParamValue("courseId");
+                    var storeId = getParamValue("storeId");
+                    var detailId = getParamValue("detailId");
+                    window.location.href = wechatPayUrl + "course_join.html?courseId=" + courseId
+                        + "&storeId=" + storeId + "&detailId=" + detailId;
+                }
             }
         }
     }
@@ -147,4 +156,10 @@ function isMobile(mobile){
         return true;
     else
         return false;
+}
+
+function getParamValue(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
 }

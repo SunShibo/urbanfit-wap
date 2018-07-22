@@ -5,7 +5,7 @@ $(function (){
 });
 
 function wechatClientLogin(){
-    var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_login_code.html?type=loginPage");
+    var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_login.html?type=loginPage");
     window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
         "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
 }
@@ -46,7 +46,7 @@ function clientLogin(){
                 // 登录成功跳转页面
                 $('#phonemsg').text('');
                 $('#pwdmsg').text('');
-                window.location.href = "login_success.html";
+                window.location.href = "index.html";
                 var user_str = JSON.stringify(result.data);
                 $.cookie('webuser', user_str, {path:'/'});
             }

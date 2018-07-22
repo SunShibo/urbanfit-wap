@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title></title>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274101134'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274101134%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/web/config.js"></script>
+    <script type="text/javascript" src="js/web/main.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        var code = getParamValue("code");          // 获取code值
+        var type = getParamValue("type");
+        var courseId = getParamValue("courseId");
+        var storeId = getParamValue("storeId");
+        var detailId = getParamValue("detailId");
+        $(function () {
+            // 判断当前微信是否绑定过手机号码
+            // 如果绑定过手机号码，登录成功
+            // 如果没有绑定过手机号码，提示先注册，注册成功绑定微信登录
+            // 如果是个人中心绑定微信，判断微信是否绑定过手机号码
+            // 如果绑定过，提示不可绑定
+            // 如果没有绑定过，绑定当前手机号码
+            $.ajax({
+                type : "post",
+                url : baseUrl + "apiClient/queryByOpenId",
+                data : {"code" : code},
+                dataType : "json",
+                async : false,
+                success : function (result){
+                    if(result.code != 1){      // 说明微信没有绑定过账号
+                        // 如果是个人中心页面
+                        if(type == "clientPage"){   // 个人中心页面，没有绑定，绑定到该用户
+                            bangdingWechat(result.data.openId);
+                        }else if(type == "loginPage"){     // 登录界面、订单界面
+                            // 如果微信没有绑定过账号，跳转到注册页面
+                            alert("此微信账号没有绑定过账号，请注册绑定手机账号登录绑定后再登录");
+                            window.location.href = "join.html?type=" + type;
+                        }else if(type == "orderPage"){
+                            alert("此微信账号没有绑定过账号，请注册绑定手机账号登录绑定后再登录");
+                            window.location.href = "join.html?type=" + type + "&courseId=" + courseId
+                                    + "&storeId=" + storeId + "&detailId=" + detailId;
+                        }
+                    }else if(result.code == 1){
+                        if(type == "clientPage"){   // 微信已经绑定过用户
+                            alert("此微信账号已经绑定过用户");
+                            window.location.href = "user.html";
+                        }else if(type == "loginPage"){      // 登录界面
+                            var user_str = JSON.stringify(result.data.clientInfo);
+                            $.cookie('webuser', user_str, {path:'/'});
+                            window.location.href = wechatPayUrl;
+                        }else if(type == "orderPage"){          // 登录弹框界面
+                            var user_str = JSON.stringify(result.data.clientInfo);
+                            $.cookie('webuser', user_str, {path:'/'});
+                            window.location.href = wechatPayUrl + "course_join.html?courseId=" + courseId
+                                    + "&storeId=" + storeId + "&detailId=" + detailId;
+                        }
+                    }
+                }
+            })
+        })
+
+        function bangdingWechat(openId){
+            $.ajax({
+                type : "post",
+                url : baseUrl + "apiClient/bangdingWechat",
+                data : {"openId" : openId, "clientId": clientId},
+                dataType : "json",
+                async : false,
+                success : function (result){
+                    if(result.code == 1){
+                        if(type == "clientPage"){
+                            alert("绑定微信账号成功");
+                            window.location.href = "user.html";
+                        }else if(type == "loginPage"){  // 登录成功
+                            window.location.href = wechatPayUrl;
+                        }else if(type == "orderPage"){
+                            window.location.href = wechatPayUrl + "course_join.html?courseId=" + courseId
+                                    + "&storeId=" + storeId + "&detailId=" + detailId;
+                        }
+                        var user_str = JSON.stringify(result.data);
+                        $.cookie('webuser', user_str, {path:'/'});
+                    }else{
+                        if(type == "clientPage"){
+                            alert("绑定微信账号失败");
+                            window.location.href = "user.html";
+                        }
+                    }
+                }
+            })
+        }
+
+        function getParamValue(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

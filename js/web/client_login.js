@@ -1,14 +1,23 @@
 $(function (){
     $("#A_login").click(clientLogin);
     $("#A_wechat_login").click(wechatClientLogin);
+    $("#A_register").click(clientRegister);
 });
+
+function clientRegister(){
+    var courseId = getParamValue("courseId");
+    var storeId = getParamValue("storeId");
+    var detailId = getParamValue("detailId");
+    window.location.href = "join.html?type=orderPage&courseId=" + courseId + "&storeId=" + storeId
+        + "&detailId=" + detailId;
+}
 
 function wechatClientLogin(){
     var courseId = getParamValue("courseId");
     var storeId = getParamValue("storeId");
     var detailId = getParamValue("detailId");
 
-    var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_login_code.html?courseId=" + courseId
+    var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_login.html?type=orderPage&courseId=" + courseId
         + "&storeId=" + storeId + "&detailId=" + detailId);
     window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
         "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
