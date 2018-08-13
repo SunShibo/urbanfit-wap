@@ -1038,6 +1038,80 @@
     .cdetailbox1 ul li p select{width:65%;}
 }
 
+/*上课地点*/
+.sklist{
+    padding: 0 10px;
+}
+.sklist .sklistbox{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sklist .sklistbox li{
+    width: 48%;
+    margin-bottom: 15px;
+}
+.sklist .sklistbox li a{
+    display: block;
+    border: 1px solid #f4f4f4;
+}
+.sklist .sklistbox li a > img{
+    width: 100%;
+}
+.sklist .sklistbox li a h1{
+    color: #222;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin:10px 5px;
+}
+.sklist .sklistbox li a p{
+    color: #666;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+    height: 70px;
+    margin: 0 5px;
+}
+.sklist .sklistbox li a p span{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.skdetail{
+    margin-top: 30px;
+    padding: 15px;
+}
+.skdetail > img{
+    width: 100%;
+}
+.skdetail h1{
+    font-size: 18px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-top: 20px;
+}
+.skdetail span{
+    display: flex;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+.skdetail span img{
+    width: 15px;height: 20px;
+}
+.skdetail p{
+    font-size: 14px;
+    color: #888;
+    margin: 10px 0;
+}
 
 
 

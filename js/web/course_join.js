@@ -97,6 +97,7 @@ function initCourseDetail(){
                 var courseSizeDetail = data.data.courseSizeDetail;
                 $("#coursePrice").val("￥" + courseSizeDetail.sizePrice);
                 $("#courseSize").val(data.data.sizeName);
+                $("input[name='coursePrice']").val(courseSizeDetail.sizePrice);
             }
         }
     })
