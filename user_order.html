@@ -9,51 +9,6 @@
 	<title>我的订单</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-    <meta charset="utf-8"/>
-    <title>我的订单</title>
-    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/common.css">
-    <link type="text/css" href="/static/css/main.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <script type="text/javascript" src="/static/js/mainJs/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/common/menu.js"></script>
-    <script type="text/javascript" src="/static/js/mainJs/layer/layer.js"></script>
-    <script type="text/javascript" src="/static/js/web/order_master_list.js"></script>
-    <script type="text/javascript">
-        var status = '${status}';
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        #applyBackMoneyDiv{
-            margin: 0 auto;
-            text-align: center;
-            height: 478px;
-        }
-        #B_apply_back_money{
-            display: block;width: 200px;height: 45px;
-            background: #f6d332;color: #001111;
-            font-size: 18px;border-radius: 4px;
-            text-align: center;line-height: 45px;
-            margin-top: 100px;margin-left: 30%;
-        }
-        #reason{
-            margin-top: 32px ;
-        }
-        #applyBackMoneyDiv span{
-            display: inline-block;
-            vertical-align: top;
-            margin-top: 40px;
-            font-size: 20px;
-            margin-left: -73px;
-        }
-    </style>
 </head>
 <style>
 ::-webkit-input-placeholder { color:#bfbfbf; }
@@ -83,6 +38,7 @@ input:-moz-placeholder { color:#bfbfbf; }
                     </div>
                 </div>
                 <input type="hidden" name="payOrderNum">
+                <input type="hidden" name="payPrice">
                 <a href="javascript:void(0);" id="A_payOrder">确&emsp;认</a>
             </div>
             <!-- 付款方式 -->
@@ -158,8 +114,6 @@ input:-moz-placeholder { color:#bfbfbf; }
             </div>
         </div>
         <div id="footerPage"></div>
-<<<<<<< HEAD
-
 	</div>
     <!--退款原因-->
     <div id="applyBackMoneyDiv" style="display: none">
@@ -169,11 +123,7 @@ input:-moz-placeholder { color:#bfbfbf; }
             <input type="button" id="B_apply_back_money" value="申请退款">
         </div>
     </div>
-
-=======
-	</div>
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274101134'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1274101134%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
->>>>>>> origin/master
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/jquery.cookie.js"></script>

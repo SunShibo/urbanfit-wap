@@ -96,6 +96,7 @@ function initCourseDetail(){
                 $("#courseName").val(course.courseName);
                 var courseSizeDetail = data.data.courseSizeDetail;
                 $("#coursePrice").val("￥" + courseSizeDetail.sizePrice);
+                $("input[name='payPrice']").val(courseSizeDetail.sizePrice);
                 $("#courseSize").val(data.data.sizeName);
                 $("input[name='coursePrice']").val(courseSizeDetail.sizePrice);
             }
@@ -115,18 +116,31 @@ function queryCouponInfo(){
         type:"post",
         url: baseUrl + "apiCoupon/detail ",
         dataType: "json",
-        data: {"couponNum" : couponNum},
+        data: {"couponNum" : couponNum, "courseId" : courseId},
         success: function(result){
             if(result.code == 1){
                 $('#change').hide();
                 $('#changebtn').show();
                 $('#couponName').text(result.data.couponName).show();
+                $("#price").text($("input[name='coursePrice']").val());
+                var type = result.data.type;
+                $("#price").text($("input[name='coursePrice']").val());
                 var coursePrice = $("input[name='coursePrice']").val();
-                $("#couponprice").text(coursePrice * result.data.percent / 100);
-                $("#payPrice").text(coursePrice - (coursePrice * result.data.percent / 100));
-                $("#couponDiv").show();
+                if(type == 0){      // 折扣券
+                    $("#couponprice").text(coursePrice * result.data.percent / 100);
+                    var payPrice = coursePrice - (coursePrice * result.data.percent / 100);
+                    $("#payPrice").text(payPrice >= 0 ? payPrice : 0);
+                    $("#couponDiv").show();
+                    $("input[name='payPrice']").val(payPrice);
+                }else if(type == 1){         // 抵扣券
+                    $("#couponprice").text(result.data.minusMoney);
+                    var payPrice = coursePrice - result.data.minusMoney;
+                    $("#payPrice").text(payPrice >= 0 ? payPrice : 0);
+                    $("#couponDiv").show();
+                    $("input[name='payPrice']").val(payPrice);
+                }
             }else{
-                alert('优惠码不存在');
+                alert(result.msg);
                 $('#couponName').text("").hide();
                 $("#couponDiv").hide();
             }
@@ -173,33 +187,44 @@ function submitorder(){
         "wechatType" : wechatType
     };
 
-    if(isWeixinBrowser()){   // 微信内部浏览器支付信息
-        var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
-            + JSON.stringify(params) + "&clientId=" + clientId + "&type=add");
+    var payPrice = $("input[name='payPrice']").val();
+    if(payPrice == 0){
+        if(isWeixinBrowser()){   // 微信内部浏览器支付信息
+            var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
+                + JSON.stringify(params) + "&clientId=" + clientId + "&type=add");
 
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
-            "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
-    }else{       // 微信外部浏览器支付信息
-        $.ajax({
-            type:"post",
-            url: baseUrl + "wapOrder/addOrder",
-            dataType: "json",
-            data: {"params" : JSON.stringify(params), "clientId": clientId},
-            success: function(result){
-                if(result.code == 1){
-                    if(payWay == 0){   // 支付宝支付
-                        $('body').append(result.data);
-                        $("form").attr("target", "_blank");
-                    }else if(payWay == 1){       // 微信支付
-                        window.location.href = result.data.wechatPayUrl;
-                    }
-                }else{
-                    alert(result.msg);
-                    return ;
-                }
-            }
-        });
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
+                "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
+        }else{       // 微信外部浏览器支付信息
+            payOrderMaster(params, payWay);
+        }
+    }else{
+        payOrderMaster(params, payWay);
     }
+}
+
+function payOrderMaster(params, payWay){
+    $.ajax({
+        type:"post",
+        url: baseUrl + "wapOrder/addOrder",
+        dataType: "json",
+        data: {"params" : JSON.stringify(params), "clientId": clientId},
+        success: function(result){
+            if(result.code == 1){
+                if(payWay == 0){   // 支付宝支付
+                    $('body').append(result.data);
+                    $("form").attr("target", "_blank");
+                }else if(payWay == 1){       // 微信支付
+                    window.location.href = result.data.wechatPayUrl;
+                }
+            }else if(result.code == 2){
+                window.location.href = "user_order.html";
+            } else{
+                alert(result.msg);
+                return ;
+            }
+        }
+    });
 }
 
 function addOrderMaster(params, clientId){

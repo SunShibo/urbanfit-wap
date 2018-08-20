@@ -94,7 +94,7 @@ function queryOrderMasterList(){
                         orderArr.push('    <a href="javascript:void(0);" data-ordernum="' + n.orderNum + '" class="backApply">申请退款</a>');
                     }
                     if(n.status == 0){  // 待支付
-                        orderArr.push('     <a href="javascript:void(0);" data-ordernum="' + n.orderNum + '" class="pay1">支  付</a>');
+                        orderArr.push('     <a href="javascript:void(0);" data-payprice="' + n.payPrice + '" data-ordernum="' + n.orderNum + '" class="pay1">支  付</a>');
                     }
                     orderArr.push('     </li>');
                     orderArr.push('  </ul>');
@@ -116,7 +116,8 @@ function queryOrderMasterList(){
                 // 订单支付
                 $('.pay1').click(function(){
                     var orderNum = $(this).data("ordernum");
-                    choosePayment(orderNum);
+                    var payPrice = $(this).data("payprice");
+                    choosePayment(orderNum, payPrice);
                 })
             }else{
                 $(".page").html("");
@@ -213,8 +214,9 @@ function applyBackMoney(){
         }
     });
 }
-function choosePayment(orderNum){
+function choosePayment(orderNum, payPrice){
     $("input[name='payOrderNum']").val(orderNum);
+    $("input[name='payPrice']").val(payPrice);
     $('.tan').css({'display':'flex'});
     $('.tanbox').show();
 }
@@ -242,31 +244,44 @@ function payOrderMasterAgain(){
         "payment" : payWay,
         "orderNum" : orderNum
     };
+    var payPrice = $("input[name='payPrice']").val();
+    if(payPrice == 0) {
+        payOrderMaster(params, payWay);
+    }else{
+        if (isWeixinBrowser()) {   // 微信内部浏览器支付信息
+            var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
+                + JSON.stringify(params) + "&type=payAgain");
 
-    if(isWeixinBrowser()){   // 微信内部浏览器支付信息
-        var redirectUrl = encodeURIComponent(wechatPayUrl + "wechat_code.html?params="
-            + JSON.stringify(params) + "&type=payAgain");
-
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
-            "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
-    }else {       // 微信外部浏览器支付信息
-        $.ajax({
-            url: baseUrl + "wapOrder/payOrderAgain",
-            type: "post",
-            data: {"params": JSON.stringify(params)},
-            dataType: "json",
-            success: function (result) {
-                if (result.code == 1) {
-                    if (payWay == 0) {   // 支付宝支付
-                        $('body').append(result.data);
-                        $("form").attr("target", "_blank");
-                    } else if (payWay == 1) {
-                        window.location.href = result.data.wechatPayUrl;
-                    }
-                }
-            }
-        });
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxfceafb8ea3eae188" +
+                "&redirect_uri=" + redirectUrl + "&response_type=code&scope=snsapi_base#wechat_redirect";
+        } else {       // 微信外部浏览器支付信息
+            payOrderMaster(params, payWay);
+        }
     }
+}
+
+function payOrderMaster(params, payWay){
+    $.ajax({
+        url: baseUrl + "wapOrder/payOrderAgain",
+        type: "post",
+        data: {"params": JSON.stringify(params)},
+        dataType: "json",
+        success: function (result) {
+            if (result.code == 1) {
+                if (payWay == 0) {   // 支付宝支付
+                    $('body').append(result.data);
+                    $("form").attr("target", "_blank");
+                } else if (payWay == 1) {
+                    window.location.href = result.data.wechatPayUrl;
+                }
+            } else if(result.code == 2){
+                window.location.href = "user_order.html";
+            } else{
+                alert(result.msg);
+                return ;
+            }
+        }
+    });
 }
 
 function isWeixinBrowser() {
